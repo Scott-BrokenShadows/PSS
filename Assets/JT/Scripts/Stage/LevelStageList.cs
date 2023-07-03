@@ -43,6 +43,7 @@ public class LevelStageList : MonoBehaviour
         }
     }
 
+    #region Similar Funbction to "LoadSceneMode.Single"
     IEnumerator LoadYourAsyncScene()
     {
         // The Application loads the Scene in the background as the current Scene runs.
@@ -58,6 +59,7 @@ public class LevelStageList : MonoBehaviour
             yield return null;
         }
     }
+    #endregion
 
     void GoToStage()
     {

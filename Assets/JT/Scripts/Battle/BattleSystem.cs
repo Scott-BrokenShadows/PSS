@@ -7,23 +7,34 @@ using UnityEngine;
 public class EnemyOnScene
 {
     public HBCharacterBase enemy;
-    public GameObject cEnemy;
     public float timer;
     public bool callOnce;
+}
+
+[System.Serializable]
+public class WaveOnScene
+{
+    public List<EnemyOnScene> currentEnemyOnScene;
 }
 
 public class BattleSystem : MonoBehaviour
 {
     public GameObject battleUnit;
 
+    // LevelStage
     [ReadOnly] public LevelStage currentLevel;
+
+    // Whats going on with the current Wave
     [ReadOnly] public int currentWave;
     int cWave;
     [ReadOnly] public float cTimer;
 
+    // The current Enemies on the game
+    public List<WaveOnScene> currentWaveOnScene;
     public List<EnemyOnScene> currentEnemyOnScene;
     public List<GameObject> cEnemy;
 
+    // How many Grid Rows based on the LevelStage.cs
     #region Grid Rows
     [Min(0)] float range;
     int rows;
@@ -45,6 +56,7 @@ public class BattleSystem : MonoBehaviour
         InstanceEnemies();
     }
 
+    // Calculate the Grid Wave positions
     #region Get Grid Rows
     Ray[] GetGridRows(Transform origin, float range, int count)
     {
@@ -61,12 +73,16 @@ public class BattleSystem : MonoBehaviour
     }
     #endregion
 
+    // Do what on the start
     void SetupBattle()
     {
+        // Get the current Stage Information
         currentLevel = FindObjectOfType<LevelStage>();
 
+        // Set the current Stage Information
         GetEnemyWave();
 
+        // Create how many Grid Rows
         #region Grid Rows
         rows = currentLevel.gridRows;
         cRows = rows;
@@ -80,9 +96,11 @@ public class BattleSystem : MonoBehaviour
         }
         #endregion
 
+        // The current timer for each wave
         cTimer = currentLevel.LevelWave[cWave].countDownTimer;
     }
 
+    // Timer Wave: when the timer reaches "0" go next wave
     void TimerWave()
     {
         if (currentLevel.LevelWave.Count - 1 > cWave)
@@ -102,12 +120,14 @@ public class BattleSystem : MonoBehaviour
 
             if (cTimer <= 0)
             {
+                // What to do when you complete the stage
                 Debug.Log("Complete Stage");
                 cTimer = 0;
             }
         }
     }
 
+    // Get the information on the current Wave
     void GetEnemyWave()
     {
         for (int b = 0; b < currentLevel.LevelWave[cWave].EnemyList.Count; b++)
@@ -118,21 +138,23 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    // Instantiate Enemies from the information based on the timer to spawn
     void InstanceEnemies()
     {
         for (int b = 0; b < currentLevel.LevelWave[cWave].EnemyList.Count; b++)
         {
             if (currentEnemyOnScene[b].callOnce != true)
             {
+                //Timer goes down to spawn
                 currentEnemyOnScene[b].timer -= Time.deltaTime;
 
                 if (currentEnemyOnScene[b].timer <= 0)
                 {
+                    // Instantiate the battleUnit with the data from the LevelStage
                     GameObject bUnit = Instantiate(battleUnit, new Vector3(currentLevel.LevelWave[cWave].EnemyList[b].position, GridRows[currentLevel.LevelWave[cWave].EnemyList[b].row - 1].y, 0), Quaternion.identity);
                     bUnit.GetComponent<HBCharacterBattleUnits>()._base = currentLevel.LevelWave[cWave].EnemyList[b]._base;
                     bUnit.GetComponent<HBCharacterBattleUnits>().isPlayer = false;
-
-                    currentEnemyOnScene[b].cEnemy = bUnit;
+                    cEnemy.Add(bUnit);
 
                     currentEnemyOnScene[b].callOnce = true;
                 }
@@ -140,6 +162,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    // Just show gizmos
     private void OnDrawGizmos()
     {
         #region Grid Rows

@@ -23,8 +23,6 @@ public class HBEnemyList
     [Min(1)] public int row;
     public float position;
     public float timer;
-    //public float cTimer;
-    //public bool callOnce;
 }
 
 public class LevelStage : MonoBehaviour

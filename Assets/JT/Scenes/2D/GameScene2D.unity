@@ -210,24 +210,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
   - name: Wave 2
     countDownTimer: 0
     EnemyList:
@@ -237,24 +231,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
 --- !u!1 &374462287
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +322,7 @@ MonoBehaviour:
   gridRows: 5
   levelWave:
   - name: Wave 1
-    countDownTimer: 100
+    countDownTimer: 50
     EnemyList:
     - name: Enemy Slot 1
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
@@ -342,51 +330,60 @@ MonoBehaviour:
       row: 1
       position: 0
       timer: 5
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
       row: 2
       position: 3
       timer: 10
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
       row: 3
       position: 5
       timer: 20
-      cTimer: 0
-      callOnce: 0
   - name: Wave 2
-    countDownTimer: 1
+    countDownTimer: 50
     EnemyList:
     - name: Enemy Slot 1
-      _base: {fileID: 0}
+      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
-      row: 0
+      row: 3
       position: 0
-      timer: 0
-      cTimer: 0
-      callOnce: 0
+      timer: 5
     - name: Enemy Slot 2
-      _base: {fileID: 0}
+      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
-      row: 0
+      row: 4
       position: 0
-      timer: 0
-      cTimer: 0
-      callOnce: 0
+      timer: 5
     - name: Enemy Slot 3
-      _base: {fileID: 0}
+      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
-      row: 0
+      row: 5
       position: 0
-      timer: 0
-      cTimer: 0
-      callOnce: 0
+      timer: 10
+  - name: Wave 3
+    countDownTimer: 50
+    EnemyList:
+    - name: Enemy Slot 1
+      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
+      lv: 0
+      row: 3
+      position: 0
+      timer: 3
+    - name: Enemy Slot 2
+      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
+      lv: 0
+      row: 4
+      position: 0
+      timer: 5
+    - name: Enemy Slot 3
+      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
+      lv: 0
+      row: 5
+      position: 0
+      timer: 10
 --- !u!4 &427730405
 Transform:
   m_ObjectHideFlags: 0
@@ -458,24 +455,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
   - name: Wave 2
     countDownTimer: 0
     EnemyList:
@@ -485,24 +476,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,24 +704,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
   - name: Wave 2
     countDownTimer: 0
     EnemyList:
@@ -746,24 +725,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
 --- !u!1 &574876032
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,24 +793,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
   - name: Wave 2
     countDownTimer: 0
     EnemyList:
@@ -847,24 +814,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,24 +913,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
   - name: Wave 2
     countDownTimer: 0
     EnemyList:
@@ -979,24 +934,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
 --- !u!1 &627310283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,24 +1064,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
   - name: Wave 2
     countDownTimer: 0
     EnemyList:
@@ -1142,24 +1085,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
 --- !u!1 &922508913
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,24 +1272,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
   - name: Wave 2
     countDownTimer: 0
     EnemyList:
@@ -1362,24 +1293,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
 --- !u!1 &1736642073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,6 +1384,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c316197c058160243abdea41db25aa3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realTime: 
+  gameplayTime: 
+  gameCurrency: 0
+  listCharacters:
+  - name: 
+    character: {fileID: 0}
+    level: 0
+    item: {fileID: 0}
+  - name: 
+    character: {fileID: 0}
+    level: 0
+    item: {fileID: 0}
+  - name: 
+    character: {fileID: 0}
+    level: 0
+    item: {fileID: 0}
+  listItems:
+  - item: {fileID: 0}
+    number: 0
+  - item: {fileID: 0}
+    number: 0
+  - item: {fileID: 0}
+    number: 0
 --- !u!1 &1760206841
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,24 +1463,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
   - name: Wave 2
     countDownTimer: 0
     EnemyList:
@@ -1542,24 +1484,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
 --- !u!1 &2010163800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,24 +1552,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
   - name: Wave 2
     countDownTimer: 0
     EnemyList:
@@ -1643,24 +1573,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
 --- !u!1 &2118081037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,24 +1641,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
   - name: Wave 2
     countDownTimer: 0
     EnemyList:
@@ -1744,24 +1662,18 @@ MonoBehaviour:
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
       row: 0
       position: 0
       timer: 0
-      cTimer: 0
-      callOnce: 0
 --- !u!1 &2138895680
 GameObject:
   m_ObjectHideFlags: 0
