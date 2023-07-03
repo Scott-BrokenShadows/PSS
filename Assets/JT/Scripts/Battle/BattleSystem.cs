@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemyOnScene
 {
     public HBCharacterBase enemy;
+    public GameObject cEnemy;
     public float timer;
     public bool callOnce;
 }
@@ -66,14 +67,9 @@ public class BattleSystem : MonoBehaviour
 
         for (int b = 0; b < currentLevel.LevelWave[cWave].EnemyList.Count; b++)
         {
-            //currentLevel.LevelWave[cWave].EnemyList[b].cTimer = currentLevel.LevelWave[cWave].EnemyList[b].timer;
-            //currentEnemyTimer.Add(currentLevel.LevelWave[cWave].EnemyList[b].timer);
-            //currentEnemyCallOnce.Add(false);
-
             currentEnemyOnScene.Add(new EnemyOnScene());
             currentEnemyOnScene[b].enemy = currentLevel.LevelWave[cWave].EnemyList[b]._base;
             currentEnemyOnScene[b].timer = currentLevel.LevelWave[cWave].EnemyList[b].timer;
-            currentEnemyOnScene[b].callOnce = currentLevel.LevelWave[cWave].EnemyList[b].callOnce;
         }
 
         #region Grid Rows
@@ -121,18 +117,19 @@ public class BattleSystem : MonoBehaviour
     {
         for (int b = 0; b < currentLevel.LevelWave[cWave].EnemyList.Count; b++)
         {
-            if (currentLevel.LevelWave[cWave].EnemyList[b].callOnce != true)
+            if (currentEnemyOnScene[b].callOnce != true)
+            //if (currentLevel.LevelWave[cWave].EnemyList[b].callOnce != true)
             //if (currentEnemyCallOnce[b] != true)
             {
                 //currentLevel.LevelWave[cWave].EnemyList[b].cTimer -= Time.deltaTime;
                 //currentEnemyTimer[b] -= Time.deltaTime;
                 currentEnemyOnScene[b].timer -= Time.deltaTime;
 
-                if (currentLevel.LevelWave[cWave].EnemyList[b].cTimer <= 0)
+                if (currentEnemyOnScene[b].timer <= 0)
+                //if (currentLevel.LevelWave[cWave].EnemyList[b].cTimer <= 0)
                 //if (currentEnemyTimer[b] <= 0)
                 {
                     GameObject bUnit = Instantiate(battleUnit, new Vector3(currentLevel.LevelWave[cWave].EnemyList[b].position, GridRows[currentLevel.LevelWave[cWave].EnemyList[b].row - 1].y, 0), Quaternion.identity);
-                    //Debug.Log(GridRows[currentLevel.LevelWave[cWave].EnemyList[b].row - 1].y);
                     bUnit.GetComponent<HBCharacterBattleUnits>()._base = currentLevel.LevelWave[cWave].EnemyList[b]._base;
                     bUnit.GetComponent<HBCharacterBattleUnits>().isPlayer = false;
                     //currentEnemyOnScene.Add(bUnit);
@@ -142,7 +139,11 @@ public class BattleSystem : MonoBehaviour
                     //currentEnemyOnScene[b].timer = currentLevel.LevelWave[cWave].EnemyList[b].timer;
                     //currentEnemyOnScene[b].callOnce = currentLevel.LevelWave[cWave].EnemyList[b].callOnce;
 
-                    currentLevel.LevelWave[cWave].EnemyList[b].callOnce = true;
+                    currentEnemyOnScene.Add(new EnemyOnScene());
+                    currentEnemyOnScene[b].cEnemy = bUnit;
+
+                    currentEnemyOnScene[b].callOnce = true;
+                    //currentLevel.LevelWave[cWave].EnemyList[b].callOnce = true;
                     //currentEnemyCallOnce[b] = true;
 
                 }
