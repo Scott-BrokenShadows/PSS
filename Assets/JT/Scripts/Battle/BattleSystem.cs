@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
+public class EnemyOnScene
+{
+    public HBCharacterBase enemy;
+    public float timer;
+    public bool callOnce;
+}
+
 public class BattleSystem : MonoBehaviour
 {
     public GameObject battleUnit;
@@ -10,9 +19,9 @@ public class BattleSystem : MonoBehaviour
     [ReadOnly] public int currentWave;
     int cWave;
     [ReadOnly] public float cTimer;
-    public List<GameObject> currentEnemyOnScene;
-    public List<float> currentEnemyTimer;
-    public List<bool> currentEnemyCallOnce;
+
+    public List<EnemyOnScene> currentEnemyOnScene;
+    public List<GameObject> cEnemy;
 
     #region Grid Rows
     [Min(0)] float range;
@@ -58,8 +67,13 @@ public class BattleSystem : MonoBehaviour
         for (int b = 0; b < currentLevel.LevelWave[cWave].EnemyList.Count; b++)
         {
             //currentLevel.LevelWave[cWave].EnemyList[b].cTimer = currentLevel.LevelWave[cWave].EnemyList[b].timer;
-            currentEnemyTimer.Add(currentLevel.LevelWave[cWave].EnemyList[b].timer);
-            currentEnemyCallOnce.Add(false);
+            //currentEnemyTimer.Add(currentLevel.LevelWave[cWave].EnemyList[b].timer);
+            //currentEnemyCallOnce.Add(false);
+
+            currentEnemyOnScene.Add(new EnemyOnScene());
+            currentEnemyOnScene[b].enemy = currentLevel.LevelWave[cWave].EnemyList[b]._base;
+            currentEnemyOnScene[b].timer = currentLevel.LevelWave[cWave].EnemyList[b].timer;
+            currentEnemyOnScene[b].callOnce = currentLevel.LevelWave[cWave].EnemyList[b].callOnce;
         }
 
         #region Grid Rows
@@ -107,23 +121,29 @@ public class BattleSystem : MonoBehaviour
     {
         for (int b = 0; b < currentLevel.LevelWave[cWave].EnemyList.Count; b++)
         {
-            //if (currentLevel.LevelWave[cWave].EnemyList[b].callOnce != true)
-            if (currentEnemyCallOnce[b] != true)
+            if (currentLevel.LevelWave[cWave].EnemyList[b].callOnce != true)
+            //if (currentEnemyCallOnce[b] != true)
             {
                 //currentLevel.LevelWave[cWave].EnemyList[b].cTimer -= Time.deltaTime;
-                currentEnemyTimer[b] -= Time.deltaTime;
+                //currentEnemyTimer[b] -= Time.deltaTime;
+                currentEnemyOnScene[b].timer -= Time.deltaTime;
 
-                //if (currentLevel.LevelWave[cWave].EnemyList[b].cTimer <= 0)
-                if (currentEnemyTimer[b] <= 0)
+                if (currentLevel.LevelWave[cWave].EnemyList[b].cTimer <= 0)
+                //if (currentEnemyTimer[b] <= 0)
                 {
                     GameObject bUnit = Instantiate(battleUnit, new Vector3(currentLevel.LevelWave[cWave].EnemyList[b].position, GridRows[currentLevel.LevelWave[cWave].EnemyList[b].row - 1].y, 0), Quaternion.identity);
                     //Debug.Log(GridRows[currentLevel.LevelWave[cWave].EnemyList[b].row - 1].y);
                     bUnit.GetComponent<HBCharacterBattleUnits>()._base = currentLevel.LevelWave[cWave].EnemyList[b]._base;
                     bUnit.GetComponent<HBCharacterBattleUnits>().isPlayer = false;
-                    currentEnemyOnScene.Add(bUnit);
+                    //currentEnemyOnScene.Add(bUnit);
 
-                    //currentLevel.LevelWave[cWave].EnemyList[b].callOnce = true;
-                    currentEnemyCallOnce[b] = true;
+                    //currentEnemyOnScene.Add(new EnemyOnScene());
+                    //currentEnemyOnScene[b].enemy = bUnit;
+                    //currentEnemyOnScene[b].timer = currentLevel.LevelWave[cWave].EnemyList[b].timer;
+                    //currentEnemyOnScene[b].callOnce = currentLevel.LevelWave[cWave].EnemyList[b].callOnce;
+
+                    currentLevel.LevelWave[cWave].EnemyList[b].callOnce = true;
+                    //currentEnemyCallOnce[b] = true;
 
                 }
             }
@@ -139,8 +159,6 @@ public class BattleSystem : MonoBehaviour
 
             foreach (var r in GetGridRows(transform, range, cRows))
             {
-                //Debug.DrawRay(r.origin, r.direction * 5);
-
                 Gizmos.color = Color.white;
                 Gizmos.DrawLine(new Vector3(horizontal, r.origin.y), new Vector3(-horizontal, r.origin.y));
             }
