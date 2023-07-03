@@ -107,11 +107,14 @@ public class BattleSystem : MonoBehaviour
     {
         for (int b = 0; b < currentLevel.LevelWave[cWave].EnemyList.Count; b++)
         {
-            if (currentLevel.LevelWave[cWave].EnemyList[b].callOnce != true)
+            //if (currentLevel.LevelWave[cWave].EnemyList[b].callOnce != true)
+            if (currentEnemyCallOnce[b] != true)
             {
-                currentLevel.LevelWave[cWave].EnemyList[b].cTimer -= Time.deltaTime;
+                //currentLevel.LevelWave[cWave].EnemyList[b].cTimer -= Time.deltaTime;
+                currentEnemyTimer[b] -= Time.deltaTime;
 
-                if (currentLevel.LevelWave[cWave].EnemyList[b].cTimer <= 0)
+                //if (currentLevel.LevelWave[cWave].EnemyList[b].cTimer <= 0)
+                if (currentEnemyTimer[b] <= 0)
                 {
                     GameObject bUnit = Instantiate(battleUnit, new Vector3(currentLevel.LevelWave[cWave].EnemyList[b].position, GridRows[currentLevel.LevelWave[cWave].EnemyList[b].row - 1].y, 0), Quaternion.identity);
                     //Debug.Log(GridRows[currentLevel.LevelWave[cWave].EnemyList[b].row - 1].y);
@@ -119,7 +122,8 @@ public class BattleSystem : MonoBehaviour
                     bUnit.GetComponent<HBCharacterBattleUnits>().isPlayer = false;
                     currentEnemyOnScene.Add(bUnit);
 
-                    currentLevel.LevelWave[cWave].EnemyList[b].callOnce = true;
+                    //currentLevel.LevelWave[cWave].EnemyList[b].callOnce = true;
+                    currentEnemyCallOnce[b] = true;
                 }
             }
         }
