@@ -124,6 +124,7 @@ public class BattleSystem : MonoBehaviour
 
                     //currentLevel.LevelWave[cWave].EnemyList[b].callOnce = true;
                     currentEnemyCallOnce[b] = true;
+
                 }
             }
         }
