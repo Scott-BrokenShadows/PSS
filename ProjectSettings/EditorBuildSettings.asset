@@ -14,4 +14,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/JT/Scenes/2D/BattleScene2D.unity
     guid: c117975fc1d8e3c4b964cbc88fa22551
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 59d85b0893d303149b1d00789f81a0de, type: 2}
