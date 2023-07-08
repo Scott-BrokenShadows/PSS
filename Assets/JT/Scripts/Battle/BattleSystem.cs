@@ -1,21 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// --------------------------------------------------------------
+[System.Serializable]
+public class CurrentLevelWave
+{
+    public float countDownTimer;
+    public List<CurrentHBEnemyList> EnemyList;
+}
 
 [System.Serializable]
-public class EnemyOnScene
+public class CurrentHBEnemyList
 {
-    public HBCharacterBase enemy;
+    [SerializeField] public HBCharacterBase _base;
+    public HBCharacter HBCharacter { get; set; }
+    public int lv;
+    public int row;
+    public float position;
     public float timer;
     public bool callOnce;
 }
-
-[System.Serializable]
-public class WaveOnScene
-{
-    public List<EnemyOnScene> currentEnemyOnScene;
-}
+// --------------------------------------------------------------
 
 public class BattleSystem : MonoBehaviour
 {
@@ -30,8 +35,7 @@ public class BattleSystem : MonoBehaviour
     [ReadOnly] public float cTimer;
 
     // The current Enemies on the game
-    public List<WaveOnScene> currentWaveOnScene;
-    public List<EnemyOnScene> currentEnemyOnScene;
+    public List<LevelWave> currentWaveOnScene;
     public List<GameObject> cEnemy;
 
     // How many Grid Rows based on the LevelStage.cs
@@ -52,8 +56,8 @@ public class BattleSystem : MonoBehaviour
     private void Update()
     {
         currentWave = cWave + 1;
-        TimerWave();
-        InstanceEnemies();
+        //TimerWave();
+        //InstanceEnemies();
     }
 
     // Calculate the Grid Wave positions
@@ -96,14 +100,15 @@ public class BattleSystem : MonoBehaviour
         }
         #endregion
 
+        if (currentWave > 0)
         // The current timer for each wave
-        cTimer = currentLevel.LevelWave[cWave].countDownTimer;
+        cTimer = currentWaveOnScene[cWave].countDownTimer;
     }
 
     // Timer Wave: when the timer reaches "0" go next wave
     void TimerWave()
     {
-        if (currentLevel.LevelWave.Count - 1 > cWave)
+        if (currentWaveOnScene.Count - 1 > cWave)
         {
             cTimer -= Time.deltaTime;
 
@@ -111,10 +116,10 @@ public class BattleSystem : MonoBehaviour
             {
                 cWave++;
                 GetEnemyWave();
-                cTimer = currentLevel.LevelWave[cWave].countDownTimer;
+                cTimer = currentWaveOnScene[cWave].countDownTimer;
             }
         }
-        else if (currentLevel.LevelWave.Count - 1 == cWave)
+        else if (currentWaveOnScene.Count - 1 == cWave)
         {
             cTimer -= Time.deltaTime;
 
@@ -130,33 +135,51 @@ public class BattleSystem : MonoBehaviour
     // Get the information on the current Wave
     void GetEnemyWave()
     {
-        for (int b = 0; b < currentLevel.LevelWave[cWave].EnemyList.Count; b++)
-        {
-            currentEnemyOnScene.Add(new EnemyOnScene());
-            currentEnemyOnScene[b].enemy = currentLevel.LevelWave[cWave].EnemyList[b]._base;
-            currentEnemyOnScene[b].timer = currentLevel.LevelWave[cWave].EnemyList[b].timer;
-        }
+        currentWaveOnScene = currentLevel.levelWave;
+
+        //for (int a = 0; a < currentLevel.LevelWave.Count + 1; a++)
+        //{
+        //    currentWaveOnScene[a].countDownTimer = currentLevel.levelWave[a].countDownTimer;
+
+        //    for (int b = 0; b < currentLevel.levelWave[a].EnemyList.Count; b++)
+        //    {
+        //        currentWaveOnScene[a].EnemyList[b]._base = currentLevel.levelWave[a].EnemyList[b]._base;
+        //        currentWaveOnScene[a].EnemyList[b].lv = currentLevel.levelWave[a].EnemyList[b].lv;
+        //        currentWaveOnScene[a].EnemyList[b].row = currentLevel.levelWave[a].EnemyList[b].row;
+        //        currentWaveOnScene[a].EnemyList[b].position = currentLevel.levelWave[a].EnemyList[b].position;
+        //        currentWaveOnScene[a].EnemyList[b].timer = currentLevel.levelWave[a].EnemyList[b].timer;
+        //    }
+        //}
+
+        #region Error
+        //for (int b = 0; b < currentLevel.LevelWave[cWave].EnemyList.Count; b++)
+        //{
+        //    currentEnemyOnScene.Add(new EnemyOnScene());
+        //    currentEnemyOnScene[b].enemy = currentLevel.LevelWave[cWave].EnemyList[b]._base;
+        //    currentEnemyOnScene[b].timer = currentLevel.LevelWave[cWave].EnemyList[b].timer;
+        //}
+        #endregion
     }
 
     // Instantiate Enemies from the information based on the timer to spawn
     void InstanceEnemies()
     {
-        for (int b = 0; b < currentLevel.LevelWave[cWave].EnemyList.Count; b++)
+        for (int b = 0; b < currentWaveOnScene[cWave].EnemyList.Count; b++)
         {
-            if (currentEnemyOnScene[b].callOnce != true)
+            if (currentWaveOnScene[cWave].EnemyList[b].callOnce != true)
             {
                 //Timer goes down to spawn
-                currentEnemyOnScene[b].timer -= Time.deltaTime;
+                currentWaveOnScene[cWave].EnemyList[b].timer -= Time.deltaTime;
 
-                if (currentEnemyOnScene[b].timer <= 0)
+                if (currentWaveOnScene[cWave].EnemyList[b].timer <= 0)
                 {
                     // Instantiate the battleUnit with the data from the LevelStage
-                    GameObject bUnit = Instantiate(battleUnit, new Vector3(currentLevel.LevelWave[cWave].EnemyList[b].position, GridRows[currentLevel.LevelWave[cWave].EnemyList[b].row - 1].y, 0), Quaternion.identity);
-                    bUnit.GetComponent<HBCharacterBattleUnits>()._base = currentLevel.LevelWave[cWave].EnemyList[b]._base;
+                    GameObject bUnit = Instantiate(battleUnit, new Vector3(currentWaveOnScene[cWave].EnemyList[b].position, GridRows[currentWaveOnScene[cWave].EnemyList[b].row - 1].y, 0), Quaternion.identity);
+                    bUnit.GetComponent<HBCharacterBattleUnits>()._base = currentWaveOnScene[cWave].EnemyList[b]._base;
                     bUnit.GetComponent<HBCharacterBattleUnits>().isPlayer = false;
                     cEnemy.Add(bUnit);
 
-                    currentEnemyOnScene[b].callOnce = true;
+                    currentWaveOnScene[cWave].EnemyList[b].callOnce = true;
                 }
             }
         }
