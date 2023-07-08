@@ -5,13 +5,18 @@ using System.IO;
 
 public class SaveLoad : MonoBehaviour
 {
-    public SaveData loadedData;//where data can be loaded into
-
-    public SaveData testData;//just here for testing so you have something to save
+    public static SaveLoad SaveSystem { get; private set; }
+    [HideInInspector] public SaveData loadedData;//where data can be loaded into
+    [HideInInspector] public SaveData savedData;//just here for testing so you have something to save
 
     [Header("Buttons")]
     public bool save;//save
     public bool load;//load
+
+    void Awake()
+    {
+        SaveSystem = this;
+    }
 
     void Start()
     {
@@ -35,7 +40,7 @@ public class SaveLoad : MonoBehaviour
 
     void Save()
     {
-        var json = JsonUtility.ToJson(testData); // convert savedata class to json string
+        var json = JsonUtility.ToJson(savedData); // convert savedata class to json string
         var path = Application.dataPath;//get file path for app
         var fullPath = Path.Combine(path, "SaveGame");// add the save file name
         if (!File.Exists(fullPath))//check if it doesnt exist yet
