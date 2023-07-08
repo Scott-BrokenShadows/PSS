@@ -1,26 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// --------------------------------------------------------------
-[System.Serializable]
-public class CurrentLevelWave
-{
-    public float countDownTimer;
-    public List<CurrentHBEnemyList> EnemyList;
-}
-
-[System.Serializable]
-public class CurrentHBEnemyList
-{
-    [SerializeField] public HBCharacterBase _base;
-    public HBCharacter HBCharacter { get; set; }
-    public int lv;
-    public int row;
-    public float position;
-    public float timer;
-    public bool callOnce;
-}
-// --------------------------------------------------------------
 
 public class BattleSystem : MonoBehaviour
 {
@@ -36,7 +16,7 @@ public class BattleSystem : MonoBehaviour
 
     // The current Enemies on the game
     public List<LevelWave> currentWaveOnScene;
-    public List<GameObject> cEnemy;
+    [ReadOnly] public List<GameObject> cEnemy;
 
     // How many Grid Rows based on the LevelStage.cs
     #region Grid Rows
@@ -55,9 +35,8 @@ public class BattleSystem : MonoBehaviour
 
     private void Update()
     {
-        currentWave = cWave + 1;
-        //TimerWave();
-        //InstanceEnemies();
+        TimerWave();
+        InstanceEnemies();
     }
 
     // Calculate the Grid Wave positions
@@ -82,6 +61,9 @@ public class BattleSystem : MonoBehaviour
     {
         // Get the current Stage Information
         currentLevel = FindObjectOfType<LevelStage>();
+
+        // Set the current Wave 
+        currentWave = cWave + 1;
 
         // Set the current Stage Information
         GetEnemyWave();
@@ -136,29 +118,6 @@ public class BattleSystem : MonoBehaviour
     void GetEnemyWave()
     {
         currentWaveOnScene = currentLevel.levelWave;
-
-        //for (int a = 0; a < currentLevel.LevelWave.Count + 1; a++)
-        //{
-        //    currentWaveOnScene[a].countDownTimer = currentLevel.levelWave[a].countDownTimer;
-
-        //    for (int b = 0; b < currentLevel.levelWave[a].EnemyList.Count; b++)
-        //    {
-        //        currentWaveOnScene[a].EnemyList[b]._base = currentLevel.levelWave[a].EnemyList[b]._base;
-        //        currentWaveOnScene[a].EnemyList[b].lv = currentLevel.levelWave[a].EnemyList[b].lv;
-        //        currentWaveOnScene[a].EnemyList[b].row = currentLevel.levelWave[a].EnemyList[b].row;
-        //        currentWaveOnScene[a].EnemyList[b].position = currentLevel.levelWave[a].EnemyList[b].position;
-        //        currentWaveOnScene[a].EnemyList[b].timer = currentLevel.levelWave[a].EnemyList[b].timer;
-        //    }
-        //}
-
-        #region Error
-        //for (int b = 0; b < currentLevel.LevelWave[cWave].EnemyList.Count; b++)
-        //{
-        //    currentEnemyOnScene.Add(new EnemyOnScene());
-        //    currentEnemyOnScene[b].enemy = currentLevel.LevelWave[cWave].EnemyList[b]._base;
-        //    currentEnemyOnScene[b].timer = currentLevel.LevelWave[cWave].EnemyList[b].timer;
-        //}
-        #endregion
     }
 
     // Instantiate Enemies from the information based on the timer to spawn
@@ -173,6 +132,8 @@ public class BattleSystem : MonoBehaviour
 
                 if (currentWaveOnScene[cWave].EnemyList[b].timer <= 0)
                 {
+                    currentWaveOnScene[cWave].EnemyList[b].timer = 0;
+
                     // Instantiate the battleUnit with the data from the LevelStage
                     GameObject bUnit = Instantiate(battleUnit, new Vector3(currentWaveOnScene[cWave].EnemyList[b].position, GridRows[currentWaveOnScene[cWave].EnemyList[b].row - 1].y, 0), Quaternion.identity);
                     bUnit.GetComponent<HBCharacterBattleUnits>()._base = currentWaveOnScene[cWave].EnemyList[b]._base;

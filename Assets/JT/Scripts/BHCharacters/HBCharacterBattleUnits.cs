@@ -84,7 +84,7 @@ public class HBCharacterBattleUnits : MonoBehaviour
         }
         else
         {
-            //transform.Translate(Vector3.left * _base.Speed * Time.deltaTime);
+            transform.Translate(Vector3.left * _base.Speed * Time.deltaTime);
         }
     }
 

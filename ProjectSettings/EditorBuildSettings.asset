@@ -6,14 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/JT/Scenes/All Scenes/GameHub.unity
+    guid: 8e3da5a0c03e17943a1689574d5df3e0
   - enabled: 1
-    path: Assets/JT/Scenes/2D/GameScene2D.unity
-    guid: 24b3cd93b21653b499a291da9ca05636
-  - enabled: 1
-    path: Assets/JT/Scenes/2D/BattleScene2D.unity
-    guid: c117975fc1d8e3c4b964cbc88fa22551
+    path: Assets/JT/Scenes/All Scenes/Battle.unity
+    guid: 4da503c96836f7c4982dff5863f9690f
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 4ec1ed8d359d91249aa969153897c296, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: a2ebc01ca1c6b7d45a043002be558332, type: 2}

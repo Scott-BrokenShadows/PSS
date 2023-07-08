@@ -22,8 +22,8 @@ public class HBEnemyList
     public int lv;
     [Min(1)] public int row;
     public float position;
-    public float timer;
-    public bool callOnce;
+    [ReadOnly] public float timer;
+    [ReadOnly] public bool callOnce;
 }
 
 public class LevelStage : MonoBehaviour
