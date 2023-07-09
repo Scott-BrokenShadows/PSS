@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     [ReadOnly] [SerializeField] List<ItemSlot> listItems;
     [Separator]
     [SerializeField] bool updateCI;
+    [SerializeField] bool updateCI2;
 
     void Start()
     {
@@ -31,9 +32,17 @@ public class GameController : MonoBehaviour
         {
             AddCharacterUnit(_cUnit, 77);
 
-            //SetCharacters();
-            //SetItems();
             updateCI = false;
+            return;
+        }
+
+        if (updateCI2)
+        {
+            SetCharacters();
+            SetItems();
+
+            updateCI2 = false;
+            return;
         }
     }
 
@@ -79,7 +88,7 @@ public class GameController : MonoBehaviour
 
     public void AddCharacterUnit(HBCharacterBase _characterUnit, int _level)
     {
-        listCharacters.Add(new UserCharactersSlot(_characterUnit, _level));
+        GameData.listCharacters.Add(new UserCharactersSlot(_characterUnit, _level));
     }
 
     void SetItems()
