@@ -24,19 +24,21 @@ public class HBCharacterBattleUnits : MonoBehaviour
 
     // Player Movement Control
     Rigidbody2D _rb;
-    Vector2 _movementInput;
+    public Vector2 _movementInput;
     Vector2 _smoothMovementInput;
     Vector2 _movementInputSmoothVelocity;
 
     // Player Unit Controls
-    public PlayerUnit pUnit;
+    [Separator]
+    [Header("Unit Function")]
+    PlayerUnit pUnit;
     public enum PlayerUnit
-    { playerUnit, frontSubUnit, backSubUnit }
+    { frontSubUnit, backSubUnit }
 
     // Enemy Unit Controls
-    public EnemyUnit eUnit;
+    EnemyUnit eUnit;
     public enum EnemyUnit
-    { characterUnit, minionUnit, bossUnit }
+    { characterUnit, minionUnit }
 
     // Keep Data this gameobject
     GameObject myGameObject;
@@ -104,9 +106,6 @@ public class HBCharacterBattleUnits : MonoBehaviour
         {
             switch (pUnit)
             {
-                case PlayerUnit.playerUnit:
-                    PlayerMovement();
-                    break;
                 case PlayerUnit.frontSubUnit:
                     FrontSubMovement();
                     break;
@@ -118,25 +117,21 @@ public class HBCharacterBattleUnits : MonoBehaviour
         else
         {
             // Enemy Minions Movement
-            //transform.Translate(Vector3.left * _base.Speed * Time.deltaTime);
             _rb.velocity = Vector3.left * _base.Speed;
         }
     }
 
-    void PlayerMovement()
+    void FrontSubMovement()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
-        _movementInput = new Vector2(moveX, moveY).normalized;
+        Vector3 moveDirection = new Vector3(BattlePlayerControl._currentTransform.position.x, BattlePlayerControl._currentTransform.position.y)
+                              - new Vector3(transform.position.x, transform.position.y);
+
+        // To Follow You Straight
+        Vector3 movementDirection = moveDirection - (BattlePlayerControl._currentTransform.transform.forward * BattlePlayerControl._targetRange);
+        _movementInput = new Vector2(movementDirection.x, movementDirection.y);
 
         _smoothMovementInput = Vector2.SmoothDamp(_smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
-
         _rb.velocity = _smoothMovementInput * _base.Speed;
-    }
-
-    void FrontSubMovement()
-    { 
-    
     }
 
     void BackSubMovement()
@@ -281,16 +276,4 @@ public class HBCharacterBattleUnits : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    #region Editor
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        if (_base != null)
-        {
-
-        }
-    }
-#endif
-    #endregion
 }
