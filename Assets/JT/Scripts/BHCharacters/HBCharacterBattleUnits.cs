@@ -72,8 +72,8 @@ public class HBCharacterBattleUnits : MonoBehaviour
     void Update()
     {
         Movement();
-
         ReloadTimerBullet();
+        DestroyOutside();
     }
 
     void Movement()
@@ -213,6 +213,18 @@ public class HBCharacterBattleUnits : MonoBehaviour
         }
     }
     #endregion
+
+    void DestroyOutside()
+    {
+        if (transform.position.x < -BattleSystem.horizontal - BattleSystem._screenSpace.x ||
+            transform.position.x > BattleSystem.horizontal + BattleSystem._screenSpace.x ||
+            transform.position.y < -BattleSystem.vertical - BattleSystem._screenSpace.y ||
+            transform.position.y > BattleSystem.vertical + BattleSystem._screenSpace.y)
+        {
+            //Debug.Log("Outside!");
+            Destroy(this.gameObject);
+        }
+    }
 
     #region Editor
 #if UNITY_EDITOR

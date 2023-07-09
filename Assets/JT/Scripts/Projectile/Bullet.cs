@@ -26,14 +26,4 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    private void OnDrawGizmos()
-    {
-        //var vertical = (float)Camera.main.orthographicSize;
-        //var horizontal = vertical * (float)Camera.main.aspect;
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(new Vector3 (-BattleSystem.horizontal - BattleSystem._screenSpace.x, -BattleSystem.vertical - BattleSystem._screenSpace.y), 5);
-        //Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y), 2);
-    }
 }

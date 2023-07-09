@@ -296,7 +296,7 @@ MonoBehaviour:
   cTimer: 0
   currentWaveOnScene: []
   cEnemy: []
-  screenSpace: {x: 0, y: 0}
+  screenSpace: {x: 10, y: 5}
   GridRows: []
   cRows: 0
 --- !u!4 &2091109955
