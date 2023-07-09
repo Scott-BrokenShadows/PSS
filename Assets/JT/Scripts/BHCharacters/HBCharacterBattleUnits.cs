@@ -14,19 +14,29 @@ public class HBCharacterBattleUnits : MonoBehaviour
     [Separator]
     [Header ("Bullet Function")]
     public GameObject bulletAsset;
-    public bulletPattern currentBulletState;
-    public enum bulletPattern
+    public BulletPattern currentBulletState;
+    public enum BulletPattern
     { none, single, multiSpread, multiStraight ,allDirection}
     [Min(0)] public float range = 10;
     [Min(0)] public int count = 3;
     [Min(0)] public int reloadTimeBullet = 1;
     private float timerBullet;
 
-    // Movement Control
+    // Player Movement Control
     Rigidbody2D _rb;
     Vector2 _movementInput;
     Vector2 _smoothMovementInput;
     Vector2 _movementInputSmoothVelocity;
+
+    // Player Unit Controls
+    public PlayerUnit pUnit;
+    public enum PlayerUnit
+    { playerUnit, frontSubUnit, backSubUnit }
+
+    // Enemy Unit Controls
+    public EnemyUnit eUnit;
+    public enum EnemyUnit
+    { characterUnit, minionUnit, bossUnit }
 
     // Keep Data this gameobject
     GameObject myGameObject;
@@ -92,19 +102,46 @@ public class HBCharacterBattleUnits : MonoBehaviour
     {
         if (isPlayer)
         {
-            float moveX = Input.GetAxisRaw("Horizontal");
-            float moveY = Input.GetAxisRaw("Vertical");
-            _movementInput = new Vector2(moveX, moveY).normalized;
-
-            _smoothMovementInput = Vector2.SmoothDamp( _smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
-
-            _rb.velocity = _smoothMovementInput * _base.Speed;
+            switch (pUnit)
+            {
+                case PlayerUnit.playerUnit:
+                    PlayerMovement();
+                    break;
+                case PlayerUnit.frontSubUnit:
+                    FrontSubMovement();
+                    break;
+                case PlayerUnit.backSubUnit:
+                    BackSubMovement();
+                    break;
+            }
         }
         else
         {
+            // Enemy Minions Movement
             //transform.Translate(Vector3.left * _base.Speed * Time.deltaTime);
             _rb.velocity = Vector3.left * _base.Speed;
         }
+    }
+
+    void PlayerMovement()
+    {
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+        _movementInput = new Vector2(moveX, moveY).normalized;
+
+        _smoothMovementInput = Vector2.SmoothDamp(_smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
+
+        _rb.velocity = _smoothMovementInput * _base.Speed;
+    }
+
+    void FrontSubMovement()
+    { 
+    
+    }
+
+    void BackSubMovement()
+    {
+
     }
 
     void ReloadTimerBullet()
@@ -125,16 +162,16 @@ public class HBCharacterBattleUnits : MonoBehaviour
     {
         switch (currentBulletState)
         {
-            case bulletPattern.single:
+            case BulletPattern.single:
                 SingleShot();
                 break;
-            case bulletPattern.multiSpread:
+            case BulletPattern.multiSpread:
                 MultiSpreadShot();
                 break;
-            case bulletPattern.multiStraight:
+            case BulletPattern.multiStraight:
                 MultiStraightShot();
                 break;
-            case bulletPattern.none:
+            case BulletPattern.none:
                 return;
         }
     }
