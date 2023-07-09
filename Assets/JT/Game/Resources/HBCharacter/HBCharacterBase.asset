@@ -15,8 +15,8 @@ MonoBehaviour:
   name: LOL2
   id: 5
   description: 
-  iconSprite: {fileID: 21300000, guid: ec03f79379868c642b48ae5ddc821b6d, type: 3}
-  asset: {fileID: 8134438536759060381, guid: df041390f0111ac4f9eea75f18ccf56c, type: 3}
+  iconSprite: {fileID: 0}
+  asset: {fileID: 3318390639036756467, guid: df041390f0111ac4f9eea75f18ccf56c, type: 3}
   attack: 0
   spAttack: 0
   defence: 0

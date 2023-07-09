@@ -32,6 +32,9 @@ public class GameController : MonoBehaviour
         {
             AddCharacterUnit(_cUnit, 77);
 
+            SetCharacters();
+            SetItems();
+
             updateCI = false;
             return;
         }
@@ -84,6 +87,7 @@ public class GameController : MonoBehaviour
     void SetCharacters()
     {
         listCharacters = GameData.listCharacters;
+        SaveLoad.SaveSystem.savedData.listCharacters = GameData.listCharacters;
     }
 
     public void AddCharacterUnit(HBCharacterBase _characterUnit, int _level)

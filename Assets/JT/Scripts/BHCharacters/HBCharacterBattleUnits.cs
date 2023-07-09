@@ -22,6 +22,9 @@ public class HBCharacterBattleUnits : MonoBehaviour
     [Min(0)] public int reloadTimeBullet = 1;
     private float timerBullet;
 
+    Rigidbody2D rb;
+    Vector2 moveDirection;
+
     // Keep Data this gameobject
     GameObject myGameObject;
 
@@ -80,7 +83,10 @@ public class HBCharacterBattleUnits : MonoBehaviour
     {
         if (isPlayer)
         {
-
+            float moveX = Input.GetAxisRaw("Horizontal");
+            float moveY = Input.GetAxisRaw("Vertical");
+            moveDirection = new Vector2(moveX, moveY);
+            rb.velocity = moveDirection * _base.Speed;
         }
         else
         {
