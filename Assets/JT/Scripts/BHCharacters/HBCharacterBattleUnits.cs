@@ -37,8 +37,6 @@ public class HBCharacterBattleUnits : MonoBehaviour
         if (isPlayer)
         {
             #region Instantiate the Asset and Name them
-            //Debug.Log(_base);
-            //Debug.Log(_base);
             if (_base.Name != "")
                 this.gameObject.name = _base.Name;
             else
@@ -53,8 +51,6 @@ public class HBCharacterBattleUnits : MonoBehaviour
         else
         {
             #region Instantiate the Asset and Name them
-            //Debug.Log(_base);
-            //Debug.Log(_base);
             if (_base.Name != "")
                 this.gameObject.name = _base.Name;
             else
@@ -73,7 +69,23 @@ public class HBCharacterBattleUnits : MonoBehaviour
     {
         Movement();
 
-        ReloadTimerBullet();
+        if (!isPlayer)
+        {
+            if (transform.position.x > -BattleSystem.horizontal ||
+                transform.position.x <  BattleSystem.horizontal ||
+                transform.position.y > -BattleSystem.vertical   ||
+                transform.position.y <  BattleSystem.vertical)
+            {
+                Debug.Log("Inside");
+                //ReloadTimerBullet();
+            }
+
+            DestroyOutside();
+        }
+        else
+        {
+            ReloadTimerBullet();
+        }
     }
 
     void Movement()
@@ -213,6 +225,17 @@ public class HBCharacterBattleUnits : MonoBehaviour
         }
     }
     #endregion
+
+    void DestroyOutside()
+    {
+        if (transform.position.x < -BattleSystem.horizontal - BattleSystem._screenSpace.x || 
+            transform.position.x >  BattleSystem.horizontal + BattleSystem._screenSpace.x || 
+            transform.position.y < -BattleSystem.vertical   - BattleSystem._screenSpace.y || 
+            transform.position.y >  BattleSystem.vertical   + BattleSystem._screenSpace.y)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     #region Editor
 #if UNITY_EDITOR
