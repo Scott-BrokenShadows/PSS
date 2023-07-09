@@ -22,8 +22,11 @@ public class HBCharacterBattleUnits : MonoBehaviour
     [Min(0)] public int reloadTimeBullet = 1;
     private float timerBullet;
 
-    Rigidbody2D rb;
-    Vector2 moveDirection;
+    // Movement Control
+    Rigidbody2D _rb;
+    Vector2 _movementInput;
+    Vector2 _smoothMovementInput;
+    Vector2 _movementInputSmoothVelocity;
 
     // Keep Data this gameobject
     GameObject myGameObject;
@@ -37,13 +40,15 @@ public class HBCharacterBattleUnits : MonoBehaviour
 
     void SetUp()
     {
+        _rb = GetComponent<Rigidbody2D>();
+
         if (isPlayer)
         {
             #region Instantiate the Asset and Name them
             //Debug.Log(_base);
             //Debug.Log(_base);
             if (_base.Name != "")
-                this.gameObject.name = _base.Name;
+                this.gameObject.name = _base.Name + "(Player)";
             else
                 this.gameObject.name = "Default";
 
@@ -59,7 +64,7 @@ public class HBCharacterBattleUnits : MonoBehaviour
             //Debug.Log(_base);
             //Debug.Log(_base);
             if (_base.Name != "")
-                this.gameObject.name = _base.Name;
+                this.gameObject.name = _base.Name + "(Enemy)";
             else
                 this.gameObject.name = "Default";
 
@@ -74,9 +79,13 @@ public class HBCharacterBattleUnits : MonoBehaviour
 
     void Update()
     {
-        Movement();
         ReloadTimerBullet();
-        DestroyOutside();
+        if (!isPlayer) { DestroyOutside(); }
+    }
+
+    void FixedUpdate()
+    {
+        Movement();
     }
 
     void Movement()
@@ -85,12 +94,16 @@ public class HBCharacterBattleUnits : MonoBehaviour
         {
             float moveX = Input.GetAxisRaw("Horizontal");
             float moveY = Input.GetAxisRaw("Vertical");
-            moveDirection = new Vector2(moveX, moveY);
-            rb.velocity = moveDirection * _base.Speed;
+            _movementInput = new Vector2(moveX, moveY).normalized;
+
+            _smoothMovementInput = Vector2.SmoothDamp( _smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
+
+            _rb.velocity = _smoothMovementInput * _base.Speed;
         }
         else
         {
-            transform.Translate(Vector3.left * _base.Speed * Time.deltaTime);
+            //transform.Translate(Vector3.left * _base.Speed * Time.deltaTime);
+            _rb.velocity = Vector3.left * _base.Speed;
         }
     }
 

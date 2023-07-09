@@ -15,6 +15,14 @@ public class Bullet : MonoBehaviour
         DestroyOutside();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isPlayer != collision.GetComponent<HBCharacterBattleUnits>().isPlayer)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     void DestroyOutside()
     {
         if (transform.position.x < -BattleSystem.horizontal - BattleSystem._screenSpace.x || 

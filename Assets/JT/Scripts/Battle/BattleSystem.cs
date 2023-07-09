@@ -93,6 +93,10 @@ public class BattleSystem : MonoBehaviour
         if (currentWave > 0)
         // The current timer for each wave
         cTimer = currentWaveOnScene[cWave].countDownTimer;
+
+        // Instantiate the Player Characters
+        InstancePlayers();
+        InstanceSubPlayers();
     }
 
     // Timer Wave: when the timer reaches "0" go next wave
@@ -152,6 +156,15 @@ public class BattleSystem : MonoBehaviour
                 }
             }
         }
+    }
+
+    void InstancePlayers()
+    { 
+    
+    }
+    void InstanceSubPlayers()
+    {
+
     }
 
     // Just show gizmos
