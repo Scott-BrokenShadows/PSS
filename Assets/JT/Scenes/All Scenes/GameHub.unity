@@ -717,21 +717,21 @@ MonoBehaviour:
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
       row: 1
-      position: 0
+      position: 8
       timer: 5
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
       row: 2
-      position: 3
+      position: 8
       timer: 10
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
       row: 3
-      position: 5
+      position: 8
       timer: 20
       callOnce: 0
   - name: Wave 2
@@ -838,6 +838,7 @@ MonoBehaviour:
   listPartyBattleUnits: []
   listItems: []
   updateCI: 0
+  updateCI2: 0
 --- !u!4 &836971366
 Transform:
   m_ObjectHideFlags: 0

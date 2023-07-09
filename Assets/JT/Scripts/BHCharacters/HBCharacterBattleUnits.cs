@@ -73,7 +73,7 @@ public class HBCharacterBattleUnits : MonoBehaviour
     {
         Movement();
 
-        //ReloadTimerBullet();
+        ReloadTimerBullet();
     }
 
     void Movement()
@@ -107,27 +107,13 @@ public class HBCharacterBattleUnits : MonoBehaviour
         switch (currentBulletState)
         {
             case bulletPattern.single:
-
                 SingleShot();
-
                 break;
             case bulletPattern.multiSpread:
-
-                foreach (var r in GetSpread(transform, range, count))
-                {
-                    Debug.DrawRay(r.origin, r.direction * 5);
-                    Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
-                }
-
+                MultiSpreadShot();
                 break;
             case bulletPattern.multiStraight:
-
-                foreach (var r in GetStraight(transform, range, count))
-                {
-                    Debug.DrawRay(r.origin, r.direction * 5);
-                    Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
-                }
-
+                MultiStraightShot();
                 break;
             case bulletPattern.none:
                 return;
@@ -135,16 +121,29 @@ public class HBCharacterBattleUnits : MonoBehaviour
     }
     #endregion
 
-    #region SingleShot Function
+    #region Shot
     void SingleShot()
     {
-        if (isPlayer)
+        GameObject asset = Instantiate(bulletAsset, transform.position, Quaternion.LookRotation((isPlayer) ? transform.right : -transform.right));
+    }
+
+    void MultiSpreadShot()
+    {
+        foreach (var r in GetSpread(transform, range, count))
         {
-            Instantiate(bulletAsset, transform.position, Quaternion.LookRotation(transform.right));
+            Debug.DrawRay(r.origin, r.direction * 5);
+            GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
+            asset.GetComponent<Bullet>().isPlayer = (isPlayer) ? true : false;
         }
-        else
+    }
+
+    void MultiStraightShot()
+    {
+        foreach (var r in GetStraight(transform, range, count))
         {
-            Instantiate(bulletAsset, transform.position, Quaternion.LookRotation(-transform.right));
+            Debug.DrawRay(r.origin, r.direction * 5);
+            GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
+            asset.GetComponent<Bullet>().isPlayer = (isPlayer) ? true : false;
         }
     }
     #endregion

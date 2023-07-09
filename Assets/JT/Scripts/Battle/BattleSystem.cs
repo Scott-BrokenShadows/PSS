@@ -23,8 +23,11 @@ public class BattleSystem : MonoBehaviour
     [Min(0)] float range;
     int rows;
 
+    [SerializeField] Vector2 screenSpace;
+    public static Vector2 _screenSpace;
     [HideInInspector] public List<Vector3> GridRows;
-    float vertical;
+    static public float vertical;
+    static public float horizontal;
     public int cRows;
     #endregion
 
@@ -59,6 +62,9 @@ public class BattleSystem : MonoBehaviour
     // Do what on the start
     void SetupBattle()
     {
+        // Add the extra screenspace
+        _screenSpace = screenSpace;
+
         // Get the current Stage Information
         currentLevel = FindObjectOfType<LevelStage>();
 
@@ -74,6 +80,8 @@ public class BattleSystem : MonoBehaviour
         cRows = rows;
 
         vertical = (float)Camera.main.orthographicSize;
+        horizontal = vertical * (float)Camera.main.aspect;
+
         range = vertical * 2;
 
         foreach (var r in GetGridRows(transform, range, rows))
@@ -152,8 +160,6 @@ public class BattleSystem : MonoBehaviour
         #region Grid Rows
         if (currentLevel)
         {
-            float horizontal = vertical * (float)Camera.main.aspect;
-
             foreach (var r in GetGridRows(transform, range, cRows))
             {
                 Gizmos.color = Color.white;

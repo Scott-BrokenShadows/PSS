@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
   isPlayer: 0
-  bulletAsset: {fileID: 0}
+  bulletAsset: {fileID: 8134438536759060381, guid: 4accaa6c61da6c54781648a36cd10343, type: 3}
   currentBulletState: 2
-  range: 3
+  range: 10
   count: 3
-  reloadTimeBullet: 3
+  reloadTimeBullet: 2
