@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 63157231}
   - component: {fileID: 63157232}
   m_Layer: 0
-  m_Name: LevelStage (1)
+  m_Name: LevelStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f4d058a1cb36479ae3c6e52fec952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lStageScene: 
+  lStageScene: Battle
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 210077323}
   - component: {fileID: 210077324}
   m_Layer: 0
-  m_Name: LevelStage (8)
+  m_Name: LevelStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f4d058a1cb36479ae3c6e52fec952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lStageScene: 
+  lStageScene: Battle
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -313,37 +313,6 @@ MonoBehaviour:
       position: 0
       timer: 0
       callOnce: 0
---- !u!1 &320561720
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 320561721}
-  m_Layer: 0
-  m_Name: ---------------------------------- (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &320561721
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320561720}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &337001712
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +324,7 @@ GameObject:
   - component: {fileID: 337001713}
   - component: {fileID: 337001714}
   m_Layer: 0
-  m_Name: LevelStage (6)
+  m_Name: LevelStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,7 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f4d058a1cb36479ae3c6e52fec952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lStageScene: 
+  lStageScene: Battle
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -531,37 +500,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &601593223
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 601593224}
-  m_Layer: 0
-  m_Name: InventoryCharacters
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &601593224
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601593223}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 836971366}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639101536
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +511,7 @@ GameObject:
   - component: {fileID: 639101537}
   - component: {fileID: 639101538}
   m_Layer: 0
-  m_Name: LevelStage (3)
+  m_Name: LevelStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -606,7 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f4d058a1cb36479ae3c6e52fec952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lStageScene: 
+  lStageScene: Battle
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -657,37 +595,6 @@ MonoBehaviour:
       position: 0
       timer: 0
       callOnce: 0
---- !u!1 &683573503
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 683573504}
-  m_Layer: 0
-  m_Name: ---------------------------------- (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &683573504
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683573503}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &696356967
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,7 +661,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &726983764
 GameObject:
@@ -800,7 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f4d058a1cb36479ae3c6e52fec952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lStageScene: BattleScene2D
+  lStageScene: Battle
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -875,37 +782,6 @@ MonoBehaviour:
       position: 0
       timer: 10
       callOnce: 0
---- !u!1 &790737523
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 790737524}
-  m_Layer: 0
-  m_Name: PartyCharacters
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &790737524
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 790737523}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 836971366}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &836971362
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,8 +792,8 @@ GameObject:
   m_Component:
   - component: {fileID: 836971366}
   - component: {fileID: 836971365}
-  - component: {fileID: 836971364}
   - component: {fileID: 836971363}
+  - component: {fileID: 836971367}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -942,20 +818,6 @@ MonoBehaviour:
   hotSpot: {x: 0, y: 0}
   switchCursor: 0
   defaultCursor: 0
---- !u!114 &836971364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836971362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56995e61b086d684b9071131e1d0e3cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  save: 0
-  load: 0
 --- !u!114 &836971365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,6 +831,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentDateTime: 
+  currentGameplayTime: 
+  currency: 
 --- !u!4 &836971366
 Transform:
   m_ObjectHideFlags: 0
@@ -980,12 +844,36 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 601593224}
-  - {fileID: 790737524}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &836971367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836971362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56995e61b086d684b9071131e1d0e3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadedData:
+    dateTime: 
+    gameplayTime: 
+    gameCurrency: 0
+    listCharacters: []
+    listItems: []
+  savedData:
+    dateTime: 
+    gameplayTime: 
+    gameCurrency: 0
+    listCharacters: []
+    listItems: []
+  save: 0
+  load: 0
 --- !u!1 &842119696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,7 +929,7 @@ Transform:
   - {fileID: 1607774542}
   - {fileID: 2054358221}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &861625291
 GameObject:
@@ -1054,7 +942,7 @@ GameObject:
   - component: {fileID: 861625292}
   - component: {fileID: 861625293}
   m_Layer: 0
-  m_Name: LevelStage (9)
+  m_Name: LevelStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1087,7 +975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f4d058a1cb36479ae3c6e52fec952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lStageScene: 
+  lStageScene: Battle
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -1182,7 +1070,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1575731273
 GameObject:
@@ -1195,7 +1083,7 @@ GameObject:
   - component: {fileID: 1575731274}
   - component: {fileID: 1575731275}
   m_Layer: 0
-  m_Name: LevelStage (4)
+  m_Name: LevelStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1228,7 +1116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f4d058a1cb36479ae3c6e52fec952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lStageScene: 
+  lStageScene: Battle
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -1290,7 +1178,7 @@ GameObject:
   - component: {fileID: 1607774542}
   - component: {fileID: 1607774543}
   m_Layer: 0
-  m_Name: LevelStage (10)
+  m_Name: LevelStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1323,7 +1211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f4d058a1cb36479ae3c6e52fec952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lStageScene: 
+  lStageScene: Battle
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -1374,37 +1262,6 @@ MonoBehaviour:
       position: 0
       timer: 0
       callOnce: 0
---- !u!1 &1802564222
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1802564223}
-  m_Layer: 0
-  m_Name: ---------------------------------- (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1802564223
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1802564222}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1857205938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,7 +1273,7 @@ GameObject:
   - component: {fileID: 1857205939}
   - component: {fileID: 1857205940}
   m_Layer: 0
-  m_Name: LevelStage (7)
+  m_Name: LevelStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1449,7 +1306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f4d058a1cb36479ae3c6e52fec952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lStageScene: 
+  lStageScene: Battle
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -1511,7 +1368,7 @@ GameObject:
   - component: {fileID: 2054358221}
   - component: {fileID: 2054358222}
   m_Layer: 0
-  m_Name: LevelStage (11)
+  m_Name: LevelStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1544,7 +1401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f4d058a1cb36479ae3c6e52fec952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lStageScene: 
+  lStageScene: Battle
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -1606,7 +1463,7 @@ GameObject:
   - component: {fileID: 2105190587}
   - component: {fileID: 2105190588}
   m_Layer: 0
-  m_Name: LevelStage (5)
+  m_Name: LevelStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1639,7 +1496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f4d058a1cb36479ae3c6e52fec952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lStageScene: 
+  lStageScene: Battle
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -1690,34 +1547,3 @@ MonoBehaviour:
       position: 0
       timer: 0
       callOnce: 0
---- !u!1 &2143178875
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2143178876}
-  m_Layer: 0
-  m_Name: ----------------------------------
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2143178876
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143178875}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

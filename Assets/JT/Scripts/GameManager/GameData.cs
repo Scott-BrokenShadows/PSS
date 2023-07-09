@@ -22,5 +22,6 @@ public static class GameData //Store the Data here
     public static string gameplayTime;
     public static int gameCurrency;
     public static List<UserCharacters> listCharacters;
+    public static List<UserCharacters> listPartyBattleUnits;
     public static List<Item> listItems;
 }

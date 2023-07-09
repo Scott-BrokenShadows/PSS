@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    //SaveLoad sData;
+    [Separator]
     [ReadOnly] [SerializeField] string currentDateTime;
     [ReadOnly] [SerializeField] string currentGameplayTime;
     [ReadOnly] [SerializeField] string currency;
+    [Separator]
+    [ReadOnly] [SerializeField] List<UserCharacters> listCharacters;
+    [ReadOnly] [SerializeField] List<UserCharacters> listPartyBattleUnits;
+    [ReadOnly] [SerializeField] List<Item> listItems;
+    [Separator]
+    [SerializeField] bool updateCI;
 
     void Start()
     {
-        //sData = this.GetComponent<SaveLoad>();
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -20,13 +25,19 @@ public class GameController : MonoBehaviour
         SetRealDateTime();
         SetTotalPlayTime();
         SetCurrency();
+
+        if (updateCI)
+        {
+            SetCharacters();
+            SetItems();
+            updateCI = false;
+        }
     }
 
     void SetRealDateTime()
     {
         System.DateTime myTime = System.DateTime.Now;
         GameData.dateTime = myTime.ToString();
-        //sData.savedData.dateTime = GameData.dateTime;
         SaveLoad.SaveSystem.savedData.dateTime = GameData.dateTime;
 
         currentDateTime = GameData.dateTime;
@@ -35,12 +46,11 @@ public class GameController : MonoBehaviour
     void SetTotalPlayTime()
     {
         GameData.gameplayTime = FormatTime(this.TotalTime);
-        //sData.savedData.gameplayTime = GameData.gameplayTime;
         SaveLoad.SaveSystem.savedData.gameplayTime = GameData.gameplayTime;
         currentGameplayTime = GameData.gameplayTime;
     }
 
-    #region Total Gameplay
+    #region Total Play Time Function
     public float TotalTime
     {
         get
@@ -58,6 +68,22 @@ public class GameController : MonoBehaviour
         return string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
     }
     #endregion
+
+    void SetCharacters()
+    {
+        listCharacters = GameData.listCharacters;
+    }
+
+    public void AddCharacterUnit(HBCharacterBase _characterUnit, int level)
+    {
+        //listCharacters.Add(new UserCharacters);
+
+    }
+
+    void SetItems()
+    {
+        listItems = GameData.listItems;
+    }
 
     void SetCurrency()
     {
