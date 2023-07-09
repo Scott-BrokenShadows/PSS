@@ -167,5 +167,21 @@ public class BattleSystem : MonoBehaviour
             }
         }
         #endregion
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(new Vector3(-horizontal - _screenSpace.x, -vertical - _screenSpace.y), 0.25f);
+        Gizmos.DrawSphere(new Vector3(horizontal + _screenSpace.x, -vertical - _screenSpace.y), 0.25f);
+        Gizmos.DrawSphere(new Vector3(-horizontal - _screenSpace.x, vertical + _screenSpace.y), 0.25f);
+        Gizmos.DrawSphere(new Vector3(horizontal + _screenSpace.x, vertical + _screenSpace.y), 0.25f);
+
+        Gizmos.DrawLine(new Vector3(-horizontal - _screenSpace.x, -vertical - _screenSpace.y),
+                        new Vector3(horizontal + _screenSpace.x, -vertical - _screenSpace.y));
+        Gizmos.DrawLine(new Vector3(-horizontal - _screenSpace.x, vertical + _screenSpace.y),
+                        new Vector3(horizontal + _screenSpace.x, vertical + _screenSpace.y));
+
+        Gizmos.DrawLine(new Vector3(-horizontal - _screenSpace.x, -vertical - _screenSpace.y),
+                        new Vector3(-horizontal - _screenSpace.x, vertical + _screenSpace.y));
+        Gizmos.DrawLine(new Vector3(horizontal + _screenSpace.x, -vertical - _screenSpace.y),
+                        new Vector3(horizontal + _screenSpace.x, vertical + _screenSpace.y));
     }
 }

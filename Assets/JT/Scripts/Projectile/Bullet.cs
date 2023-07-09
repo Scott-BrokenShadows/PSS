@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
             transform.position.y >  BattleSystem.vertical   + BattleSystem._screenSpace.y)
         {
             //Debug.Log("Outside!");
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 
