@@ -8,7 +8,7 @@ public class HBCharacterBase : ScriptableObject
 {
     // Name, Description, Image, 3D Model, Type, Attribute, Stage, Status, Rate
     [SerializeField] new string name;
-    [SerializeField] int dexNumber;
+    [SerializeField] int id;
     [TextArea]
     [SerializeField] string description;
 
@@ -36,7 +36,7 @@ public class HBCharacterBase : ScriptableObject
     [SerializeField] [ReadOnly] int totalStats;
 
     public string Name { get { return name; } }
-    public int DexNumber { get { return dexNumber; } }
+    public int ID { get { return id; } }
     public string Description { get { return description; } }
     public Sprite IconSprite { get { return iconSprite; } }
     public GameObject Asset { get { return asset; } }

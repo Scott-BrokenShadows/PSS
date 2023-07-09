@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HBCharacterBase
   m_EditorClassIdentifier: 
   name: LOL2
-  dexNumber: 0
+  id: 5
   description: 
   iconSprite: {fileID: 21300000, guid: ec03f79379868c642b48ae5ddc821b6d, type: 3}
   asset: {fileID: 8134438536759060381, guid: df041390f0111ac4f9eea75f18ccf56c, type: 3}

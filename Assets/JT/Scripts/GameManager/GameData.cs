@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class UserCharacters
+public class UserCharactersSlot
 {
     public int id; //Example: item001, item002, item003
     public int level; //What level is the Character
+
+    public UserCharactersSlot(HBCharacterBase _characterUnit, int _level)
+    {
+        id = _characterUnit.ID;
+        level = _level;
+    }
 }
 
 [System.Serializable]
-public class Item
+public class ItemSlot
 {
     public int id; //Example: item001, item002, item003
     public int quantity; //How much item you have
@@ -21,7 +27,7 @@ public static class GameData //Store the Data here
     public static string dateTime;
     public static string gameplayTime;
     public static int gameCurrency;
-    public static List<UserCharacters> listCharacters;
-    public static List<UserCharacters> listPartyBattleUnits;
-    public static List<Item> listItems;
+    public static List<UserCharactersSlot> listCharacters = new List<UserCharactersSlot>();
+    public static List<UserCharactersSlot> listPartyBattleUnits = new List<UserCharactersSlot>();
+    public static List<ItemSlot> listItems = new List<ItemSlot>();
 }

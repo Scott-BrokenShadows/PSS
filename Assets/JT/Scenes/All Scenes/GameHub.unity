@@ -830,9 +830,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d75174bfa712214ea746895cb30fa33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cUnit: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
   currentDateTime: 
   currentGameplayTime: 
   currency: 
+  listCharacters: []
+  listPartyBattleUnits: []
+  listItems: []
+  updateCI: 0
 --- !u!4 &836971366
 Transform:
   m_ObjectHideFlags: 0
@@ -865,12 +870,14 @@ MonoBehaviour:
     gameplayTime: 
     gameCurrency: 0
     listCharacters: []
+    listPartyBattleUnits: []
     listItems: []
   savedData:
     dateTime: 
     gameplayTime: 
     gameCurrency: 0
     listCharacters: []
+    listPartyBattleUnits: []
     listItems: []
   save: 0
   load: 0
@@ -1035,7 +1042,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1211245903}
-  - component: {fileID: 1211245902}
   m_Layer: 0
   m_Name: InvCharacterUnit
   m_TagString: Untagged
@@ -1043,20 +1049,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1211245902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211245901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6494bded54413b34d86ce549b398b609, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _base: {fileID: 0}
-  level: 0
 --- !u!4 &1211245903
 Transform:
   m_ObjectHideFlags: 0

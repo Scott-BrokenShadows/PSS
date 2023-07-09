@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public HBCharacterBase _cUnit;
     [Separator]
     [ReadOnly] [SerializeField] string currentDateTime;
     [ReadOnly] [SerializeField] string currentGameplayTime;
     [ReadOnly] [SerializeField] string currency;
     [Separator]
-    [ReadOnly] [SerializeField] List<UserCharacters> listCharacters;
-    [ReadOnly] [SerializeField] List<UserCharacters> listPartyBattleUnits;
-    [ReadOnly] [SerializeField] List<Item> listItems;
+    [ReadOnly] [SerializeField] List<UserCharactersSlot> listCharacters;
+    [ReadOnly] [SerializeField] List<UserCharactersSlot> listPartyBattleUnits;
+    [ReadOnly] [SerializeField] List<ItemSlot> listItems;
     [Separator]
     [SerializeField] bool updateCI;
 
@@ -28,8 +29,10 @@ public class GameController : MonoBehaviour
 
         if (updateCI)
         {
-            SetCharacters();
-            SetItems();
+            AddCharacterUnit(_cUnit, 77);
+
+            //SetCharacters();
+            //SetItems();
             updateCI = false;
         }
     }
@@ -74,10 +77,9 @@ public class GameController : MonoBehaviour
         listCharacters = GameData.listCharacters;
     }
 
-    public void AddCharacterUnit(HBCharacterBase _characterUnit, int level)
+    public void AddCharacterUnit(HBCharacterBase _characterUnit, int _level)
     {
-        //listCharacters.Add(new UserCharacters);
-
+        listCharacters.Add(new UserCharactersSlot(_characterUnit, _level));
     }
 
     void SetItems()
