@@ -10,6 +10,19 @@ public class DB_RewardGacha : ScriptableObject
     public float dropChance;
     public bool isCharacter = false;
 
-    public HBCharacterBase charBase;
-    public DB_ItemScriptObj itemBase;
+    //public HBCharacterBase charBase;
+    //public DB_ItemScriptObj itemBase;
+
+	[SerializeField]
+	List<ItemGroups> list;
+
+	[System.Serializable]
+	public class ItemGroups
+	{
+		[SerializeField]
+		public HBCharacterBase charBase;
+
+		[SerializeField]
+		public DB_ElementalData elemData;
+	}
 }

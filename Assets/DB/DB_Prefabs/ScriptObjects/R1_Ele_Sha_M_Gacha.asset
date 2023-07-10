@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Magic Shard
   dropChance: 12.5
   isCharacter: 0
+  list: []

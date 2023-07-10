@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
 public class GatchaSlot
@@ -25,8 +26,23 @@ public class DB_SystemGacha : MonoBehaviour
 
     public bool rareBonus;       //Guarantees at least a Rarity 2 when true.
 
-    public GameObject x10Grid;
-    //public GameObject x1Grid;
+    public TMP_Text confirmText;
+    public int currencyGacha = 10000;
+    public TMP_Text currencyText;
+    public int singleRollCost = 180;
+    public TMP_Text singleRollText;
+    public int tenRollCost = 1800;
+    public TMP_Text tenRollText;
+    private int currentRollCost;
+
+    public GameObject grid;
+    public GameObject gridBG;
+    public GameObject xRollButtonGroup;
+    public GameObject rollConfirmButton;
+    public GameObject rollBackButton;
+    public GameObject shopConfirmButton;
+    public GameObject continueButton;
+    public Sprite nullImage;
 
     //These are the % chance of obtaining these Rarities.
     public float rareTier1 = 75f;
@@ -42,31 +58,96 @@ public class DB_SystemGacha : MonoBehaviour
     [Header("Inventory")]
     [ReadOnly] public List<GatchaSlot> itemsObtained;
 
-    public void RequestRollX1()
+    void Start()
     {
-        itemsObtained.Clear();
+        singleRollText.text = $"x{singleRollCost}";
+        tenRollText.text = $"x{tenRollCost}";
+        MenuReset();
+    }
 
-        foreach (Transform child in x10Grid.transform)
+    //Sets Roll Buttons active, and disables the Grid and continue Button.
+    public void MenuReset()
+    {
+        currencyText.text = $"V-Bucks: {currencyGacha}";
+        rollAttempts = 0;
+        currentRollCost = 0;
+        rareBonus = false;
+        grid.SetActive(false);
+        gridBG.SetActive(false);
+        xRollButtonGroup.SetActive(true);
+        rollConfirmButton.SetActive(false);
+        rollBackButton.SetActive(false);
+        shopConfirmButton.SetActive(false);
+        continueButton.SetActive(false);
+        confirmText.text = null;
+
+        foreach (Transform child in grid.transform)
         {
-            child.GetComponent<Image>().sprite = null;
+            child.GetComponent<Image>().sprite = nullImage;
         }
 
-        rollAttempts = 1;
-        rareBonus = false;
-        RollAttempt();
+    }
+
+    public void RequestRollX1()
+    {
+        if (currencyGacha >= singleRollCost)
+        {
+            currentRollCost = singleRollCost;
+            rollAttempts = 1;
+            rareBonus = false;
+            RollStandby();
+        }
+        else
+        {
+            RollInsufficient();
+        }
     }
 
     public void RequestRollX10()
     {
-        itemsObtained.Clear();
-
-        foreach (Transform child in x10Grid.transform)
+        if (currencyGacha >= tenRollCost)
         {
-            child.GetComponent<Image>().sprite = null;
+            currentRollCost = tenRollCost;
+            rollAttempts = 10;
+            rareBonus = true;
+            RollStandby();
         }
+        else
+        {
+            RollInsufficient();
+        }
+    }
 
-        rollAttempts = 10;
-        rareBonus = true;
+    public void RollInsufficient()
+    {
+        itemsObtained.Clear();
+        grid.SetActive(true);
+        gridBG.SetActive(true);
+        xRollButtonGroup.SetActive(false);
+        rollBackButton.SetActive(true);
+        shopConfirmButton.SetActive(true);
+        confirmText.text = $"Insufficient funds. Go to shop?";
+    }
+
+    public void RollStandby()
+    {
+        currencyText.text = $"V-Bucks: {currencyGacha}";
+        itemsObtained.Clear();
+        grid.SetActive(true);
+        gridBG.SetActive(true);
+        xRollButtonGroup.SetActive(false);
+        rollConfirmButton.SetActive(true);
+        rollBackButton.SetActive(true);
+        confirmText.text = $"Spend {currentRollCost} for {rollAttempts} attempt(s)?";
+    }
+
+    public void RollConfirm()
+    {
+        rollConfirmButton.SetActive(false);
+        rollBackButton.SetActive(false);
+        confirmText.text = null;
+        currencyGacha -= currentRollCost;
+        currencyText.text = $"V-Bucks: {currencyGacha}";
         RollAttempt();
     }
 
@@ -76,10 +157,7 @@ public class DB_SystemGacha : MonoBehaviour
         {
             Debug.Log("******************");
             Debug.Log("Pulls Complete!");
-            for (int i = 0; i < itemsObtained.Count; i++)
-            {
-                x10Grid.transform.GetChild(i).GetComponent<Image>().sprite = itemsObtained[i].itemBase.itemImage;
-            }
+            StartCoroutine(GachaTimer());
         }
         else
         {
@@ -91,11 +169,23 @@ public class DB_SystemGacha : MonoBehaviour
         }
     }
 
+    //Timer for displaying the Gacha results one at a time.
+    IEnumerator GachaTimer()
+    {
+        for (int i = 0; i < itemsObtained.Count; i++)
+        {
+            grid.transform.GetChild(i).GetComponent<Image>().sprite = itemsObtained[i].itemBase.itemImage;
+            yield return new WaitForSeconds(0.2f);
+        }
+        continueButton.SetActive(true);
+    }
+
+    //Confirms the Rarity of the Item pulled based on the roll.
     public void RarityCheck()
     {
         if((highRare == pityLimit) || (dRoll <= rareTier3))
         {
-        RareTier3Get();
+            RareTier3Get();
         }
         else if ((dRoll >= rareTier2) && (rareBonus == false))
         {
@@ -136,40 +226,38 @@ public class DB_SystemGacha : MonoBehaviour
     public void GetRandomReward(List<DB_RewardGacha> thisList)
     {
         var totalWeight = 0.0f;
-        foreach (var entry in thisList)
+        foreach (var attempt in thisList)
         {
-            totalWeight += entry.dropChance;
+            totalWeight += attempt.dropChance;
         }
-        var rndWeightValue = float.Parse((Random.Range(0.0f, totalWeight)).ToString("F2"));
+        var dRollWeight = float.Parse((Random.Range(0.0f, totalWeight)).ToString("F2"));
 
-        var processedWeight = 0.0f;
-        foreach (var entry in thisList)
+        var maxWeight = 0.0f;
+        foreach (var attempt in thisList)
         {
-            processedWeight += entry.dropChance;
-            if(rndWeightValue <= processedWeight)
+            maxWeight += attempt.dropChance;
+            if(dRollWeight <= maxWeight)
             {
-                Debug.Log($"Obtained {entry.itemName}!");
+                Debug.Log($"Obtained {attempt.itemName}!");
                 //Add Item to the Grid Array
 
-                if (itemsObtained.Count < x10Grid.transform.childCount)
+                if (itemsObtained.Count < grid.transform.childCount)
                 {
-                    AddItem(entry);
+                    AddItem(attempt);
                 }
 
-                if (entry.isCharacter == true)
+                if (attempt.isCharacter == true)
                 {
-                    Debug.Log($"Splash Animation of {entry.itemName} happens here!");
+                    Debug.Log($"Splash Animation of {attempt.itemName} happens here!");
                 }
                 break;
             }
         }
     }
 
+    #region Error
     void Update()
     {
-
-
-        #region Error
         //for (int i = 0; i < x10Grid.transform.childCount - 1; i++)
         //{
         //    if (itemsObtained[i] != null)
@@ -177,7 +265,13 @@ public class DB_SystemGacha : MonoBehaviour
         //        x10Grid.transform.GetChild(i).GetComponent<Image>().sprite = itemsObtained[i].itemBase.itemImage;
         //    }
         //}
-        #endregion
+    }
+    #endregion
+
+    public void AddFunds()
+    {
+        currencyGacha += 3000;
+        MenuReset();
     }
 
     void AddItem(DB_RewardGacha _DB_RewardGacha)
