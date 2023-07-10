@@ -1,6 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.UI;
+
+[System.Serializable]
+public class GatchaSlot
+{
+    //public int id; //Example: item001, item002, item003
+    public DB_RewardGacha itemBase;
+
+    public GatchaSlot(DB_RewardGacha _itemUnit)
+    {
+        itemBase = _itemUnit;
+    }
+}
 
 public class DB_SystemGacha : MonoBehaviour
 {
@@ -11,24 +25,22 @@ public class DB_SystemGacha : MonoBehaviour
 
     public bool rareBonus;       //Guarantees at least a Rarity 2 when true.
 
+    public GameObject x10Grid;
+    public GameObject x1Grid;
+
     //These are the % chance of obtaining these Rarities.
     public float rareTier1 = 75f;
     public float rareTier2 = 20f;
     public float rareTier3 = 5f;
 
-    //[SerializeField] private DB_RewardRate gacha;
-    //[SerializeField] Transform parent, pos;
-    //[SerializeField] private GameObject itemRewardGO;
-    //GameObject itemReward;
-    //DB_Reward reward;
+    //This list is where each individual item as Scriptable Objects are kept.
+    public List<DB_RewardGacha> rarity1ItemList;
+    public List<DB_RewardGacha> rarity2ItemList;
+    public List<DB_RewardGacha> rarity3ItemList;
 
-    //public List<DB_RewardGacha> rarity1List = new List<DB_RewardGacha>();
-    //public List<DB_RewardGacha> rarity2List = new List<DB_RewardGacha>();
-    //public List<DB_RewardGacha> rarity3List = new List<DB_RewardGacha>();
-
-    public List<DB_RewardRate> rarity1List;
-    public List<DB_RewardRate> rarity2List;
-    public List<DB_RewardRate> rarity3List;
+    [Separator]
+    [Header("Inventory")]
+    [ReadOnly] public List<GatchaSlot> itemsObtained;
 
     public void RequestRollX1()
     {
@@ -83,7 +95,7 @@ public class DB_SystemGacha : MonoBehaviour
         highRare = 0;
         rareBonus = false;
         Debug.Log($"Rolled {dRoll}. RARITY 3 ITEM OBTAINED! PITY RESET!");
-        GetRandomReward(rarity3List);
+        GetRandomReward(rarity3ItemList);
         //Will determine which Rarity 3 item was obtained.
     }
 
@@ -92,7 +104,7 @@ public class DB_SystemGacha : MonoBehaviour
         highRare += 1;
         rareBonus = false;
         Debug.Log($"Rolled {dRoll}. Rarity 2 Item Obtained! Pity Score: {highRare}");
-        GetRandomReward(rarity2List);
+        GetRandomReward(rarity2ItemList);
         //Will determine which Rarity 2 item was obtained.
     }
 
@@ -100,28 +112,59 @@ public class DB_SystemGacha : MonoBehaviour
     {
         highRare += 1;
         Debug.Log($"Rolled {dRoll}. Rarity 1 Item Obtained! Pity Score: {highRare}");
-        GetRandomReward(rarity1List);
+        GetRandomReward(rarity1ItemList);
         //Will determine which Rarity 1 item was obtained.
     }
 
-    public void GetRandomReward(List<DB_RewardRate> thisList)
+    public void GetRandomReward(List<DB_RewardGacha> thisList)
     {
         var totalWeight = 0.0f;
         foreach (var entry in thisList)
         {
-            totalWeight += entry.rate;
+            totalWeight += entry.dropChance;
         }
         var rndWeightValue = float.Parse((Random.Range(0.0f, totalWeight + 1.0f)).ToString("F2"));
 
         var processedWeight = 0.0f;
         foreach (var entry in thisList)
         {
-            processedWeight += entry.rate;
+            processedWeight += entry.dropChance;
             if(rndWeightValue <= processedWeight)
             {
-                Debug.Log($"Obtained {entry.rateName}!");
+                Debug.Log($"Obtained {entry.itemName}!");
+                //Add Item to the Grid Array
+
+                AddItem(entry);
+
+                if (entry.isCharacter == true)
+                {
+                    Debug.Log($"Splash Animation of {entry.itemName} happens here!");
+                }
                 break;
             }
         }
+    }
+
+    void Update()
+    {
+        for (int i = 0; i < itemsObtained.Count; i++)
+        {
+            x10Grid.transform.GetChild(i).GetComponent<Image>().sprite = itemsObtained[i].itemBase.itemImage;
+        }
+
+        #region Error
+        //for (int i = 0; i < x10Grid.transform.childCount - 1; i++)
+        //{
+        //    if (itemsObtained[i] != null)
+        //    {
+        //        x10Grid.transform.GetChild(i).GetComponent<Image>().sprite = itemsObtained[i].itemBase.itemImage;
+        //    }
+        //}
+        #endregion
+    }
+
+    void AddItem(DB_RewardGacha _DB_RewardGacha)
+    {
+        itemsObtained.Add(new GatchaSlot(_DB_RewardGacha));
     }
 }

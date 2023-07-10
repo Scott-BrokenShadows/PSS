@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55994f40e6cc48848bc49256ecdcaef5, type: 3}
   m_Name: R2_Char1_Gacha
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: 40ca859210cd04b62bbfe0e0d5696d3b, type: 3}
   itemName: Character 1
   dropChance: 9
+  isCharacter: 1

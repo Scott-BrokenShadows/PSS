@@ -16,7 +16,7 @@ public class DB_Reward : MonoBehaviour
     {
         if(reward != null)
         {
-        img.sprite = reward.image;
+        img.sprite = reward.itemImage;
         rewardName.text = reward.itemName;
         }
     }
