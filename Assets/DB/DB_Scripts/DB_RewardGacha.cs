@@ -9,4 +9,7 @@ public class DB_RewardGacha : ScriptableObject
     public string itemName;
     public float dropChance;
     public bool isCharacter = false;
+
+    public HBCharacterBase charBase;
+    public DB_ItemScriptObj itemBase;
 }

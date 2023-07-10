@@ -1792,7 +1792,6 @@ MonoBehaviour:
   dRoll: 0
   rareBonus: 0
   x10Grid: {fileID: 1471437694}
-  x1Grid: {fileID: 0}
   rareTier1: 75
   rareTier2: 20
   rareTier3: 5

@@ -93,11 +93,11 @@ public class DB_SystemGacha : MonoBehaviour
 
     public void RarityCheck()
     {
-        if((highRare == pityLimit) || (dRoll <= 5))
+        if((highRare == pityLimit) || (dRoll <= rareTier3))
         {
         RareTier3Get();
         }
-        else if ((dRoll >= 25) && (rareBonus == false))
+        else if ((dRoll >= rareTier2) && (rareBonus == false))
         {
             RareTier1Get();
         }

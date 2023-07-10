@@ -16,3 +16,5 @@ MonoBehaviour:
   itemName: Fire Shard
   dropChance: 25
   isCharacter: 0
+  charBase: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
+  itemBase: {fileID: 0}
