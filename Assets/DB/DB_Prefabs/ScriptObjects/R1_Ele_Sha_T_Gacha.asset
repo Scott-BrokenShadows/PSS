@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55994f40e6cc48848bc49256ecdcaef5, type: 3}
   m_Name: R1_Ele_Sha_T_Gacha
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: 40ca859210cd04b62bbfe0e0d5696d3b, type: 3}
+  itemImage: {fileID: 21300000, guid: 6332a8da2d3dcf04e98280f57675806c, type: 3}
   itemName: Tech Shard
   dropChance: 12.5
   isCharacter: 0

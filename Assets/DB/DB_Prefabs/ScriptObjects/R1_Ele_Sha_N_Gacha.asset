@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55994f40e6cc48848bc49256ecdcaef5, type: 3}
   m_Name: R1_Ele_Sha_N_Gacha
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: 40ca859210cd04b62bbfe0e0d5696d3b, type: 3}
+  itemImage: {fileID: 21300000, guid: ca481a51334a53444b2e0a8a7434f1b7, type: 3}
   itemName: Nature Shard
   dropChance: 25
   isCharacter: 0

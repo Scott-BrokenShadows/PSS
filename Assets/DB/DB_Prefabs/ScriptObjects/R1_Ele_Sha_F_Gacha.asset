@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55994f40e6cc48848bc49256ecdcaef5, type: 3}
   m_Name: R1_Ele_Sha_F_Gacha
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: 40ca859210cd04b62bbfe0e0d5696d3b, type: 3}
+  itemImage: {fileID: 21300000, guid: 3164c89884a8432409766a9383cc5296, type: 3}
   itemName: Fire Shard
   dropChance: 25
   isCharacter: 0

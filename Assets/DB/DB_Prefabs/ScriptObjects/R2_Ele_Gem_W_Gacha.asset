@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55994f40e6cc48848bc49256ecdcaef5, type: 3}
   m_Name: R2_Ele_Gem_W_Gacha
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: 40ca859210cd04b62bbfe0e0d5696d3b, type: 3}
+  itemImage: {fileID: 21300000, guid: 6cf3b8ecbd87a9d4aa1542981f3bf196, type: 3}
   itemName: Water Gem
   dropChance: 18
   isCharacter: 0

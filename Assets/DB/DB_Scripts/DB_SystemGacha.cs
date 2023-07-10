@@ -26,7 +26,7 @@ public class DB_SystemGacha : MonoBehaviour
     public bool rareBonus;       //Guarantees at least a Rarity 2 when true.
 
     public GameObject x10Grid;
-    public GameObject x1Grid;
+    //public GameObject x1Grid;
 
     //These are the % chance of obtaining these Rarities.
     public float rareTier1 = 75f;
@@ -44,6 +44,13 @@ public class DB_SystemGacha : MonoBehaviour
 
     public void RequestRollX1()
     {
+        itemsObtained.Clear();
+
+        foreach (Transform child in x10Grid.transform)
+        {
+            child.GetComponent<Image>().sprite = null;
+        }
+
         rollAttempts = 1;
         rareBonus = false;
         RollAttempt();
@@ -51,6 +58,13 @@ public class DB_SystemGacha : MonoBehaviour
 
     public void RequestRollX10()
     {
+        itemsObtained.Clear();
+
+        foreach (Transform child in x10Grid.transform)
+        {
+            child.GetComponent<Image>().sprite = null;
+        }
+
         rollAttempts = 10;
         rareBonus = true;
         RollAttempt();
@@ -58,11 +72,14 @@ public class DB_SystemGacha : MonoBehaviour
 
     public void RollAttempt()
     {
-        if(rollAttempts == 0)
+        if (rollAttempts == 0)
         {
             Debug.Log("******************");
             Debug.Log("Pulls Complete!");
-            //Will send to a pull summary screen
+            for (int i = 0; i < itemsObtained.Count; i++)
+            {
+                x10Grid.transform.GetChild(i).GetComponent<Image>().sprite = itemsObtained[i].itemBase.itemImage;
+            }
         }
         else
         {
@@ -123,7 +140,7 @@ public class DB_SystemGacha : MonoBehaviour
         {
             totalWeight += entry.dropChance;
         }
-        var rndWeightValue = float.Parse((Random.Range(0.0f, totalWeight + 1.0f)).ToString("F2"));
+        var rndWeightValue = float.Parse((Random.Range(0.0f, totalWeight)).ToString("F2"));
 
         var processedWeight = 0.0f;
         foreach (var entry in thisList)
@@ -134,7 +151,10 @@ public class DB_SystemGacha : MonoBehaviour
                 Debug.Log($"Obtained {entry.itemName}!");
                 //Add Item to the Grid Array
 
-                AddItem(entry);
+                if (itemsObtained.Count < x10Grid.transform.childCount)
+                {
+                    AddItem(entry);
+                }
 
                 if (entry.isCharacter == true)
                 {
@@ -147,10 +167,7 @@ public class DB_SystemGacha : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < itemsObtained.Count; i++)
-        {
-            x10Grid.transform.GetChild(i).GetComponent<Image>().sprite = itemsObtained[i].itemBase.itemImage;
-        }
+
 
         #region Error
         //for (int i = 0; i < x10Grid.transform.childCount - 1; i++)
