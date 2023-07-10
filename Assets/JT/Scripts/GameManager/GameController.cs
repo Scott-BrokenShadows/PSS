@@ -10,8 +10,8 @@ public class GameController : MonoBehaviour
     [ReadOnly] [SerializeField] string currentGameplayTime;
     [ReadOnly] [SerializeField] string currency;
     [Separator]
-    [ReadOnly] [SerializeField] List<UserCharactersSlot> listCharacters;
-    [ReadOnly] [SerializeField] List<UserCharactersSlot> listPartyBattleUnits;
+    [ReadOnly] [SerializeField] List<UserCharactersSlot> listCharacters = new List<UserCharactersSlot>();
+    [ReadOnly] [SerializeField] UserCharactersSlot[] listPartyBattleUnits;
     [ReadOnly] [SerializeField] List<ItemSlot> listItems;
     [Separator]
     [SerializeField] bool updateCI;
@@ -36,15 +36,6 @@ public class GameController : MonoBehaviour
             SetItems();
 
             updateCI = false;
-            return;
-        }
-
-        if (updateCI2)
-        {
-            SetCharacters();
-            SetItems();
-
-            updateCI2 = false;
             return;
         }
     }

@@ -174,7 +174,7 @@ MonoBehaviour:
     countDownTimer: 0
     EnemyList:
     - name: Enemy Slot 1
-      _base: {fileID: 0}
+      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
       row: 0
       position: 0
@@ -835,7 +835,11 @@ MonoBehaviour:
   currentGameplayTime: 
   currency: 
   listCharacters: []
-  listPartyBattleUnits: []
+  listPartyBattleUnits:
+  - characterBase: {fileID: 0}
+    level: 0
+  - characterBase: {fileID: 0}
+    level: 0
   listItems: []
   updateCI: 0
   updateCI2: 0

@@ -5,12 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class UserCharactersSlot
 {
-    public int id; //Example: item001, item002, item003
+    //public int id; //Example: item001, item002, item003
+    public HBCharacterBase characterBase;
     public int level; //What level is the Character
 
     public UserCharactersSlot(HBCharacterBase _characterUnit, int _level)
     {
-        id = _characterUnit.ID;
+        //id = _characterUnit.ID;
+        characterBase = _characterUnit;
         level = _level;
     }
 }

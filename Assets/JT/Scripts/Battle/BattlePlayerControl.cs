@@ -18,6 +18,7 @@ public class BattlePlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _rb = GetComponent<Rigidbody2D>();
         _currentTransform = this.transform;
         _targetRange = targetRange;
     }

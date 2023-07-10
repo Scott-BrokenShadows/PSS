@@ -22,7 +22,7 @@ public class HBEnemyList
     public int lv;
     [Min(1)] public int row;
     public float position;
-    [ReadOnly] public float timer;
+    public float timer;
     [ReadOnly] public bool callOnce;
 }
 
