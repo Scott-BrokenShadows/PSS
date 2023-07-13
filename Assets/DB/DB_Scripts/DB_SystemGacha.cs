@@ -34,6 +34,7 @@ public class DB_SystemGacha : MonoBehaviour
     public int tenRollCost = 1800;
     public TMP_Text tenRollText;
     private int currentRollCost;
+    public TMP_Text pityText;
 
     public GameObject grid;
     public GameObject gridBG;
@@ -62,6 +63,7 @@ public class DB_SystemGacha : MonoBehaviour
     {
         singleRollText.text = $"x{singleRollCost}";
         tenRollText.text = $"x{tenRollCost}";
+        pityText.text = $"Rarity 3 Guaranteed in {pityLimit - highRare} Attempts!";
         MenuReset();
     }
 
@@ -69,6 +71,7 @@ public class DB_SystemGacha : MonoBehaviour
     public void MenuReset()
     {
         currencyText.text = $"V-Bucks: {currencyGacha}";
+        pityText.text = $"Rarity 3 Guaranteed in {pityLimit - highRare} Attempts!";
         rollAttempts = 0;
         currentRollCost = 0;
         rareBonus = false;
