@@ -48,11 +48,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
   isPlayer: 0
-  bulletAsset: {fileID: 4888925359343704215, guid: 4accaa6c61da6c54781648a36cd10343, type: 3}
+  bulletAsset: {fileID: 6849902985964999287, guid: 4accaa6c61da6c54781648a36cd10343, type: 3}
   currentBulletState: 2
   range: 10
-  count: 3
-  reloadTimeBullet: 2
+  count: 1
+  reloadTimeBullet: 0.5
+  _movementInput: {x: 0, y: 0}
+  pUnit: 0
 --- !u!50 &8887473611583413987
 Rigidbody2D:
   serializedVersion: 4

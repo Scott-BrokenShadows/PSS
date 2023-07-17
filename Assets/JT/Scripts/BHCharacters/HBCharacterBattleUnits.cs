@@ -19,7 +19,7 @@ public class HBCharacterBattleUnits : MonoBehaviour
     { none, single, multiSpread, multiStraight ,allDirection}
     [Min(0)] public float range = 10;
     [Min(0)] public int count = 3;
-    [Min(0)] public int reloadTimeBullet = 1;
+    [Min(0)] public float reloadTimeBullet = 1;
     private float timerBullet;
 
     // Player Movement Control
@@ -31,7 +31,7 @@ public class HBCharacterBattleUnits : MonoBehaviour
     // Player Unit Controls
     [Separator]
     [Header("Unit Function")]
-    PlayerUnit pUnit;
+    [SerializeField] PlayerUnit pUnit;
     public enum PlayerUnit
     { frontSubUnit, backSubUnit }
 
@@ -175,7 +175,8 @@ public class HBCharacterBattleUnits : MonoBehaviour
     #region Shot
     void SingleShot()
     {
-        GameObject asset = Instantiate(bulletAsset, transform.position, Quaternion.LookRotation((isPlayer) ? transform.right : -transform.right));
+        GameObject asset = Instantiate(bulletAsset, transform.position, Quaternion.LookRotation(transform.forward));
+        asset.GetComponent<Bullet>().isPlayer = (isPlayer) ? true : false;
     }
 
     void MultiSpreadShot()

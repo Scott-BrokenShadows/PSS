@@ -5,12 +5,13 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 2;
-    [HideInInspector] public bool isPlayer;
+    public bool isPlayer;
 
     void Update()
     {
         // Movement Bullet
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        //transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(((isPlayer) ? Vector3.right : -Vector3.right) * speed * Time.deltaTime);
 
         DestroyOutside();
     }

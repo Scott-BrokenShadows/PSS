@@ -15,7 +15,7 @@ public class BattleSystem : MonoBehaviour
     [ReadOnly] public float cTimer;
 
     // The current Enemies on the game
-    public List<LevelWave> currentWaveOnScene;
+    [HideInInspector] public List<LevelWave> currentWaveOnScene;
     [ReadOnly] public List<GameObject> cEnemy;
 
     // How many Grid Rows based on the LevelStage.cs
