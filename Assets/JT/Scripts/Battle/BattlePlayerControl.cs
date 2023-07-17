@@ -9,7 +9,7 @@ public class BattlePlayerControl : MonoBehaviour
     public static Transform _currentTransform;
 
     private Vector3 target;
-    void Start()
+    void Awake()
     {
         target = transform.position;
         _currentTransform = this.transform;

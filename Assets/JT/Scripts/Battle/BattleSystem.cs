@@ -166,14 +166,14 @@ public class BattleSystem : MonoBehaviour
 
     void InstancePlayers()
     { 
-    
+        
     }
     void InstanceSubPlayers()
     {
 
     }
 
-    float Remap(float from, float fromMin, float fromMax, float toMin, float toMax)
+    static public float Remap(float from, float fromMin, float fromMax, float toMin, float toMax)
     {
         var fromAbs = from - fromMin;
         var fromMaxAbs = fromMax - fromMin;
@@ -223,8 +223,8 @@ public class BattleSystem : MonoBehaviour
         {
             for (int i = 0; i < _laneSlowDown.Count; i++)
             {
-                Gizmos.DrawLine(new Vector3(Remap(_laneSlowDown[i], 0, 1, -horizontal - _screenSpace.x, horizontal + _screenSpace.x), -vertical - _screenSpace.y),
-                    new Vector3(Remap(_laneSlowDown[i], 0, 1, -horizontal - _screenSpace.x, horizontal + _screenSpace.x), vertical + _screenSpace.y));
+                Gizmos.DrawLine(new Vector3(Remap(_laneSlowDown[i], 0, 1, -horizontal, horizontal), -vertical),
+                    new Vector3(Remap(_laneSlowDown[i], 0, 1, -horizontal, horizontal), vertical));
             }
         }
     }

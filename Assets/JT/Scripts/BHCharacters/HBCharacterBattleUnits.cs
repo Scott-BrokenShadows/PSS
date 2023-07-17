@@ -56,6 +56,8 @@ public class HBCharacterBattleUnits : MonoBehaviour
 
         if (isPlayer)
         {
+            transform.position = BattlePlayerControl._currentTransform.position;
+
             #region Instantiate the Asset and Name them
             //Debug.Log(_base);
             //Debug.Log(_base);
@@ -116,8 +118,15 @@ public class HBCharacterBattleUnits : MonoBehaviour
         }
         else
         {
-            // Enemy Minions Movement
-            _rb.velocity = Vector3.left * _base.Speed;
+            if (transform.position.x > BattleSystem.Remap(BattleSystem._laneSlowDown[1], 0, 1, -BattleSystem.horizontal, BattleSystem.horizontal))
+            {
+                // Enemy Minions Movement
+                _rb.velocity = Vector3.left * _base.Speed;
+            }
+            else
+            {
+                _rb.velocity = Vector3.left * 0;
+            }
         }
     }
 
