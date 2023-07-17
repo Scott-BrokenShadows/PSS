@@ -31,6 +31,9 @@ public class BattleSystem : MonoBehaviour
     public int cRows;
     #endregion
 
+    [Range(0, 1)] [SerializeField] List<float> laneSlowDown;
+    static public List<float> _laneSlowDown;
+
     private void Start()
     {
         SetupBattle();
@@ -62,6 +65,9 @@ public class BattleSystem : MonoBehaviour
     // Do what on the start
     void SetupBattle()
     {
+        // Lane to stop
+        _laneSlowDown = laneSlowDown;
+
         // Add the extra screenspace
         _screenSpace = screenSpace;
 
@@ -167,6 +173,21 @@ public class BattleSystem : MonoBehaviour
 
     }
 
+    float Remap(float from, float fromMin, float fromMax, float toMin, float toMax)
+    {
+        var fromAbs = from - fromMin;
+        var fromMaxAbs = fromMax - fromMin;
+
+        var normal = fromAbs / fromMaxAbs;
+
+        var toMaxAbs = toMax - toMin;
+        var toAbs = toMaxAbs * normal;
+
+        var to = toAbs + toMin;
+
+        return to;
+    }
+
     // Just show gizmos
     private void OnDrawGizmos()
     {
@@ -196,5 +217,15 @@ public class BattleSystem : MonoBehaviour
                         new Vector3(-horizontal - _screenSpace.x, vertical + _screenSpace.y));
         Gizmos.DrawLine(new Vector3(horizontal + _screenSpace.x, -vertical - _screenSpace.y),
                         new Vector3(horizontal + _screenSpace.x, vertical + _screenSpace.y));
+
+        Gizmos.color = Color.red;
+        if (_laneSlowDown != null)
+        {
+            for (int i = 0; i < _laneSlowDown.Count; i++)
+            {
+                Gizmos.DrawLine(new Vector3(Remap(_laneSlowDown[i], 0, 1, -horizontal - _screenSpace.x, horizontal + _screenSpace.x), -vertical - _screenSpace.y),
+                    new Vector3(Remap(_laneSlowDown[i], 0, 1, -horizontal - _screenSpace.x, horizontal + _screenSpace.x), vertical + _screenSpace.y));
+            }
+        }
     }
 }

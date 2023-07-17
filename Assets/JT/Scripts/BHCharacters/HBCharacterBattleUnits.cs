@@ -83,7 +83,7 @@ public class HBCharacterBattleUnits : MonoBehaviour
             myGameObject = _base.Asset;
             GameObject asset = Instantiate(_base.Asset, transform);
             asset.transform.position = transform.position;
-            asset.transform.localScale = new Vector3(asset.transform.localScale.x * -1, asset.transform.localScale.y * 1, asset.transform.localScale.z * 1);
+            asset.transform.localRotation = Quaternion.Euler(0,180,0);
             asset.name = _base.Name + "Model";
             #endregion
         }

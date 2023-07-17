@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<HBCharacterBattleUnits>().isPlayer != isPlayer)
+        if (collision.transform.GetComponent<HBCharacterBattleUnits>() != null && collision.GetComponent<HBCharacterBattleUnits>().isPlayer != isPlayer)
         {
             Destroy(this.gameObject);
         }
