@@ -10,7 +10,6 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         // Movement Bullet
-        //transform.Translate(Vector3.forward * speed * Time.deltaTime);
         transform.Translate(((isPlayer) ? Vector3.right : -Vector3.right) * speed * Time.deltaTime);
 
         DestroyOutside();

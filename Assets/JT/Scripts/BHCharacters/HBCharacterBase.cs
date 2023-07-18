@@ -20,9 +20,16 @@ public class HBCharacterBase : ScriptableObject
     [SerializeField] GameObject asset;
 
     [Separator()]
+    [SerializeField] UnitType unitType;
+    [SerializeField] Elements elements;
+    [SerializeField] DefaultBulletType defaultBulletType;
+
+    [Separator()]
     // Base Stats
     [Header("Base stats")]
-    [Min (0)]
+    [Min(0)]
+    [SerializeField] int maxHP;
+    [Min(0)]
     [SerializeField] int attack;
     [Min(0)]
     [SerializeField] int spAttack;
@@ -33,34 +40,65 @@ public class HBCharacterBase : ScriptableObject
     [Min(0)]
     [SerializeField] int speed;
 
+    // Total Calculation of total base stats not include hidden
     [SerializeField] [ReadOnly] int totalStats;
 
+    // Hidden Stats
+    [Header("Hidden stats")]
+    [Range(0,100)]
+    [SerializeField] int critical;
+
+    private void OnValidate()
+    {
+        totalStats = attack + spAttack + defence + spDefence + speed;
+    }
+
+    [Separator()]
+    [SerializeField] SkillBase unitSkill;
+
+    #region Get and Set Value
     public string Name { get { return name; } }
     public int ID { get { return id; } }
     public string Description { get { return description; } }
     public Sprite IconSprite { get { return iconSprite; } }
     public GameObject Asset { get { return asset; } }
+
+    public UnitType UnitType { get { return unitType; } }
+    public Elements Elements { get { return elements; } }
+    public DefaultBulletType DefaultBulletType { get { return defaultBulletType; } }
+
+    public int MaxHP { get { return maxHP; } }
+
     public int Attack { get { return attack; } }
+    public int SpAttack { get { return spAttack; } }
+    public int Defence { get { return defence; } }
+    public int SpDefence { get { return spDefence; } }
     public int Speed { get { return speed; } }
+    public int Critical { get { return critical; } }
+
+    public SkillBase UnitSkill { get { return unitSkill; } }
+    #endregion
 }
 
-public enum SnapmonPersonality
+public enum UnitType
 {
-    Neutral,
-    Coward,
-    Hostile
+    Character,
+    Minions,
+    Boss
 }
 
-public enum SnapmonAttackRange
-{
-    CloseRange,
-    MidRange,
-    FarRange
-}
-
-public enum SnapmonLocationType
-{
-    Ground,
+public enum Elements
+{ 
+    Fire,
     Water,
-    Air
+    Nature,
+    Magic,
+    Machine
+}
+
+public enum DefaultBulletType
+{ 
+    SingleShot,
+    MultiLaneShot,
+    MultiSpreadShot
 }

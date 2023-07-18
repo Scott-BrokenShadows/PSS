@@ -10,22 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1fce225cd4d6b54695f92ed1ab8cbe8, type: 3}
-  m_Name: HBCharacterBase
+  m_Name: HBCharacterBase 2
   m_EditorClassIdentifier: 
-  name: LOL2
-  id: 5
+  name: 
+  id: 0
   description: 
   iconSprite: {fileID: 0}
-  asset: {fileID: 3318390639036756467, guid: df041390f0111ac4f9eea75f18ccf56c, type: 3}
+  asset: {fileID: 0}
   unitType: 0
   elements: 0
   defaultBulletType: 0
-  maxHP: 0
-  attack: 139
-  spAttack: 117
-  defence: 124
-  spDefence: 102
+  attack: 0
+  spAttack: 0
+  defence: 0
+  spDefence: 0
   speed: 0
-  totalStats: 482
-  critical: 78
-  unitSkill: {fileID: 0}
+  totalStats: 0
+  critical: 0

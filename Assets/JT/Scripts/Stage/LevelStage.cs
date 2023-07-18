@@ -34,6 +34,7 @@ public class LevelStage : MonoBehaviour
 
     public List<LevelWave> levelWave;
 
+    #region Just Naming to make other people who read this would understand
     private void OnValidate()
     {
         for (int i = 0; i < levelWave.Count; i++)
@@ -46,6 +47,7 @@ public class LevelStage : MonoBehaviour
             }
         }
     }
+    #endregion
 
     public List<LevelWave> LevelWave { get { return levelWave; } }
 }

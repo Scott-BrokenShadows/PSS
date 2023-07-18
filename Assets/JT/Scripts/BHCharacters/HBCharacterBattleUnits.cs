@@ -5,10 +5,16 @@ using UnityEngine.UI;
 
 public class HBCharacterBattleUnits : MonoBehaviour
 {
+    // Inspector------------------------------------------------------------------------
+
     #region Inspector
     // Get the data from the database
     [SerializeField] public HBCharacterBase _base;
+    [SerializeField] int level;
     public bool isPlayer;
+
+    // Get the data from HBCharacter
+    public HBCharacter HBCharacter { get; set; }
 
     // Bullet Control
     [Separator]
@@ -45,50 +51,12 @@ public class HBCharacterBattleUnits : MonoBehaviour
 
     #endregion
 
+    // Start & Update------------------------------------------------------------------------
+
+    #region Start & Update
     void Start()
     {
         if (_base) { SetUp(); }
-    }
-
-    void SetUp()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-
-        if (isPlayer)
-        {
-            transform.position = BattlePlayerControl._currentTransform.position;
-
-            #region Instantiate the Asset and Name them
-            //Debug.Log(_base);
-            //Debug.Log(_base);
-            if (_base.Name != "")
-                this.gameObject.name = _base.Name + "(Player)";
-            else
-                this.gameObject.name = "Default";
-
-            myGameObject = _base.Asset;
-            GameObject asset = Instantiate(_base.Asset, transform);
-            asset.transform.position = transform.position;
-            asset.name = _base.Name + "Model";
-            #endregion
-        }
-        else
-        {
-            #region Instantiate the Asset and Name them
-            //Debug.Log(_base);
-            //Debug.Log(_base);
-            if (_base.Name != "")
-                this.gameObject.name = _base.Name + "(Enemy)";
-            else
-                this.gameObject.name = "Default";
-
-            myGameObject = _base.Asset;
-            GameObject asset = Instantiate(_base.Asset, transform);
-            asset.transform.position = transform.position;
-            asset.transform.localRotation = Quaternion.Euler(0,180,0);
-            asset.name = _base.Name + "Model";
-            #endregion
-        }
     }
 
     void Update()
@@ -101,7 +69,34 @@ public class HBCharacterBattleUnits : MonoBehaviour
     {
         Movement();
     }
+    #endregion
 
+    // Start Up Mechanics------------------------------------------------------------------------
+
+    #region Set Up
+    void SetUp()
+    {
+        HBCharacter = new HBCharacter(_base, level);
+
+        _rb = GetComponent<Rigidbody2D>();
+
+        // Player set to Player Controller position
+        if (isPlayer) { transform.position = BattlePlayerControl._currentTransform.position; }
+
+        #region Instantiate the Asset and Name them
+        this.gameObject.name = (_base.Name != "") ? _base.Name + ((isPlayer) ? "(Player)" : "(Enemy)") : "Default";
+        myGameObject = _base.Asset;
+        GameObject asset = Instantiate(_base.Asset, transform);
+        asset.transform.position = transform.position;
+        asset.transform.localRotation = Quaternion.Euler(0, ((isPlayer) ? 0 : 180), 0);
+        asset.name = _base.Name + "Model";
+        #endregion
+    }
+    #endregion
+
+    // Movement Mechanics------------------------------------------------------------------------
+
+    #region Player and Enemy Movement
     void Movement()
     {
         if (isPlayer)
@@ -118,18 +113,29 @@ public class HBCharacterBattleUnits : MonoBehaviour
         }
         else
         {
-            if (transform.position.x > BattleSystem.Remap(BattleSystem._laneSlowDown[1], 0, 1, -BattleSystem.horizontal, BattleSystem.horizontal))
-            {
-                // Enemy Minions Movement
-                _rb.velocity = Vector3.left * _base.Speed;
-            }
-            else
-            {
-                _rb.velocity = Vector3.left * 0;
-            }
+            MinionMovement();
         }
     }
+    #endregion
 
+    #region Enemy Character and Minion Movement Function
+    void MinionMovement()
+    {
+        if (transform.position.x > BattleSystem.Remap(BattleSystem._laneSlowDown[1], 0, 1, -BattleSystem.horizontal, BattleSystem.horizontal))
+        {
+            // Enemy Minions Movement
+            _rb.velocity = Vector3.left * _base.Speed;
+        }
+        else
+        {
+            // Enemy Minions Stop Movement
+            _rb.velocity = Vector3.left * 0;
+            transform.position = new Vector3(BattleSystem.Remap(BattleSystem._laneSlowDown[1], 0, 1, -BattleSystem.horizontal, BattleSystem.horizontal), transform.position.y);
+        }
+    }
+    #endregion
+
+    #region Player Character Movement Function
     void FrontSubMovement()
     {
         Vector3 moveDirection = new Vector3(BattlePlayerControl._currentTransform.position.x, BattlePlayerControl._currentTransform.position.y)
@@ -147,7 +153,11 @@ public class HBCharacterBattleUnits : MonoBehaviour
     {
 
     }
+    #endregion
 
+    // Shooting Mechanics------------------------------------------------------------------------
+
+    #region Reloader Timer Shot
     void ReloadTimerBullet()
     {
         timerBullet += Time.deltaTime;
@@ -160,6 +170,7 @@ public class HBCharacterBattleUnits : MonoBehaviour
             ShootBullet();
         }
     }
+    #endregion
 
     #region Shoot Bullet
     void ShootBullet()
@@ -275,6 +286,9 @@ public class HBCharacterBattleUnits : MonoBehaviour
     }
     #endregion
 
+    // Destroy Mechanics------------------------------------------------------------------------
+
+    #region Destroy OutofBound Function
     void DestroyOutside()
     {
         if (transform.position.x < -BattleSystem.horizontal - BattleSystem._screenSpace.x ||
@@ -286,4 +300,5 @@ public class HBCharacterBattleUnits : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    #endregion
 }
