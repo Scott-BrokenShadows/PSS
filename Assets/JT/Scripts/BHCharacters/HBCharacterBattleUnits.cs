@@ -140,8 +140,8 @@ public class HBCharacterBattleUnits : MonoBehaviour
         _movementInput = new Vector2(movementDirection.x, movementDirection.y);
 
         //_smoothMovementInput = Vector2.SmoothDamp(_smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
-
-        _rb.velocity = _movementInput * ((_base.Speed / 999) * 10);
+        Debug.Log(_base.Speed / 999f);
+        _rb.velocity = _movementInput * ((_base.Speed / 999f) * 10f);
     }
 
     void BackSubMovement()
