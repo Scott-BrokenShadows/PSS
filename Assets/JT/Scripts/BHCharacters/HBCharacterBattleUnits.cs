@@ -139,8 +139,8 @@ public class HBCharacterBattleUnits : MonoBehaviour
         Vector3 movementDirection = moveDirection - (BattlePlayerControl._currentTransform.transform.forward * BattlePlayerControl._targetRange);
         _movementInput = new Vector2(movementDirection.x, movementDirection.y);
 
-        _smoothMovementInput = Vector2.SmoothDamp(_smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
-        _rb.velocity = _smoothMovementInput * _base.Speed;
+        //_smoothMovementInput = Vector2.SmoothDamp(_smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
+        _rb.velocity = _movementInput * _base.Speed;
     }
 
     void BackSubMovement()
