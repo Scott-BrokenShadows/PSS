@@ -22,15 +22,15 @@ public class HBCharacterBase : ScriptableObject
     [Separator()]
     // Base Stats
     [Header("Base stats")]
-    [Min (0)]
+    [Range (0, 999)]
     [SerializeField] int attack;
-    [Min(0)]
+    [Range(0, 999)]
     [SerializeField] int spAttack;
-    [Min(0)]
+    [Range(0, 999)]
     [SerializeField] int defence;
-    [Min(0)]
+    [Range(0, 999)]
     [SerializeField] int spDefence;
-    [Min(0)]
+    [Range(0, 999)]
     [SerializeField] int speed;
 
     [SerializeField] [ReadOnly] int totalStats;

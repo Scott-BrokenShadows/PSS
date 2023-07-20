@@ -8,7 +8,6 @@ public class BattlePlayerControl : MonoBehaviour
     public float targetRange = 0.1f;
     public static float _targetRange;
     public static Transform _currentTransform;
-    private Vector3 target;
 
     // Player Movement Control
     Rigidbody2D _rb;
@@ -19,7 +18,6 @@ public class BattlePlayerControl : MonoBehaviour
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        target = transform.position;
         _currentTransform = this.transform;
         _targetRange = targetRange;
     }
@@ -38,6 +36,7 @@ public class BattlePlayerControl : MonoBehaviour
         _rb.velocity = _smoothMovementInput * speed;
     }
 
+    #region Mouse Control
     //public float targetRange = 0.1f;
     //public static float _targetRange;
     //public static Transform _currentTransform;
@@ -73,4 +72,5 @@ public class BattlePlayerControl : MonoBehaviour
     //        transform.position = new Vector3(target.x, target.y);
     //    }
     //}
+    #endregion
 }
