@@ -27,17 +27,17 @@ public class HBCharacterBase : ScriptableObject
     [Separator()]
     // Base Stats
     [Header("Base stats")]
-    [Min(0)]
+    [Range(0, 9999)]
     [SerializeField] int maxHP;
-    [Min(0)]
+    [Range(0, 999)]
     [SerializeField] int attack;
-    [Min(0)]
+    [Range(0, 999)]
     [SerializeField] int spAttack;
-    [Min(0)]
+    [Range(0, 999)]
     [SerializeField] int defence;
-    [Min(0)]
+    [Range(0, 999)]
     [SerializeField] int spDefence;
-    [Min(0)]
+    [Range(0, 999)]
     [SerializeField] int speed;
 
     // Total Calculation of total base stats not include hidden

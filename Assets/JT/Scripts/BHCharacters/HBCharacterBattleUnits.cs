@@ -76,7 +76,7 @@ public class HBCharacterBattleUnits : MonoBehaviour
     #region Set Up
     void SetUp()
     {
-        HBCharacter = new HBCharacter(_base, level);
+        //HBCharacter = new HBCharacter(_base, level);
 
         _rb = GetComponent<Rigidbody2D>();
 
