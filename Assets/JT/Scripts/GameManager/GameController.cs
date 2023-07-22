@@ -13,8 +13,8 @@ public class GameController : MonoBehaviour
     [ReadOnly] [SerializeField] string currentGameplayTime;
     [ReadOnly] [SerializeField] string currency;
     [Separator]
-    [ReadOnly] [SerializeField] List<UserCharactersSlot> listCharacters = new List<UserCharactersSlot>();
-    //[ReadOnly] [SerializeField] UserCharactersSlot listPartyBattleUnits;
+    [ReadOnly] [SerializeField] List<UserCharactersSlot> listCharSlot = new List<UserCharactersSlot>();
+    [ReadOnly] [SerializeField] BattleUnitSlot bUnitSlot;
     [ReadOnly] [SerializeField] List<ItemSlot> listItems;
     [Separator]
     [SerializeField] bool updateCI;
@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
         if (updateCI)
         {
             //AddCharacterUnit(_cUnit, 77);
-            //SetCharacters();
+            SetCharacters();
 
             SetItems();
 
@@ -98,6 +98,8 @@ public class GameController : MonoBehaviour
     #endregion
 
     #region Set Characters
+
+    #region Old Just ignore this
     //void SetCharacters()
     //{
     //    listCharacters = GameData.listCharacters;
@@ -108,10 +110,21 @@ public class GameController : MonoBehaviour
     //{
     //    GameData.listCharacters.Add(new UserCharactersSlot(_characterUnit, _level));
     //}
+    #endregion
 
     void SetCharacters()
-    { 
-    
+    {
+        bUnitSlot = GameData.bUnitSlot;
+    }
+
+    public void AddBattleCharSlot(HBCharacterBase _characterUnit, int _level)
+    {
+        GameData.bUnitSlot.battleUnit = new UserCharactersSlot(_characterUnit, _level);
+    }
+
+    public void AddBattleSubCharSlot(HBCharacterBase _characterUnit, int _level)
+    {
+        GameData.bUnitSlot.subBattleUnit = new UserCharactersSlot(_characterUnit, _level);
     }
     #endregion
 

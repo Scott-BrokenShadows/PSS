@@ -18,6 +18,10 @@ public class BattleSystem : MonoBehaviour
     [HideInInspector] public List<LevelWave> currentWaveOnScene;
     [ReadOnly] public List<GameObject> cEnemy;
 
+    // The current Players on the game
+    [ReadOnly] public GameObject cPlayer;
+    [ReadOnly] public GameObject cSubPlayer;
+
     // How many Grid Rows based on the LevelStage.cs
     #region Grid Rows
     [Min(0)] float range;

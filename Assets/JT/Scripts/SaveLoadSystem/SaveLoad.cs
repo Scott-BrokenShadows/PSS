@@ -73,6 +73,6 @@ public class SaveData// this class gets saved to the file, add any data you want
     //public string gameplayTime;
     //public int gameCurrency;
     //public List<UserCharactersSlot> listCharacters;
-    //public List<UserCharactersSlot> listPartyBattleUnits;
+    //public BattleUnitSlot bUnitSlot;
     //public List<ItemSlot> listItems;
 }
