@@ -10,7 +10,7 @@ public class HBCharacterBattleUnits : MonoBehaviour
     #region Inspector
     // Get the data from the database
     [SerializeField] public HBCharacterBase _base;
-    [SerializeField] int level;
+    [Range(0, 100)] [SerializeField] int level;
     public bool isPlayer;
 
     // Get the data from HBCharacter
@@ -30,9 +30,9 @@ public class HBCharacterBattleUnits : MonoBehaviour
 
     // Player Movement Control
     Rigidbody2D _rb;
-    public Vector2 _movementInput;
-    Vector2 _smoothMovementInput;
-    Vector2 _movementInputSmoothVelocity;
+    //public Vector2 _movementInput;
+    //Vector2 _smoothMovementInput;
+    //Vector2 _movementInputSmoothVelocity;
 
     // Player Unit Controls
     [Separator]
@@ -76,10 +76,10 @@ public class HBCharacterBattleUnits : MonoBehaviour
     #region Set Up
     void SetUp()
     {
-        //HBCharacter = new HBCharacter(_base, level);
-
+        // Get the data level
+        HBCharacter = new HBCharacter(_base, level);
+        // Get the Rigidbody2D
         _rb = GetComponent<Rigidbody2D>();
-
         // Player set to Player Controller position
         if (isPlayer) { transform.position = BattlePlayerControl._currentTransform.position; }
 
@@ -124,7 +124,7 @@ public class HBCharacterBattleUnits : MonoBehaviour
         if (transform.position.x > BattleSystem.Remap(BattleSystem._laneSlowDown[1], 0, 1, -BattleSystem.horizontal, BattleSystem.horizontal))
         {
             // Enemy Minions Movement
-            _rb.velocity = Vector3.left * _base.Speed;
+            _rb.velocity = Vector3.left * ((_base.Speed / 999f) * 15f);
         }
         else
         {
