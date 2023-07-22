@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    // Inspector------------------------------------------------------------------------
+
+    #region Inspector
     public HBCharacterBase _cUnit;
     [Separator]
     [ReadOnly] [SerializeField] string currentDateTime;
@@ -11,12 +14,16 @@ public class GameController : MonoBehaviour
     [ReadOnly] [SerializeField] string currency;
     [Separator]
     [ReadOnly] [SerializeField] List<UserCharactersSlot> listCharacters = new List<UserCharactersSlot>();
-    [ReadOnly] [SerializeField] UserCharactersSlot[] listPartyBattleUnits;
+    //[ReadOnly] [SerializeField] UserCharactersSlot listPartyBattleUnits;
     [ReadOnly] [SerializeField] List<ItemSlot> listItems;
     [Separator]
     [SerializeField] bool updateCI;
     [SerializeField] bool updateCI2;
+    #endregion
 
+    // Start & Update------------------------------------------------------------------------
+
+    #region Start & Update
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
@@ -28,23 +35,36 @@ public class GameController : MonoBehaviour
         SetTotalPlayTime();
         SetCurrency();
 
+        TestingButton();
+    }
+    #endregion
+
+    // This is testing the function is working------------------------------------------------------------------------
+
+    #region Testing
+    void TestingButton()
+    {
         if (updateCI)
         {
-            AddCharacterUnit(_cUnit, 77);
+            //AddCharacterUnit(_cUnit, 77);
+            //SetCharacters();
 
-            SetCharacters();
             SetItems();
 
             updateCI = false;
             return;
         }
     }
+    #endregion
 
+    // Setting Data to GameData------------------------------------------------------------------------
+
+    #region Set Time Function
     void SetRealDateTime()
     {
         System.DateTime myTime = System.DateTime.Now;
         GameData.dateTime = myTime.ToString();
-        SaveLoad.SaveSystem.savedData.dateTime = GameData.dateTime;
+        //SaveLoad.SaveSystem.savedData.dateTime = GameData.dateTime;
 
         currentDateTime = GameData.dateTime;
     }
@@ -52,7 +72,7 @@ public class GameController : MonoBehaviour
     void SetTotalPlayTime()
     {
         GameData.gameplayTime = FormatTime(this.TotalTime);
-        SaveLoad.SaveSystem.savedData.gameplayTime = GameData.gameplayTime;
+        //SaveLoad.SaveSystem.savedData.gameplayTime = GameData.gameplayTime;
         currentGameplayTime = GameData.gameplayTime;
     }
 
@@ -75,24 +95,37 @@ public class GameController : MonoBehaviour
     }
     #endregion
 
+    #endregion
+
+    #region Set Characters
+    //void SetCharacters()
+    //{
+    //    listCharacters = GameData.listCharacters;
+    //    SaveLoad.SaveSystem.savedData.listCharacters = GameData.listCharacters;
+    //}
+
+    //public void AddCharacterUnit(HBCharacterBase _characterUnit, int _level)
+    //{
+    //    GameData.listCharacters.Add(new UserCharactersSlot(_characterUnit, _level));
+    //}
+
     void SetCharacters()
-    {
-        listCharacters = GameData.listCharacters;
-        SaveLoad.SaveSystem.savedData.listCharacters = GameData.listCharacters;
+    { 
+    
     }
+    #endregion
 
-    public void AddCharacterUnit(HBCharacterBase _characterUnit, int _level)
-    {
-        GameData.listCharacters.Add(new UserCharactersSlot(_characterUnit, _level));
-    }
-
+    #region Set Items
     void SetItems()
     {
         listItems = GameData.listItems;
     }
+    #endregion
 
+    #region Set Currency
     void SetCurrency()
     {
         currency = $"${GameData.gameCurrency.ToString()}";
     }
+    #endregion
 }

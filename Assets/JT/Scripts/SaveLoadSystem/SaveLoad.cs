@@ -69,10 +69,10 @@ public class SaveLoad : MonoBehaviour
 [System.Serializable]
 public class SaveData// this class gets saved to the file, add any data you want saved to this
 {
-    public string dateTime;
-    public string gameplayTime;
-    public int gameCurrency;
-    public List<UserCharactersSlot> listCharacters;
-    public List<UserCharactersSlot> listPartyBattleUnits;
-    public List<ItemSlot> listItems;
+    //public string dateTime;
+    //public string gameplayTime;
+    //public int gameCurrency;
+    //public List<UserCharactersSlot> listCharacters;
+    //public List<UserCharactersSlot> listPartyBattleUnits;
+    //public List<ItemSlot> listItems;
 }

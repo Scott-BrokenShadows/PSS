@@ -18,6 +18,13 @@ public class UserCharactersSlot
 }
 
 [System.Serializable]
+public class BattleUnitSlot
+{
+    public UserCharactersSlot battleUnit;
+    public UserCharactersSlot subBattleUnit;
+}
+
+[System.Serializable]
 public class ItemSlot
 {
     public int id; //Example: item001, item002, item003
@@ -30,6 +37,7 @@ public static class GameData //Store the Data here
     public static string gameplayTime;
     public static int gameCurrency;
     public static List<UserCharactersSlot> listCharacters = new List<UserCharactersSlot>();
-    public static List<UserCharactersSlot> listPartyBattleUnits = new List<UserCharactersSlot>();
+    public static BattleUnitSlot bUnitSlot;
+    //public static List<UserCharactersSlot> listPartyBattleUnits = new List<UserCharactersSlot>();
     public static List<ItemSlot> listItems = new List<ItemSlot>();
 }

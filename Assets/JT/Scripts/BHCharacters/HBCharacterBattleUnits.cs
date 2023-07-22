@@ -138,15 +138,21 @@ public class HBCharacterBattleUnits : MonoBehaviour
     #region Player Character Movement Function
     void FrontSubMovement()
     {
-        Vector3 moveDirection = new Vector3(BattlePlayerControl._currentTransform.position.x, BattlePlayerControl._currentTransform.position.y)
-                              - new Vector3(transform.position.x, transform.position.y);
+        #region
+        //Vector3 moveDirection = new Vector3(BattlePlayerControl._currentTransform.position.x, BattlePlayerControl._currentTransform.position.y)
+        //                      - new Vector3(transform.position.x, transform.position.y);
 
-        // To Follow You Straight
-        Vector3 movementDirection = moveDirection - (BattlePlayerControl._currentTransform.transform.forward * BattlePlayerControl._targetRange);
-        _movementInput = new Vector2(movementDirection.x, movementDirection.y);
+        //// To Follow You Straight
+        //Vector3 movementDirection = moveDirection - (BattlePlayerControl._currentTransform.transform.forward * BattlePlayerControl._targetRange);
+        //_movementInput = new Vector2(movementDirection.x, movementDirection.y);
 
-        _smoothMovementInput = Vector2.SmoothDamp(_smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
-        _rb.velocity = _smoothMovementInput * _base.Speed;
+        ////_smoothMovementInput = Vector2.SmoothDamp(_smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
+        ////_rb.velocity = _smoothMovementInput * _base.Speed;
+
+        //_rb.velocity = _movementInput * ((_base.Speed / 999f) * 10f);
+        #endregion
+
+        transform.position = BattlePlayerControl._currentTransform.position;
     }
 
     void BackSubMovement()

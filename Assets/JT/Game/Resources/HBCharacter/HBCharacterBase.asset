@@ -25,7 +25,7 @@ MonoBehaviour:
   spAttack: 117
   defence: 124
   spDefence: 102
-  speed: 5
-  totalStats: 487
+  speed: 535
+  totalStats: 1017
   critical: 78
   unitSkill: {fileID: 0}
