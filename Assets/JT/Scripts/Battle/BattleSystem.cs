@@ -179,10 +179,6 @@ public class BattleSystem : MonoBehaviour
                     bUnit.GetComponent<BattleUnit>().level = currentWaveOnScene[cWave].EnemyList[b].lv;
                     bUnit.GetComponent<BattleUnit>().sLane = currentWaveOnScene[cWave].EnemyList[b].stopLane;
                     bUnit.GetComponent<BattleUnit>().isPlayer = false;
-
-                    //// Set the Unit Data
-                    //bUnit.GetComponent<BattleUnit>().bUnitHud.SetData(bUnit.GetComponent<BattleUnit>().HBCharacter);
-
                     cEnemy.Add(bUnit);
                     currentWaveOnScene[cWave].EnemyList[b].callOnce = true;
                 }

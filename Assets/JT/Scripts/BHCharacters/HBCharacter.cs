@@ -39,5 +39,13 @@ public class HBCharacter
     // HP------------------------------------------------------------------------
     public int MaxHP { get { return CalculateMaxHP(); } }
     int CalculateMaxHP() { return Mathf.FloorToInt(((Base.MaxHP * Level) / 100f) + 10); }
+    // Take Damage------------------------------------------------------------------------
+    //public bool TakeDamage(HBCharacter attacker)
+    //{
+    //    float modifiers = Random.Range(0.85f, 1f);
+    //    float a = (2 * attacker.Level + 10) / 250f;
+    //    float d = a *
+
+    //}
     #endregion
 }
