@@ -44,19 +44,11 @@ public class HBCharacter
     // Take Damage------------------------------------------------------------------------
 
     #region Take Damage Calculation
-    // Fix: Pass 3 pieces of information
-    // - Unable to Fight
-    // - Critical
-    // - Compability
     public DamageDetails TakeDamage(HBCharacter attacker) // Basic Attack
     {
         // Critical
         float critical = 1f; // Normal damage <no critical>
-        //if (Random.value * 100f <= 5f) //5% chance critical 
-        //{
-        //    critical = 1.5f; //critical damage
-        //}
-        if (Random.value * 100f <= attacker.Base.Critical) //5% chance critical 
+        if (Random.value * 100f <= attacker.Base.Critical) // HBCharacter Critical% chance critical 
         {
             // Critical Damage
             critical = 1.5f;
@@ -66,10 +58,8 @@ public class HBCharacter
 
         float modifiers = Random.Range(0.85f, 1.05f) * type * critical;
 
-        // Basic Attack Damage
-        int damageBasic = 0;
-
         // Attack Damage
+        int damageBasic = 0;
         float basic = (float)attacker.Attack * 50 / (float)this.Defense;
         damageBasic = Mathf.FloorToInt(basic * modifiers);
 
