@@ -164,7 +164,7 @@ MonoBehaviour:
       timer: 5
       row: 1
       position: 10
-      stopLane: 0
+      stopLane: 1
       cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
@@ -173,7 +173,7 @@ MonoBehaviour:
       timer: 10
       row: 2
       position: 8
-      stopLane: 0
+      stopLane: 2
       cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3

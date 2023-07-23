@@ -37,6 +37,9 @@ public class BattleUnit : MonoBehaviour
     [Header("Unit Function")]
     [ReadOnly] [SerializeField] bool subUnit;
 
+    // Enemy Unit Controls
+    public int sLane;
+
     // Keep Data this gameobject
     GameObject myGameObject;
 
@@ -130,16 +133,24 @@ public class BattleUnit : MonoBehaviour
     #region Enemy Character and Minion Movement Function
     void MinionMovement()
     {
-        if (transform.position.x > BattleSystem.Remap(BattleSystem._laneSlowDown[1], 0, 1, -BattleSystem.horizontal, BattleSystem.horizontal))
+        if (sLane <= 0)
         {
             // Enemy Minions Movement
             _rb.velocity = Vector3.left * ((HBCharacter.Base.Speed / 999f) * 15f);
         }
         else
         {
-            // Enemy Minions Stop Movement
-            _rb.velocity = Vector3.left * 0;
-            transform.position = new Vector3(BattleSystem.Remap(BattleSystem._laneSlowDown[1], 0, 1, -BattleSystem.horizontal, BattleSystem.horizontal), transform.position.y);
+            if (transform.position.x > BattleSystem.Remap(BattleSystem._laneSlowDown[sLane - 1], 0, 1, -BattleSystem.horizontal, BattleSystem.horizontal))
+            {
+                // Enemy Minions Movement
+                _rb.velocity = Vector3.left * ((HBCharacter.Base.Speed / 999f) * 15f);
+            }
+            else
+            {
+                // Enemy Minions Stop Movement
+                _rb.velocity = Vector3.left * 0;
+                transform.position = new Vector3(BattleSystem.Remap(BattleSystem._laneSlowDown[sLane - 1], 0, 1, -BattleSystem.horizontal, BattleSystem.horizontal), transform.position.y);
+            }
         }
     }
     #endregion
