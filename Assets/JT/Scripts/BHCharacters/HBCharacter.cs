@@ -42,13 +42,6 @@ public class HBCharacter
     public int MaxHP { get { return CalculateMaxHP(); } }
     int CalculateMaxHP() { return Mathf.FloorToInt(((Base.MaxHP * Level) / 100f) + 10); }
     // Take Damage------------------------------------------------------------------------
-    //public bool TakeDamage(HBCharacter attacker)
-    //{
-    //    float modifiers = Random.Range(0.85f, 1f);
-    //    float a = (2 * attacker.Level + 10) / 250f;
-    //    float d = a *
-
-    //}
 
     #region Take Damage Calculation
     // Fix: Pass 3 pieces of information
@@ -65,23 +58,24 @@ public class HBCharacter
         //}
         if (Random.value * 100f <= attacker.Base.Critical) //5% chance critical 
         {
-            critical = 1.5f; //critical damage
+            // Critical Damage
+            critical = 1.5f;
         }
         // Compability
         float type = ElementChart.GetEffectiveness(attacker.Base.Elements, this.Base.Elements);
 
-        //float modifiers = Random.Range(0.85f, 1f);
-        float modifiers = Random.Range(0.95f, 1.05f) * type * critical;
-
-        int damageBasic = 0;    // Basic Attack Damage
+        float modifiers = Random.Range(0.85f, 1.05f) * type * critical;
 
         // Basic Attack Damage
+        int damageBasic = 0;
+
+        // Attack Damage
         float basic = (float)attacker.Attack * 50 / (float)this.Defense;
         damageBasic = Mathf.FloorToInt(basic * modifiers);
 
         int damage = damageBasic;
 
-        int damageD = Mathf.Clamp(damage, 0, 9999);
+        int damageD = Mathf.Clamp(damage, 0, 999);
 
         DamageDetails damageDetails = new DamageDetails
         {
@@ -103,13 +97,15 @@ public class HBCharacter
     }
     #endregion
 
-    #endregion
-
+    #region Update Health
     public void UpdateHP(int damage)
     {
         HP = Mathf.Clamp(HP - damage, 0, MaxHP);
         HpChanged = true;
     }
+    #endregion
+
+    #endregion
 }
 
 public class DamageDetails

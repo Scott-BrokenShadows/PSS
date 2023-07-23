@@ -38,6 +38,14 @@ public class BattleBullet : MonoBehaviour
     {
         if (collision.transform.GetComponent<BattleUnit>() != null && collision.GetComponent<BattleUnit>().isPlayer != isPlayer)
         {
+            // target unit damage calculation
+            DamageDetails damageDetails = collision.transform.GetComponent<BattleUnit>().HBCharacter.TakeDamage(sourceUnit.Digimon);
+            // Compability / Critical message
+            //yield return ShowDamageDetails(damageDetails, targetUnit);
+            // HP Refection
+            //yield return targetUnit.Hud.UpdateHP();
+            collision.transform.GetComponent<BattleUnit>().HBCharacter.UpdateHP();
+
             Destroy(this.gameObject);
         }
     }
