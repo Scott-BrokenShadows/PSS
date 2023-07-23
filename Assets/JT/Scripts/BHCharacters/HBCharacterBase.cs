@@ -95,3 +95,24 @@ public enum Elements
     Magic,
     Machine
 }
+
+public class ElementChart
+{
+    static float[][] chart =
+    {
+        // TODO: Temporary Implementation
+        // Attack/Defense  // FRE VIR VAC DAT UNK
+        /*FRE*/ new float[] { 1f, 1f, 1f, 1f, 1f },
+        /*VIR*/ new float[] { 1f, 1f, 1f, 1f, 1f },
+        /*VAC*/ new float[] { 1f, 1f, 1f, 1f, 1f },
+        /*DAT*/ new float[] { 1f, 1f, 1f, 1f, 1f },
+        /*UNK*/ new float[] { 1f, 1f, 1f, 1f, 1f }
+    };
+    public static float GetEffectiveness(Elements attackType, Elements defenseType)
+    {
+        int row = (int)attackType;
+        int col = (int)defenseType;
+        //Debug.Log((row,col));
+        return chart[row][col];
+    }
+}
