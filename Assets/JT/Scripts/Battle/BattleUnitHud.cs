@@ -12,7 +12,7 @@ public class BattleUnitHud : MonoBehaviour
     public void SetData(HBCharacter hbCharacter)
     {
         nameText.text = hbCharacter.Base.Name;
-        levelText.text = hbCharacter.Level.ToString();
+        levelText.text = "Lv."+hbCharacter.Level.ToString();
         hpBar.SetHP((float) hbCharacter.HP / hbCharacter.MaxHP);
     }
 }
