@@ -41,7 +41,7 @@ public class HBCharacter
     int CalculateMaxHP() { return Mathf.FloorToInt(((Base.MaxHP * Level) / 100f) + 10); }
     // Take Damage------------------------------------------------------------------------
     #region Take Damage Calculation
-    public DamageDetails TakeDamage(HBCharacter attacker) // Basic Attack
+    public DamageDetails TakeDamage(HBCharacter attacker) // Attack
     {
         // Critical
         float critical = 1f; // Normal damage <no critical>
