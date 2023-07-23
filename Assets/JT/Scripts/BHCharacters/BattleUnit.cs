@@ -77,8 +77,8 @@ public class BattleUnit : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         // Player set to Player Controller position
         if (isPlayer) { transform.position = BattlePlayerControl._currentTransform.position; }
-        //// Set the Unit Data
-        //bUnitHud.SetData(HBCharacter);
+        // Set the Unit Data
+        bUnitHud.SetData(HBCharacter);
 
         #region Instantiate the Asset and Name them
         this.gameObject.name = (HBCharacter.Base.Name != "") ? HBCharacter.Base.Name + ((isPlayer) ? "(Player)" : "(Enemy)") : "Default";

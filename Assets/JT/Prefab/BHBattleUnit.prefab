@@ -772,7 +772,7 @@ MonoBehaviour:
   _base: {fileID: 0}
   level: 0
   isPlayer: 0
-  bUnitHud: {fileID: 0}
+  bUnitHud: {fileID: 8190368135142230767}
   bulletAsset: {fileID: 6849902985964999287, guid: 4accaa6c61da6c54781648a36cd10343, type: 3}
   currentBulletState: 1
   range: 10
