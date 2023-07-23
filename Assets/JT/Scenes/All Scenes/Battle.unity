@@ -407,6 +407,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
     - target: {fileID: 8964062865459104801, guid: 78ab3c9da8570884a9363ab37cfe32c3, type: 3}
+      propertyPath: level
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964062865459104801, guid: 78ab3c9da8570884a9363ab37cfe32c3, type: 3}
       propertyPath: bUnitHud
       value: 
       objectReference: {fileID: 1614834855}

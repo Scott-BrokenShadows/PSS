@@ -22,7 +22,6 @@ public class HBCharacterBase : ScriptableObject
     [Separator()]
     [SerializeField] UnitType unitType;
     [SerializeField] Elements elements;
-    [SerializeField] DefaultBulletType defaultBulletType;
 
     [Separator()]
     // Base Stats
@@ -54,6 +53,7 @@ public class HBCharacterBase : ScriptableObject
     }
 
     [Separator()]
+    [SerializeField] BulletBase unitBullet;
     [SerializeField] SkillBase unitSkill;
 
     #region Get and Set Value
@@ -65,7 +65,6 @@ public class HBCharacterBase : ScriptableObject
 
     public UnitType UnitType { get { return unitType; } }
     public Elements Elements { get { return elements; } }
-    public DefaultBulletType DefaultBulletType { get { return defaultBulletType; } }
 
     public int MaxHP { get { return maxHP; } }
 
@@ -76,6 +75,7 @@ public class HBCharacterBase : ScriptableObject
     public int Speed { get { return speed; } }
     public int Critical { get { return critical; } }
 
+    public BulletBase UnitBullet { get { return unitBullet; } }
     public SkillBase UnitSkill { get { return unitSkill; } }
     #endregion
 }
@@ -94,11 +94,4 @@ public enum Elements
     Nature,
     Magic,
     Machine
-}
-
-public enum DefaultBulletType
-{ 
-    SingleShot,
-    MultiLaneShot,
-    MultiSpreadShot
 }

@@ -21,12 +21,9 @@ public class BattleUnit : MonoBehaviour
     [Separator]
     [Header ("Bullet Function")]
     public GameObject bulletAsset;
-    public BulletPattern currentBulletState;
-    public enum BulletPattern
-    { none, single, multiSpread, multiStraight ,allDirection}
-    [Min(0)] public float range = 10;
-    [Min(0)] public int count = 3;
-    [Min(0)] public float reloadTimeBullet = 1;
+    [HideInInspector] [Min(0)] public float range;
+    [HideInInspector] [Min(0)] public int count;
+    [HideInInspector] [Min(0)] public float reloadTimeBullet;
     private float timerBullet;
 
     // Player Movement Control
@@ -38,7 +35,7 @@ public class BattleUnit : MonoBehaviour
     [ReadOnly] [SerializeField] bool subUnit;
 
     // Enemy Unit Controls
-    public int sLane;
+    [ReadOnly] public int sLane;
 
     // Keep Data this gameobject
     GameObject myGameObject;
@@ -91,6 +88,11 @@ public class BattleUnit : MonoBehaviour
         asset.transform.localRotation = Quaternion.Euler(0, ((isPlayer) ? 0 : 180), 0);
         asset.name = HBCharacter.Base.Name + "Model";
         #endregion
+
+        // Get Data from Bullet
+        range = HBCharacter.Base.UnitBullet.BulletRange;
+        count = HBCharacter.Base.UnitBullet.BulletCount;
+        reloadTimeBullet = HBCharacter.Base.UnitBullet.BulletReload;
     }
     #endregion
 
@@ -188,19 +190,17 @@ public class BattleUnit : MonoBehaviour
     #region Shoot Bullet
     void ShootBullet()
     {
-        switch (currentBulletState)
+        switch (HBCharacter.Base.UnitBullet.BulletType)
         {
-            case BulletPattern.single:
+            case BulletType.SingleShot:
                 SingleShot();
                 break;
-            case BulletPattern.multiSpread:
+            case BulletType.MultiSpreadShot:
                 MultiSpreadShot();
                 break;
-            case BulletPattern.multiStraight:
+            case BulletType.MultiLaneShot:
                 MultiStraightShot();
                 break;
-            case BulletPattern.none:
-                return;
         }
     }
     #endregion
@@ -209,7 +209,10 @@ public class BattleUnit : MonoBehaviour
     void SingleShot()
     {
         GameObject asset = Instantiate(bulletAsset, transform.position, Quaternion.LookRotation(transform.forward));
-        asset.GetComponent<Bullet>().isPlayer = (isPlayer) ? true : false;
+        asset.GetComponent<BattleBullet>().isPlayer = (isPlayer) ? true : false;
+        asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
+        asset.GetComponent<BattleBullet>().atk = HBCharacter.Attack;
+        asset.GetComponent<BattleBullet>().spAtk = HBCharacter.SpAttack;
     }
 
     void MultiSpreadShot()
@@ -218,7 +221,10 @@ public class BattleUnit : MonoBehaviour
         {
             Debug.DrawRay(r.origin, r.direction * 5);
             GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
-            asset.GetComponent<Bullet>().isPlayer = (isPlayer) ? true : false;
+            asset.GetComponent<BattleBullet>().isPlayer = (isPlayer) ? true : false;
+            asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
+            asset.GetComponent<BattleBullet>().atk = HBCharacter.Attack;
+            asset.GetComponent<BattleBullet>().spAtk = HBCharacter.SpAttack;
         }
     }
 
@@ -228,7 +234,10 @@ public class BattleUnit : MonoBehaviour
         {
             Debug.DrawRay(r.origin, r.direction * 5);
             GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
-            asset.GetComponent<Bullet>().isPlayer = (isPlayer) ? true : false;
+            asset.GetComponent<BattleBullet>().isPlayer = (isPlayer) ? true : false;
+            asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
+            asset.GetComponent<BattleBullet>().atk = HBCharacter.Attack;
+            asset.GetComponent<BattleBullet>().spAtk = HBCharacter.SpAttack;
         }
     }
     #endregion
