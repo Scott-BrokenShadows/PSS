@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class BattleSystem : MonoBehaviour
 {
+    // Inspector------------------------------------------------------------------------
+
+    #region Inspector
     public GameObject battleUnit;
 
     // LevelStage
-    [ReadOnly] public LevelStage currentLevel;
+    [ReadOnly] private LevelStage currentLevel;
 
     // Whats going on with the current Wave
-    [ReadOnly] public int currentWave;
+    [ReadOnly] private int currentWave;
     int cWave;
-    [ReadOnly] public float cTimer;
+    [ReadOnly] private float cTimer;
 
     // The current Enemies on the game
     [HideInInspector] public List<LevelWave> currentWaveOnScene;
     [ReadOnly] public List<GameObject> cEnemy;
 
     // The current Players on the game
-    [ReadOnly] public GameObject cPlayer;
-    [ReadOnly] public GameObject cSubPlayer;
+    [ReadOnly] private GameObject cPlayer;
+    [ReadOnly] private GameObject cSubPlayer;
 
     // How many Grid Rows based on the LevelStage.cs
     #region Grid Rows
@@ -32,12 +35,16 @@ public class BattleSystem : MonoBehaviour
     [HideInInspector] public List<Vector3> GridRows;
     static public float vertical;
     static public float horizontal;
-    public int cRows;
+    [HideInInspector] public int cRows;
     #endregion
 
     [Range(0, 1)] [SerializeField] List<float> laneSlowDown;
     static public List<float> _laneSlowDown;
+    #endregion
 
+    // Start & Update------------------------------------------------------------------------
+
+    #region Start & Update
     private void Start()
     {
         SetupBattle();
@@ -48,9 +55,12 @@ public class BattleSystem : MonoBehaviour
         TimerWave();
         InstanceEnemies();
     }
+    #endregion
 
-    // Calculate the Grid Wave positions
+    // Get Grid Rows ------------------------------------------------------------------------
+
     #region Get Grid Rows
+    // Calculate the Grid Wave positions
     Ray[] GetGridRows(Transform origin, float range, int count)
     {
         Ray[] rays = new Ray[count];
@@ -66,6 +76,9 @@ public class BattleSystem : MonoBehaviour
     }
     #endregion
 
+    // Start Up Mechanics------------------------------------------------------------------------
+
+    #region Setup
     // Do what on the start
     void SetupBattle()
     {
@@ -108,7 +121,11 @@ public class BattleSystem : MonoBehaviour
         InstancePlayers();
         InstanceSubPlayers();
     }
+    #endregion
 
+    // Instantiate Mechanics------------------------------------------------------------------------
+
+    #region Instance Enemy Unit
     // Timer Wave: when the timer reaches "0" go next wave
     void TimerWave()
     {
@@ -158,16 +175,21 @@ public class BattleSystem : MonoBehaviour
 
                     // Instantiate the battleUnit with the data from the LevelStage
                     GameObject bUnit = Instantiate(battleUnit, new Vector3(currentWaveOnScene[cWave].EnemyList[b].position, GridRows[currentWaveOnScene[cWave].EnemyList[b].row - 1].y, 0), Quaternion.identity);
-                    bUnit.GetComponent<HBCharacterBattleUnits>()._base = currentWaveOnScene[cWave].EnemyList[b]._base;
-                    bUnit.GetComponent<HBCharacterBattleUnits>().isPlayer = false;
-                    cEnemy.Add(bUnit);
+                    bUnit.GetComponent<BattleUnit>()._base = currentWaveOnScene[cWave].EnemyList[b]._base;
+                    bUnit.GetComponent<BattleUnit>().isPlayer = false;
 
+                    //// Set the Unit Data
+                    //bUnit.GetComponent<BattleUnit>().bUnitHud.SetData(bUnit.GetComponent<BattleUnit>().HBCharacter);
+
+                    cEnemy.Add(bUnit);
                     currentWaveOnScene[cWave].EnemyList[b].callOnce = true;
                 }
             }
         }
     }
+    #endregion
 
+    #region Instance Player Unit
     void InstancePlayers()
     { 
         
@@ -176,7 +198,11 @@ public class BattleSystem : MonoBehaviour
     {
 
     }
+    #endregion
 
+    // Remap Function------------------------------------------------------------------------
+
+    #region Remap Function
     static public float Remap(float from, float fromMin, float fromMax, float toMin, float toMax)
     {
         var fromAbs = from - fromMin;
@@ -191,10 +217,14 @@ public class BattleSystem : MonoBehaviour
 
         return to;
     }
+    #endregion
 
-    // Just show gizmos
+    // Show Gizmos------------------------------------------------------------------------
+
+    #region Gizmos
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.white;
         #region Grid Rows
         if (currentLevel)
         {
@@ -205,24 +235,27 @@ public class BattleSystem : MonoBehaviour
             }
         }
         #endregion
+        #region Borders
+        Gizmos.DrawLine(new Vector3(-horizontal, -vertical), new Vector3(horizontal, -vertical));
+        Gizmos.DrawLine(new Vector3(-horizontal, vertical), new Vector3(horizontal, vertical));
+        Gizmos.DrawLine(new Vector3(-horizontal, -vertical), new Vector3(-horizontal, vertical));
+        Gizmos.DrawLine(new Vector3(horizontal, -vertical), new Vector3(horizontal, vertical));
+        #endregion
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(new Vector3(-horizontal - _screenSpace.x, -vertical - _screenSpace.y), 0.25f);
-        Gizmos.DrawSphere(new Vector3(horizontal + _screenSpace.x, -vertical - _screenSpace.y), 0.25f);
-        Gizmos.DrawSphere(new Vector3(-horizontal - _screenSpace.x, vertical + _screenSpace.y), 0.25f);
-        Gizmos.DrawSphere(new Vector3(horizontal + _screenSpace.x, vertical + _screenSpace.y), 0.25f);
-
+        #region Outside Borders
         Gizmos.DrawLine(new Vector3(-horizontal - _screenSpace.x, -vertical - _screenSpace.y),
                         new Vector3(horizontal + _screenSpace.x, -vertical - _screenSpace.y));
         Gizmos.DrawLine(new Vector3(-horizontal - _screenSpace.x, vertical + _screenSpace.y),
                         new Vector3(horizontal + _screenSpace.x, vertical + _screenSpace.y));
-
         Gizmos.DrawLine(new Vector3(-horizontal - _screenSpace.x, -vertical - _screenSpace.y),
                         new Vector3(-horizontal - _screenSpace.x, vertical + _screenSpace.y));
         Gizmos.DrawLine(new Vector3(horizontal + _screenSpace.x, -vertical - _screenSpace.y),
                         new Vector3(horizontal + _screenSpace.x, vertical + _screenSpace.y));
+        #endregion
 
         Gizmos.color = Color.red;
+        #region Enemy Lane Stop
         if (_laneSlowDown != null)
         {
             for (int i = 0; i < _laneSlowDown.Count; i++)
@@ -231,5 +264,7 @@ public class BattleSystem : MonoBehaviour
                     new Vector3(Remap(_laneSlowDown[i], 0, 1, -horizontal, horizontal), vertical));
             }
         }
+        #endregion
     }
+    #endregion
 }

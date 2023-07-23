@@ -19,11 +19,14 @@ public class HBEnemyList
     // Get the data from the database
     [SerializeField] public HBCharacterBase _base;
     public HBCharacter HBCharacter { get; set; }
-    public int lv;
+    [Range(0, 100)] public int lv;
+    [Header("Instantiate Location and Timer")]
+    public float timer;
     [Min(1)] public int row;
     public float position;
-    public float timer;
-    public bool callOnce;
+    public int stopLane;
+    [HideInInspector] public float cTimer;
+    [HideInInspector] public bool callOnce;
 }
 
 public class LevelStage : MonoBehaviour

@@ -7,6 +7,9 @@ public class Bullet : MonoBehaviour
     public float speed = 2;
     public bool isPlayer;
 
+    public int atk;
+    public int spAtk;
+
     void Update()
     {
         // Movement Bullet
@@ -17,7 +20,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.GetComponent<HBCharacterBattleUnits>() != null && collision.GetComponent<HBCharacterBattleUnits>().isPlayer != isPlayer)
+        if (collision.transform.GetComponent<BattleUnit>() != null && collision.GetComponent<BattleUnit>().isPlayer != isPlayer)
         {
             Destroy(this.gameObject);
         }

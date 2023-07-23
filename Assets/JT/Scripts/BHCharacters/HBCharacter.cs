@@ -15,7 +15,7 @@ public class HBCharacter
     {
         Base = hbBase;
         Level = hbLevel;
-        //HP = MaxHP;
+        HP = MaxHP;
     }
 
     #region Stats Calculation
@@ -37,7 +37,7 @@ public class HBCharacter
     public int Speed { get { return CalculateSpeed(); } }
     int CalculateSpeed() { return Mathf.FloorToInt(((Base.Speed * Level) / 100f) + 5); }
     // HP------------------------------------------------------------------------
-    //public int MaxHP { get { return CalculateMaxHP(); } }
-    //int CalculateMaxHP() { return Mathf.FloorToInt(((MaxHP * Level) / 100f) + 10); }
+    public int MaxHP { get { return CalculateMaxHP(); } }
+    int CalculateMaxHP() { return Mathf.FloorToInt(((Base.MaxHP * Level) / 100f) + 10); }
     #endregion
 }
