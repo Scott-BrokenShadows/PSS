@@ -10,7 +10,7 @@ public class BattleUnit : MonoBehaviour
     #region Inspector
     // Get the data from the database
     [SerializeField] public HBCharacterBase _base;
-    [Range(0, 100)] [SerializeField] int level;
+    [Range(0, 100)] [SerializeField] public int level;
     public bool isPlayer;
 
     // Get the data from HBCharacter
@@ -103,7 +103,7 @@ public class BattleUnit : MonoBehaviour
                 case UnitType.Character:
                     if (!subUnit) { FrontSubMovement(); } else { BackSubMovement(); }
                     break;
-                case UnitType.Minions:
+                case UnitType.Minion:
                     break;
                 case UnitType.Boss:
                     break;
@@ -114,11 +114,13 @@ public class BattleUnit : MonoBehaviour
             switch (HBCharacter.Base.UnitType)
             {
                 case UnitType.Character:
+                    MinionMovement();
                     break;
-                case UnitType.Minions:
+                case UnitType.Minion:
                     MinionMovement();
                     break;
                 case UnitType.Boss:
+                    MinionMovement();
                     break;
             }
         }

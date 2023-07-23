@@ -17,10 +17,10 @@ MonoBehaviour:
   description: 
   iconSprite: {fileID: 0}
   asset: {fileID: 8424154798648897263, guid: 3699e8601dd3e6441b64dcfd5f401ec1, type: 3}
-  unitType: 0
+  unitType: 1
   elements: 0
   defaultBulletType: 0
-  maxHP: 0
+  maxHP: 6624
   attack: 139
   spAttack: 117
   defence: 124

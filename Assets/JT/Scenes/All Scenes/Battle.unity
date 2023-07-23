@@ -159,73 +159,61 @@ MonoBehaviour:
     countDownTimer: 50
     EnemyList:
     - name: Enemy Slot 1
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
+      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      lv: 31
+      timer: 5
       row: 1
       position: 10
-      timer: 5
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
+      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      lv: 43
+      timer: 10
       row: 2
       position: 8
-      timer: 10
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
+      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      lv: 55
+      timer: 20
       row: 3
       position: 8
-      timer: 20
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
   - name: Wave 2
     countDownTimer: 50
     EnemyList:
     - name: Enemy Slot 1
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
+      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      lv: 54
+      timer: 5
       row: 3
       position: 10
-      timer: 5
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
+      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      lv: 35
+      timer: 5
       row: 4
       position: 20
-      timer: 5
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
+      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      lv: 44
+      timer: 10
       row: 5
       position: 5
-      timer: 10
-      callOnce: 0
-  - name: Wave 3
-    countDownTimer: 50
-    EnemyList:
-    - name: Enemy Slot 1
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
-      row: 3
-      position: 0
-      timer: 3
-      callOnce: 0
-    - name: Enemy Slot 2
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
-      row: 4
-      position: 0
-      timer: 5
-      callOnce: 0
-    - name: Enemy Slot 3
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
-      row: 5
-      position: 0
-      timer: 10
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
 --- !u!4 &365282397
 Transform:
@@ -413,6 +401,14 @@ PrefabInstance:
     - target: {fileID: 8134674288327931117, guid: 78ab3c9da8570884a9363ab37cfe32c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964062865459104801, guid: 78ab3c9da8570884a9363ab37cfe32c3, type: 3}
+      propertyPath: _base
+      value: 
+      objectReference: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
+    - target: {fileID: 8964062865459104801, guid: 78ab3c9da8570884a9363ab37cfe32c3, type: 3}
+      propertyPath: isPlayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -606,9 +602,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleUnit: {fileID: 7627603612187316186, guid: 78ab3c9da8570884a9363ab37cfe32c3, type: 3}
-  currentLevel: {fileID: 0}
-  currentWave: 0
-  cTimer: 0
   currentWaveOnScene: []
   cEnemy: []
   screenSpace: {x: 10, y: 5}

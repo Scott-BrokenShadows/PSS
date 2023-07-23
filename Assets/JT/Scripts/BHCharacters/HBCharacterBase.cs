@@ -83,7 +83,7 @@ public class HBCharacterBase : ScriptableObject
 public enum UnitType
 {
     Character,
-    Minions,
+    Minion,
     Boss
 }
 

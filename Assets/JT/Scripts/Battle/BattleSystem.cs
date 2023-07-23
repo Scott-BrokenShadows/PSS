@@ -176,6 +176,7 @@ public class BattleSystem : MonoBehaviour
                     // Instantiate the battleUnit with the data from the LevelStage
                     GameObject bUnit = Instantiate(battleUnit, new Vector3(currentWaveOnScene[cWave].EnemyList[b].position, GridRows[currentWaveOnScene[cWave].EnemyList[b].row - 1].y, 0), Quaternion.identity);
                     bUnit.GetComponent<BattleUnit>()._base = currentWaveOnScene[cWave].EnemyList[b]._base;
+                    bUnit.GetComponent<BattleUnit>().level = currentWaveOnScene[cWave].EnemyList[b].lv;
                     bUnit.GetComponent<BattleUnit>().isPlayer = false;
 
                     //// Set the Unit Data
