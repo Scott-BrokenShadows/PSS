@@ -7,8 +7,7 @@ public class BattleBullet : MonoBehaviour
     [LabelOverride("Bullet Base")]
     [SerializeField] public BulletBase _base;
     [LabelOverride("Unit Base")]
-    [SerializeField] public HBCharacterBase _hbBase;
-    public HBCharacter HBCharacter { get; set; }
+    [SerializeField] public BattleUnit bUnit;
 
     // Get the Data from Bullet Base
     [ReadOnly] public float speed;
@@ -41,13 +40,13 @@ public class BattleBullet : MonoBehaviour
     {
         if (collision.transform.GetComponent<BattleUnit>() != null && collision.GetComponent<BattleUnit>().isPlayer != isPlayer)
         {
-            //// target unit damage calculation
-            //DamageDetails damageDetails = collision.transform.GetComponent<BattleUnit>().HBCharacter.TakeDamage();
-            //// Compability / Critical message
-            ////yield return ShowDamageDetails(damageDetails, targetUnit);
-            //// HP Refection
-            //collision.transform.GetComponent<BattleUnit>().HBCharacter.UpdateHP();
-
+            // target unit damage calculation
+            DamageDetails damageDetails = collision.transform.GetComponent<BattleUnit>().HBCharacter.TakeDamage(bUnit.HBCharacter);
+            // Compability / Critical message
+            //ShowDamageDetails(damageDetails, targetUnit);
+            // HP Refection
+            //collision.transform.GetComponent<BattleUnit>().HBCharacter.UpdateHP(Mathf.FloorToInt(damageDetails.Damage));
+            collision.transform.GetComponent<BattleUnit>().bUnitHud.SetData(collision.transform.GetComponent<BattleUnit>().HBCharacter);
             Destroy(this.gameObject);
         }
     }

@@ -213,6 +213,7 @@ public class BattleUnit : MonoBehaviour
         asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
         asset.GetComponent<BattleBullet>().atk = HBCharacter.Attack;
         asset.GetComponent<BattleBullet>().spAtk = HBCharacter.SpAttack;
+        asset.GetComponent<BattleBullet>().bUnit = this;
     }
 
     void MultiSpreadShot()
@@ -225,6 +226,7 @@ public class BattleUnit : MonoBehaviour
             asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
             asset.GetComponent<BattleBullet>().atk = HBCharacter.Attack;
             asset.GetComponent<BattleBullet>().spAtk = HBCharacter.SpAttack;
+            asset.GetComponent<BattleBullet>().bUnit = this;
         }
     }
 
@@ -238,6 +240,7 @@ public class BattleUnit : MonoBehaviour
             asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
             asset.GetComponent<BattleBullet>().atk = HBCharacter.Attack;
             asset.GetComponent<BattleBullet>().spAtk = HBCharacter.SpAttack;
+            asset.GetComponent<BattleBullet>().bUnit = this;
         }
     }
     #endregion
