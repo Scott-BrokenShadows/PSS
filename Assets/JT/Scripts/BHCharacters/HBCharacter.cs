@@ -11,8 +11,6 @@ public class HBCharacter
     public int HP { get; set; }
     public Skill Skills { get; set; }
 
-    public bool HpChanged { get; set; }
-
     public HBCharacter(HBCharacterBase hbBase, int hbLevel)
     {
         Base = hbBase;
@@ -42,7 +40,6 @@ public class HBCharacter
     public int MaxHP { get { return CalculateMaxHP(); } }
     int CalculateMaxHP() { return Mathf.FloorToInt(((Base.MaxHP * Level) / 100f) + 10); }
     // Take Damage------------------------------------------------------------------------
-
     #region Take Damage Calculation
     public DamageDetails TakeDamage(HBCharacter attacker) // Basic Attack
     {
@@ -84,14 +81,6 @@ public class HBCharacter
 
         return damageDetails;
 
-    }
-    #endregion
-
-    #region Update Health
-    public void UpdateHP(int damage)
-    {
-        HP = Mathf.Clamp(HP - damage, 0, MaxHP);
-        HpChanged = true;
     }
     #endregion
 

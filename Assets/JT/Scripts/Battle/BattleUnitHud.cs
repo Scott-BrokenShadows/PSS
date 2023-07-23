@@ -21,10 +21,6 @@ public class BattleUnitHud : MonoBehaviour
 
     public void UpdateHP()
     {
-        if (_hbCharacter.HpChanged)
-        {
-            hpBar.SetHP((float)_hbCharacter.HP / _hbCharacter.MaxHP);
-            _hbCharacter.HpChanged = false;
-        }
+        hpBar.SetHP((float)_hbCharacter.HP / _hbCharacter.MaxHP);
     }
 }

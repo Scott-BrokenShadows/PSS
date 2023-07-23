@@ -55,8 +55,10 @@ public class BattleUnit : MonoBehaviour
     {
         // Shoot after timer
         ReloadTimerBullet();
-        // If enemy outside of bound desytroy
+        // If enemy outside of bound Destroy
         if (!isPlayer) { DestroyOutside(); }
+        // When HP reaches 0 Destroy
+        DestroyDeath();
     }
 
     void FixedUpdate()
@@ -320,6 +322,14 @@ public class BattleUnit : MonoBehaviour
             transform.position.x > BattleSystem.horizontal + BattleSystem._screenSpace.x ||
             transform.position.y < -BattleSystem.vertical - BattleSystem._screenSpace.y ||
             transform.position.y > BattleSystem.vertical + BattleSystem._screenSpace.y)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void DestroyDeath()
+    {
+        if (HBCharacter.HP <= 0)
         {
             Destroy(this.gameObject);
         }

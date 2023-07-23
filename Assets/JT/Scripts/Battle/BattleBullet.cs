@@ -42,11 +42,9 @@ public class BattleBullet : MonoBehaviour
         {
             // target unit damage calculation
             DamageDetails damageDetails = collision.transform.GetComponent<BattleUnit>().HBCharacter.TakeDamage(bUnit.HBCharacter);
-            // Compability / Critical message
-            //ShowDamageDetails(damageDetails, targetUnit);
             // HP Refection
-            //collision.transform.GetComponent<BattleUnit>().HBCharacter.UpdateHP(Mathf.FloorToInt(damageDetails.Damage));
-            collision.transform.GetComponent<BattleUnit>().bUnitHud.SetData(collision.transform.GetComponent<BattleUnit>().HBCharacter);
+            collision.transform.GetComponent<BattleUnit>().bUnitHud.UpdateHP();
+            // Destroy Bullet
             Destroy(this.gameObject);
         }
     }
