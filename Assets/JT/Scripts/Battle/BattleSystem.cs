@@ -69,7 +69,7 @@ public class BattleSystem : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             float ca = a + i * s;
-            rays[i].origin = new Vector3(0, ca, 0) / 1.25f + origin.position;
+            rays[i].origin = new Vector3(0, ca, 0) / 1.5f + origin.position;
             rays[i].direction = -origin.right;
         }
         return rays;

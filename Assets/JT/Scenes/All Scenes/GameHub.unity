@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 63157231}
   - component: {fileID: 63157232}
   m_Layer: 0
-  m_Name: LevelStage
+  m_Name: LevelStageBla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,23 +176,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
   - name: Wave 2
     countDownTimer: 0
@@ -200,23 +206,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
 --- !u!1 &210077322
 GameObject:
@@ -229,7 +241,7 @@ GameObject:
   - component: {fileID: 210077323}
   - component: {fileID: 210077324}
   m_Layer: 0
-  m_Name: LevelStage
+  m_Name: LevelStageBla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,23 +283,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
   - name: Wave 2
     countDownTimer: 0
@@ -295,23 +313,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
 --- !u!1 &337001712
 GameObject:
@@ -324,7 +348,7 @@ GameObject:
   - component: {fileID: 337001713}
   - component: {fileID: 337001714}
   m_Layer: 0
-  m_Name: LevelStage
+  m_Name: LevelStageBla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -366,23 +390,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
   - name: Wave 2
     countDownTimer: 0
@@ -390,23 +420,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
 --- !u!1 &519420028
 GameObject:
@@ -511,7 +547,7 @@ GameObject:
   - component: {fileID: 639101537}
   - component: {fileID: 639101538}
   m_Layer: 0
-  m_Name: LevelStage
+  m_Name: LevelStageBla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -553,23 +589,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
   - name: Wave 2
     countDownTimer: 0
@@ -577,23 +619,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
 --- !u!1 &696356967
 GameObject:
@@ -716,23 +764,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
+      timer: 5
       row: 1
       position: 8
-      timer: 5
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
+      timer: 10
       row: 2
       position: 8
-      timer: 10
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
+      timer: 20
       row: 3
       position: 8
-      timer: 20
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
   - name: Wave 2
     countDownTimer: 50
@@ -740,23 +794,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
+      timer: 5
       row: 3
       position: 0
-      timer: 5
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
+      timer: 5
       row: 4
       position: 0
-      timer: 5
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
+      timer: 10
       row: 5
       position: 0
-      timer: 10
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
   - name: Wave 3
     countDownTimer: 50
@@ -764,23 +824,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
+      timer: 3
       row: 3
       position: 0
-      timer: 3
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
+      timer: 5
       row: 4
       position: 0
-      timer: 5
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
       lv: 0
+      timer: 10
       row: 5
       position: 0
-      timer: 10
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
 --- !u!1 &836971362
 GameObject:
@@ -833,7 +899,14 @@ MonoBehaviour:
   currentDateTime: 
   currentGameplayTime: 
   currency: 
-  listCharacters: []
+  listCharSlot: []
+  bUnitSlot:
+    battleUnit:
+      characterBase: {fileID: 0}
+      level: 0
+    subBattleUnit:
+      characterBase: {fileID: 0}
+      level: 0
   listItems: []
   updateCI: 0
   updateCI2: 0
@@ -920,7 +993,7 @@ GameObject:
   - component: {fileID: 861625292}
   - component: {fileID: 861625293}
   m_Layer: 0
-  m_Name: LevelStage
+  m_Name: LevelStageBla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -962,23 +1035,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
   - name: Wave 2
     countDownTimer: 0
@@ -986,23 +1065,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
 --- !u!1 &1211245901
 GameObject:
@@ -1046,7 +1131,7 @@ GameObject:
   - component: {fileID: 1575731274}
   - component: {fileID: 1575731275}
   m_Layer: 0
-  m_Name: LevelStage
+  m_Name: LevelStageBla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1088,23 +1173,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
   - name: Wave 2
     countDownTimer: 0
@@ -1112,23 +1203,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
 --- !u!1 &1607774541
 GameObject:
@@ -1141,7 +1238,7 @@ GameObject:
   - component: {fileID: 1607774542}
   - component: {fileID: 1607774543}
   m_Layer: 0
-  m_Name: LevelStage
+  m_Name: LevelStageBla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1183,23 +1280,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
   - name: Wave 2
     countDownTimer: 0
@@ -1207,23 +1310,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
 --- !u!1 &1857205938
 GameObject:
@@ -1236,7 +1345,7 @@ GameObject:
   - component: {fileID: 1857205939}
   - component: {fileID: 1857205940}
   m_Layer: 0
-  m_Name: LevelStage
+  m_Name: LevelStageBla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1278,23 +1387,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
   - name: Wave 2
     countDownTimer: 0
@@ -1302,23 +1417,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
 --- !u!1 &2054358220
 GameObject:
@@ -1331,7 +1452,7 @@ GameObject:
   - component: {fileID: 2054358221}
   - component: {fileID: 2054358222}
   m_Layer: 0
-  m_Name: LevelStage
+  m_Name: LevelStageBla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1373,23 +1494,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
   - name: Wave 2
     countDownTimer: 0
@@ -1397,23 +1524,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
 --- !u!1 &2105190586
 GameObject:
@@ -1426,7 +1559,7 @@ GameObject:
   - component: {fileID: 2105190587}
   - component: {fileID: 2105190588}
   m_Layer: 0
-  m_Name: LevelStage
+  m_Name: LevelStageBla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1468,23 +1601,29 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
   - name: Wave 2
     countDownTimer: 0
@@ -1492,21 +1631,27 @@ MonoBehaviour:
     - name: Enemy Slot 1
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
       _base: {fileID: 0}
       lv: 0
+      timer: 0
       row: 0
       position: 0
-      timer: 0
+      stopLane: 0
+      cTimer: 0
       callOnce: 0

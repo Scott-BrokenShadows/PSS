@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class BattleUnitHud : MonoBehaviour
 {
-    [SerializeField] Text nameText;
-    [SerializeField] Text levelText;
     [SerializeField] HPBar hpBar;
 
     HBCharacter _hbCharacter;
@@ -14,8 +12,6 @@ public class BattleUnitHud : MonoBehaviour
     public void SetData(HBCharacter hbCharacter)
     {
         _hbCharacter = hbCharacter;
-        nameText.text = hbCharacter.Base.Name;
-        levelText.text = "Lv."+hbCharacter.Level.ToString();
         hpBar.SetHP((float) hbCharacter.HP / hbCharacter.MaxHP);
     }
 
