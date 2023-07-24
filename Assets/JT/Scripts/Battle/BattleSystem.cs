@@ -4,25 +4,47 @@ using UnityEngine;
 
 public class BattleSystem : MonoBehaviour
 {
+    // Inspector------------------------------------------------------------------------
+
+    #region Inspector
     public GameObject battleUnit;
 
-    [ReadOnly] public LevelStage currentLevel;
-    [ReadOnly] public int currentWave;
-    int cWave;
-    [ReadOnly] public float cTimer;
-    public List<GameObject> currentEnemyOnScene;
-    public List<float> currentEnemyTimer;
-    public List<bool> currentEnemyCallOnce;
+    // LevelStage
+    [ReadOnly] private LevelStage currentLevel;
 
+    // Whats going on with the current Wave
+    [ReadOnly] private int currentWave;
+    int cWave;
+    [ReadOnly] private float cTimer;
+
+    // The current Enemies on the game
+    [HideInInspector] public List<LevelWave> currentWaveOnScene;
+    [ReadOnly] public List<GameObject> cEnemy;
+
+    // The current Players on the game
+    [ReadOnly] private GameObject cPlayer;
+    [ReadOnly] private GameObject cSubPlayer;
+
+    // How many Grid Rows based on the LevelStage.cs
     #region Grid Rows
     [Min(0)] float range;
     int rows;
 
+    [SerializeField] Vector2 screenSpace;
+    public static Vector2 _screenSpace;
     [HideInInspector] public List<Vector3> GridRows;
-    float vertical;
-    public int cRows;
+    static public float vertical;
+    static public float horizontal;
+    [HideInInspector] public int cRows;
     #endregion
 
+    [Range(0, 1)] [SerializeField] List<float> laneSlowDown;
+    static public List<float> _laneSlowDown;
+    #endregion
+
+    // Start & Update------------------------------------------------------------------------
+
+    #region Start & Update
     private void Start()
     {
         SetupBattle();
@@ -30,12 +52,15 @@ public class BattleSystem : MonoBehaviour
 
     private void Update()
     {
-        currentWave = cWave + 1;
         TimerWave();
         InstanceEnemies();
     }
+    #endregion
+
+    // Get Grid Rows ------------------------------------------------------------------------
 
     #region Get Grid Rows
+    // Calculate the Grid Wave positions
     Ray[] GetGridRows(Transform origin, float range, int count)
     {
         Ray[] rays = new Ray[count];
@@ -44,29 +69,42 @@ public class BattleSystem : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             float ca = a + i * s;
-            rays[i].origin = new Vector3(0, ca, 0) / 1.25f + origin.position;
+            rays[i].origin = new Vector3(0, ca, 0) / 1.5f + origin.position;
             rays[i].direction = -origin.right;
         }
         return rays;
     }
     #endregion
 
+    // Start Up Mechanics------------------------------------------------------------------------
+
+    #region Setup
+    // Do what on the start
     void SetupBattle()
     {
+        // Lane to stop
+        _laneSlowDown = laneSlowDown;
+
+        // Add the extra screenspace
+        _screenSpace = screenSpace;
+
+        // Get the current Stage Information
         currentLevel = FindObjectOfType<LevelStage>();
 
-        for (int b = 0; b < currentLevel.LevelWave[cWave].EnemyList.Count; b++)
-        {
-            //currentLevel.LevelWave[cWave].EnemyList[b].cTimer = currentLevel.LevelWave[cWave].EnemyList[b].timer;
-            currentEnemyTimer.Add(currentLevel.LevelWave[cWave].EnemyList[b].timer);
-            currentEnemyCallOnce.Add(false);
-        }
+        // Set the current Wave 
+        currentWave = cWave + 1;
 
+        // Set the current Stage Information
+        GetEnemyWave();
+
+        // Create how many Grid Rows
         #region Grid Rows
         rows = currentLevel.gridRows;
         cRows = rows;
 
         vertical = (float)Camera.main.orthographicSize;
+        horizontal = vertical * (float)Camera.main.aspect;
+
         range = vertical * 2;
 
         foreach (var r in GetGridRows(transform, range, rows))
@@ -75,75 +113,156 @@ public class BattleSystem : MonoBehaviour
         }
         #endregion
 
-        cTimer = currentLevel.LevelWave[cWave].countDownTimer;
-    }
+        if (currentWave > 0)
+        // The current timer for each wave
+        cTimer = currentWaveOnScene[cWave].countDownTimer;
 
+        // Instantiate the Player Characters
+        InstancePlayers();
+        InstanceSubPlayers();
+    }
+    #endregion
+
+    // Instantiate Mechanics------------------------------------------------------------------------
+
+    #region Instance Enemy Unit
+    // Timer Wave: when the timer reaches "0" go next wave
     void TimerWave()
     {
-        if (currentLevel.LevelWave.Count - 1 > cWave)
+        if (currentWaveOnScene.Count - 1 > cWave)
         {
             cTimer -= Time.deltaTime;
 
             if (cTimer <= 0)
             {
                 cWave++;
-                cTimer = currentLevel.LevelWave[cWave].countDownTimer;
+                GetEnemyWave();
+                cTimer = currentWaveOnScene[cWave].countDownTimer;
             }
         }
-        else if (currentLevel.LevelWave.Count - 1 == cWave)
+        else if (currentWaveOnScene.Count - 1 == cWave)
         {
             cTimer -= Time.deltaTime;
 
             if (cTimer <= 0)
             {
+                // What to do when you complete the stage
                 Debug.Log("Complete Stage");
-
                 cTimer = 0;
             }
         }
     }
 
+    // Get the information on the current Wave
+    void GetEnemyWave()
+    {
+        currentWaveOnScene = currentLevel.levelWave;
+    }
+
+    // Instantiate Enemies from the information based on the timer to spawn
     void InstanceEnemies()
     {
-        for (int b = 0; b < currentLevel.LevelWave[cWave].EnemyList.Count; b++)
+        for (int b = 0; b < currentWaveOnScene[cWave].EnemyList.Count; b++)
         {
-            //if (currentLevel.LevelWave[cWave].EnemyList[b].callOnce != true)
-            if (currentEnemyCallOnce[b] != true)
+            if (currentWaveOnScene[cWave].EnemyList[b].callOnce != true)
             {
-                //currentLevel.LevelWave[cWave].EnemyList[b].cTimer -= Time.deltaTime;
-                currentEnemyTimer[b] -= Time.deltaTime;
+                //Timer goes down to spawn
+                currentWaveOnScene[cWave].EnemyList[b].timer -= Time.deltaTime;
 
-                //if (currentLevel.LevelWave[cWave].EnemyList[b].cTimer <= 0)
-                if (currentEnemyTimer[b] <= 0)
+                if (currentWaveOnScene[cWave].EnemyList[b].timer <= 0)
                 {
-                    GameObject bUnit = Instantiate(battleUnit, new Vector3(currentLevel.LevelWave[cWave].EnemyList[b].position, GridRows[currentLevel.LevelWave[cWave].EnemyList[b].row - 1].y, 0), Quaternion.identity);
-                    //Debug.Log(GridRows[currentLevel.LevelWave[cWave].EnemyList[b].row - 1].y);
-                    bUnit.GetComponent<HBCharacterBattleUnits>()._base = currentLevel.LevelWave[cWave].EnemyList[b]._base;
-                    bUnit.GetComponent<HBCharacterBattleUnits>().isPlayer = false;
-                    currentEnemyOnScene.Add(bUnit);
+                    currentWaveOnScene[cWave].EnemyList[b].timer = 0;
 
-                    //currentLevel.LevelWave[cWave].EnemyList[b].callOnce = true;
-                    currentEnemyCallOnce[b] = true;
+                    // Instantiate the battleUnit with the data from the LevelStage
+                    GameObject bUnit = Instantiate(battleUnit, new Vector3(currentWaveOnScene[cWave].EnemyList[b].position, GridRows[currentWaveOnScene[cWave].EnemyList[b].row - 1].y, 0), Quaternion.identity);
+                    bUnit.GetComponent<BattleUnit>()._base = currentWaveOnScene[cWave].EnemyList[b]._base;
+                    bUnit.GetComponent<BattleUnit>().level = currentWaveOnScene[cWave].EnemyList[b].lv;
+                    bUnit.GetComponent<BattleUnit>().sLane = currentWaveOnScene[cWave].EnemyList[b].stopLane;
+                    bUnit.GetComponent<BattleUnit>().isPlayer = false;
+                    cEnemy.Add(bUnit);
+                    currentWaveOnScene[cWave].EnemyList[b].callOnce = true;
                 }
             }
         }
     }
+    #endregion
 
+    #region Instance Player Unit
+    void InstancePlayers()
+    { 
+        
+    }
+    void InstanceSubPlayers()
+    {
+
+    }
+    #endregion
+
+    // Remap Function------------------------------------------------------------------------
+
+    #region Remap Function
+    static public float Remap(float from, float fromMin, float fromMax, float toMin, float toMax)
+    {
+        var fromAbs = from - fromMin;
+        var fromMaxAbs = fromMax - fromMin;
+
+        var normal = fromAbs / fromMaxAbs;
+
+        var toMaxAbs = toMax - toMin;
+        var toAbs = toMaxAbs * normal;
+
+        var to = toAbs + toMin;
+
+        return to;
+    }
+    #endregion
+
+    // Show Gizmos------------------------------------------------------------------------
+
+    #region Gizmos
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.white;
         #region Grid Rows
         if (currentLevel)
         {
-            float horizontal = vertical * (float)Camera.main.aspect;
-
             foreach (var r in GetGridRows(transform, range, cRows))
             {
-                //Debug.DrawRay(r.origin, r.direction * 5);
-
                 Gizmos.color = Color.white;
                 Gizmos.DrawLine(new Vector3(horizontal, r.origin.y), new Vector3(-horizontal, r.origin.y));
             }
         }
         #endregion
+        #region Borders
+        Gizmos.DrawLine(new Vector3(-horizontal, -vertical), new Vector3(horizontal, -vertical));
+        Gizmos.DrawLine(new Vector3(-horizontal, vertical), new Vector3(horizontal, vertical));
+        Gizmos.DrawLine(new Vector3(-horizontal, -vertical), new Vector3(-horizontal, vertical));
+        Gizmos.DrawLine(new Vector3(horizontal, -vertical), new Vector3(horizontal, vertical));
+        #endregion
+
+        Gizmos.color = Color.yellow;
+        #region Outside Borders
+        Gizmos.DrawLine(new Vector3(-horizontal - _screenSpace.x, -vertical - _screenSpace.y),
+                        new Vector3(horizontal + _screenSpace.x, -vertical - _screenSpace.y));
+        Gizmos.DrawLine(new Vector3(-horizontal - _screenSpace.x, vertical + _screenSpace.y),
+                        new Vector3(horizontal + _screenSpace.x, vertical + _screenSpace.y));
+        Gizmos.DrawLine(new Vector3(-horizontal - _screenSpace.x, -vertical - _screenSpace.y),
+                        new Vector3(-horizontal - _screenSpace.x, vertical + _screenSpace.y));
+        Gizmos.DrawLine(new Vector3(horizontal + _screenSpace.x, -vertical - _screenSpace.y),
+                        new Vector3(horizontal + _screenSpace.x, vertical + _screenSpace.y));
+        #endregion
+
+        Gizmos.color = Color.red;
+        #region Enemy Lane Stop
+        if (_laneSlowDown != null)
+        {
+            for (int i = 0; i < _laneSlowDown.Count; i++)
+            {
+                Gizmos.DrawLine(new Vector3(Remap(_laneSlowDown[i], 0, 1, -horizontal, horizontal), -vertical),
+                    new Vector3(Remap(_laneSlowDown[i], 0, 1, -horizontal, horizontal), vertical));
+            }
+        }
+        #endregion
     }
+    #endregion
 }

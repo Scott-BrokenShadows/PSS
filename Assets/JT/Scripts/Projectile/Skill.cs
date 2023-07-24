@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet
+public class Skill
 {
-    public BulletBase Base { get; set; }
+    public SkillBase Base { get; set; }
 
-    public Bullet(BulletBase hbBase)
+    public Skill(SkillBase hbBase)
     {
         Base = hbBase;
     }
-
 }

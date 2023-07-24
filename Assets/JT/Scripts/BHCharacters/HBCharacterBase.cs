@@ -3,41 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-#region Custom Class
-[System.Serializable]
-public class DetectionRange
-{
-    #region Detection
-    [Header("Detection Range")]
-    public float detectionRadiusV = 10.0f; // V = view
-    public float detectionRadiusS = 10.0f; // S = sound
-    public float detectionAngle = 90.0f;
-    [Range(0, 100)] public float detectionRangeHiddenV;
-    [Range(0, 100)] public float detectionRangeHiddenS;
-    public Color detectVColor = new Color(0.8f, 0f, 0f, 0.4f);
-    public Color detectSColor = new Color(0f, 0f, 0f, 0.4f);
-    public bool detectionGizmo;
-    public bool hiddenRangeGizmo;
-
-    [Header("<Player Range>")]
-    public Color plyRadiusColor = new Color(0f, 50f, 90f, 0.3f);
-    public float plyRadiusSize = 11f;
-    public bool playerGizmo;
-
-    [Header("<Attack Range>")]
-    public Color atkRadiusColor = new Color(255f, 255f, 255f, 0.15f);
-    public float atkRadiusSize = 5f;
-    public bool attackGizmo;
-    #endregion
-}
-#endregion
-
 [CreateAssetMenu(fileName = "HBCharacterBase", menuName = "HBCharacter/Create New HBCharacter")]
 public class HBCharacterBase : ScriptableObject
 {
     // Name, Description, Image, 3D Model, Type, Attribute, Stage, Status, Rate
     [SerializeField] new string name;
-    [SerializeField] int dexNumber;
+    [SerializeField] int id;
     [TextArea]
     [SerializeField] string description;
 
@@ -49,47 +20,99 @@ public class HBCharacterBase : ScriptableObject
     [SerializeField] GameObject asset;
 
     [Separator()]
+    [SerializeField] UnitType unitType;
+    [SerializeField] Elements elements;
+
+    [Separator()]
     // Base Stats
     [Header("Base stats")]
-    [Min (0)]
+    [Range(0, 9999)]
+    [SerializeField] int maxHP;
+    [Range(0, 999)]
     [SerializeField] int attack;
-    [Min(0)]
+    [Range(0, 999)]
     [SerializeField] int spAttack;
-    [Min(0)]
+    [Range(0, 999)]
     [SerializeField] int defence;
-    [Min(0)]
+    [Range(0, 999)]
     [SerializeField] int spDefence;
-    [Min(0)]
+    [Range(0, 999)]
     [SerializeField] int speed;
 
+    // Total Calculation of total base stats not include hidden
     [SerializeField] [ReadOnly] int totalStats;
 
+    // Hidden Stats
+    [Header("Hidden stats")]
+    [Range(0,100)]
+    [SerializeField] int critical;
+
+    private void OnValidate()
+    {
+        totalStats = attack + spAttack + defence + spDefence + speed;
+    }
+
+    [Separator()]
+    [SerializeField] BulletBase unitBullet;
+    [SerializeField] SkillBase unitSkill;
+
+    #region Get and Set Value
     public string Name { get { return name; } }
-    public int DexNumber { get { return dexNumber; } }
+    public int ID { get { return id; } }
     public string Description { get { return description; } }
     public Sprite IconSprite { get { return iconSprite; } }
     public GameObject Asset { get { return asset; } }
+
+    public UnitType UnitType { get { return unitType; } }
+    public Elements Elements { get { return elements; } }
+
+    public int MaxHP { get { return maxHP; } }
+
     public int Attack { get { return attack; } }
+    public int SpAttack { get { return spAttack; } }
+    public int Defence { get { return defence; } }
+    public int SpDefence { get { return spDefence; } }
     public int Speed { get { return speed; } }
+    public int Critical { get { return critical; } }
+
+    public BulletBase UnitBullet { get { return unitBullet; } }
+    public SkillBase UnitSkill { get { return unitSkill; } }
+    #endregion
 }
 
-public enum SnapmonPersonality
+public enum UnitType
 {
-    Neutral,
-    Coward,
-    Hostile
+    Character,
+    Minion,
+    Boss
 }
 
-public enum SnapmonAttackRange
-{
-    CloseRange,
-    MidRange,
-    FarRange
-}
-
-public enum SnapmonLocationType
-{
-    Ground,
+public enum Elements
+{ 
+    Fire,
     Water,
-    Air
+    Nature,
+    Magic,
+    Machine
+}
+
+public class ElementChart
+{
+    static float[][] chart =
+    {
+        // TODO: Temporary Implementation
+        // Attack/Defense  // FIR WAT NAT MAG MAC
+        /*FIR*/ new float[] { 1f, 1f, 1f, 1f, 1f },
+        /*WAT*/ new float[] { 1f, 1f, 1f, 1f, 1f },
+        /*NAT*/ new float[] { 1f, 1f, 1f, 1f, 1f },
+        /*MAG*/ new float[] { 1f, 1f, 1f, 1f, 1f },
+        /*MAC*/ new float[] { 1f, 1f, 1f, 1f, 1f }
+    };
+    public static float GetEffectiveness(Elements attackType, Elements defenseType)
+    {
+        int row = (int)attackType;
+        int col = (int)defenseType;
+        //Debug.Log((row,col));
+        return chart[row][col];
+    }
 }

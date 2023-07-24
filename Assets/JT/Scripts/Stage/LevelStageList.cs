@@ -36,26 +36,9 @@ public class LevelStageList : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            //StartCoroutine(LoadYourAsyncScene());
             currentSelectedStage.transform.SetParent(null);
             DontDestroyOnLoad(currentSelectedStage);
             GoToStage();
-        }
-    }
-
-    IEnumerator LoadYourAsyncScene()
-    {
-        // The Application loads the Scene in the background as the current Scene runs.
-        // This is particularly good for creating loading screens.
-        // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
-        // a sceneBuildIndex of 1 as shown in Build Settings.
-        
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync($"{currentSelectedStage.GetComponent<LevelStage>().lStageScene}");
-
-        // Wait until the asynchronous scene fully loads
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
         }
     }
 
