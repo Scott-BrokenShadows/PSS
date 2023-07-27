@@ -8,6 +8,7 @@ public class BattlePlayerControl : MonoBehaviour
     public float targetRange = 0.1f;
     public static float _targetRange;
     public static Transform _currentTransform;
+    public Vector2 ScreenSpace;
 
     // Player Movement Control
     Rigidbody2D _rb;
@@ -31,6 +32,16 @@ public class BattlePlayerControl : MonoBehaviour
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
+
+        if (_currentTransform.transform.position.x >= 0 && Input.GetAxisRaw("Horizontal") > 0 || _currentTransform.transform.position.x <= -BattleSystem.horizontal && Input.GetAxisRaw("Horizontal") < 0)
+        {
+            moveX = 0;
+        }
+        else if (_currentTransform.transform.position.y >= BattleSystem.vertical && Input.GetAxisRaw("Vertical") > 0 || _currentTransform.transform.position.y <= -BattleSystem.vertical && Input.GetAxisRaw("Vertical") < 0)
+        {
+            moveY = 0;
+        }
+
         _movementInput = new Vector2(moveX, moveY).normalized;
         _smoothMovementInput = Vector2.SmoothDamp(_smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
         _rb.velocity = _smoothMovementInput * speed;
