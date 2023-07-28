@@ -13,12 +13,12 @@ public class DB_RewardGacha : ScriptableObject
 	//public HBCharacterBase charBase;
 	//public DB_ItemScriptObj itemBase;
 
-	[SerializeField] RewardType rewardType;
+	public RewardType rewardType;
 
 	[System.Serializable]
 	public class RewardType
     {
-		public HBCharacterBase charBase;
-		public DB_ElementalData elemData;
+		public HBCharacterBase charBase;		//This is James' scriptable object for characters
+		public DB_ElementalData elemData;		//This will be the scriptable object for items
 	}
 }

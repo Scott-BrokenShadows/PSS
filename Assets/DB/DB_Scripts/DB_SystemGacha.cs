@@ -242,7 +242,8 @@ public class DB_SystemGacha : MonoBehaviour
             if(dRollWeight <= maxWeight)
             {
                 Debug.Log($"Obtained {attempt.itemName}!");
-                //Add Item to the Grid Array
+                
+                //Add this reward item to inventory
 
                 if (itemsObtained.Count < grid.transform.childCount)
                 {
