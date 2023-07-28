@@ -7,18 +7,18 @@ public class GameController : MonoBehaviour
     // Inspector------------------------------------------------------------------------
 
     #region Inspector
-    public HBCharacterBase _cUnit;
+    [HideInInspector] public HBCharacterBase _cUnit;
     [Separator]
-    [ReadOnly] [SerializeField] string currentDateTime;
-    [ReadOnly] [SerializeField] string currentGameplayTime;
-    [ReadOnly] [SerializeField] string currency;
+    [HideInInspector] [SerializeField] string currentDateTime;
+    [HideInInspector] [SerializeField] string currentGameplayTime;
+    [HideInInspector] [SerializeField] string currency;
     [Separator]
     [ReadOnly] [SerializeField] List<UserCharactersSlot> listCharSlot = new List<UserCharactersSlot>();
-    [ReadOnly] [SerializeField] BattleUnitSlot bUnitSlot;
+    [HideInInspector] [SerializeField] BattleUnitSlot bUnitSlot;
     [ReadOnly] [SerializeField] List<ItemSlot> listItems;
-    [Separator]
-    [SerializeField] bool updateCI;
-    [SerializeField] bool updateCI2;
+    //[Separator]
+    //[SerializeField] bool updateCI;
+    //[SerializeField] bool updateCI2;
     #endregion
 
     // Start & Update------------------------------------------------------------------------
@@ -31,30 +31,30 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        SetRealDateTime();
-        SetTotalPlayTime();
-        SetCurrency();
+        //SetRealDateTime();
+        //SetTotalPlayTime();
+        //SetCurrency();
 
-        TestingButton();
+        //TestingButton();
     }
     #endregion
 
     // This is testing the function is working------------------------------------------------------------------------
 
     #region Testing
-    void TestingButton()
-    {
-        if (updateCI)
-        {
-            //AddCharacterUnit(_cUnit, 77);
-            SetCharacters();
+    //void TestingButton()
+    //{
+    //    if (updateCI)
+    //    {
+    //        //AddCharacterUnit(_cUnit, 77);
+    //        SetCharacters();
 
-            SetItems();
+    //        SetItems();
 
-            updateCI = false;
-            return;
-        }
-    }
+    //        updateCI = false;
+    //        return;
+    //    }
+    //}
     #endregion
 
     // Setting Data to GameData------------------------------------------------------------------------
