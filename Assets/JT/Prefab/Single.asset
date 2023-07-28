@@ -19,5 +19,5 @@ MonoBehaviour:
   bulletType: 0
   bulletRange: 0
   bulletCount: 0
-  bulletReload: 1
-  bulletSpeed: 10
+  bulletReload: 0.1
+  bulletSpeed: 100
