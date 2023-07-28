@@ -14,12 +14,27 @@ public class SkillBase : ScriptableObject
     // Image
     [SerializeField] public Sprite iconSprite;
 
-    // 3D Model
+    // Skill Move
     [SerializeField] GameObject asset;
 
     [Separator()]
+
+    // Stack
+    [LabelOverride("Stack")]
+    [SerializeField] int stackSkill;
+    [LabelOverride("StayPosition")]
+    [SerializeField] bool sPos;
+
+    [Separator()]
+
+    // Damage
+    [SerializeField] int damage;
+    [SerializeField] float damagePerSecond;
+
     // Timer
     [SerializeField] float skillReload;
+    [SerializeField] float skillActive;
+
 
     public string Name { get { return name; } }
     public string Description { get { return description; } }

@@ -18,6 +18,7 @@ public class BattleBullet : MonoBehaviour
     // Store the BattleUnit Data
     [ReadOnly] public int atk;
     [ReadOnly] public int spAtk;
+    [ReadOnly] public int crit;
 
     // Keep Data this gameobject
     GameObject myGameObject;

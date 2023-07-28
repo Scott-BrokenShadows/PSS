@@ -8,6 +8,7 @@ public class BattleSystem : MonoBehaviour
 
     #region Inspector
     public GameObject battleUnit;
+    public GameObject skillUnit;
 
     // LevelStage
     [ReadOnly] private LevelStage currentLevel;
