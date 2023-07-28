@@ -112,9 +112,10 @@ public class GameController : MonoBehaviour
     //}
     #endregion
 
-    void SetCharacters()
+    public void SetCharacters()
     {
         bUnitSlot = GameData.bUnitSlot;
+        listCharSlot = GameData.listCharSlot;
     }
 
     public void AddBattleCharSlot(HBCharacterBase _characterUnit, int _level)
@@ -126,6 +127,13 @@ public class GameController : MonoBehaviour
     {
         GameData.bUnitSlot.subBattleUnit = new UserCharactersSlot(_characterUnit, _level);
     }
+
+    public void AddCharacterUnit(HBCharacterBase _characterUnit, int _level)
+    {
+        GameData.listCharSlot.Add(new UserCharactersSlot(_characterUnit, _level));
+    }
+
+
     #endregion
 
     #region Set Items

@@ -55,6 +55,8 @@ public class DB_SystemGacha : MonoBehaviour
     public List<DB_RewardGacha> rarity2ItemList;
     public List<DB_RewardGacha> rarity3ItemList;
 
+    public GameController gameController;
+
     [Separator]
     [Header("Inventory")]
     [ReadOnly] public List<GatchaSlot> itemsObtained;
@@ -253,6 +255,11 @@ public class DB_SystemGacha : MonoBehaviour
                 if (attempt.isCharacter == true)
                 {
                     Debug.Log($"Splash Animation of {attempt.itemName} happens here!");
+
+                    gameController.AddCharacterUnit(attempt.rewardType.charBase, 1);
+
+                    gameController.SetCharacters();
+
                 }
                 break;
             }

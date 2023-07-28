@@ -1856,6 +1856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1273371889}
+  - component: {fileID: 1273371890}
   - component: {fileID: 1273371887}
   m_Layer: 0
   m_Name: GameManager
@@ -1896,6 +1897,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1273371890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273371886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d75174bfa712214ea746895cb30fa33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cUnit: {fileID: 0}
+  currentDateTime: 
+  currentGameplayTime: 
+  currency: 
+  listCharSlot: []
+  bUnitSlot:
+    battleUnit:
+      characterBase: {fileID: 0}
+      level: 0
+    subBattleUnit:
+      characterBase: {fileID: 0}
+      level: 0
+  listItems: []
 --- !u!1 &1283980484
 GameObject:
   m_ObjectHideFlags: 0
@@ -3358,6 +3384,7 @@ MonoBehaviour:
   rarity3ItemList:
   - {fileID: 11400000, guid: 4ed4421bd1e185648b94611b990644a1, type: 2}
   - {fileID: 11400000, guid: 271c40f376e513f42be07a325aebe79c, type: 2}
+  gameController: {fileID: 1273371890}
   itemsObtained: []
 --- !u!4 &1986135675
 Transform:

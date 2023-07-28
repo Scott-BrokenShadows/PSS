@@ -16,3 +16,6 @@ MonoBehaviour:
   itemName: Character 3
   dropChance: 9
   isCharacter: 1
+  rewardType:
+    charBase: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
+    elemData: {fileID: 0}
