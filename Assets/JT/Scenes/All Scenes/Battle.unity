@@ -224,7 +224,7 @@ MonoBehaviour:
   gridRows: 5
   levelWave:
   - name: Wave 1
-    countDownTimer: 50
+    countDownTimer: 20
     EnemyList:
     - name: Enemy Slot 1
       _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
@@ -247,7 +247,7 @@ MonoBehaviour:
     - name: Enemy Slot 3
       _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
       lv: 55
-      timer: 20
+      timer: 15
       row: 3
       position: 8
       stopLane: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
       lv: 44
       timer: 10
       row: 5
-      position: 5
+      position: 10
       stopLane: 1
       cTimer: 0
       callOnce: 0

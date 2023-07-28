@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1fce225cd4d6b54695f92ed1ab8cbe8, type: 3}
-  m_Name: Character
+  m_Name: MinionPurple
   m_EditorClassIdentifier: 
-  name: LOL2
-  id: 5
+  name: 
+  id: 0
   description: 
   iconSprite: {fileID: 0}
-  asset: {fileID: 119597636035571563, guid: 1c5870f9b009f7243b572ad6f1e0cbf2, type: 3}
+  asset: {fileID: 2652969533790514140, guid: 89bcae3a1529f4542b2161b459a47d0a, type: 3}
   unitType: 0
   elements: 0
-  maxHP: 3029
-  attack: 105
+  maxHP: 500
+  attack: 100
   spAttack: 0
-  defence: 105
+  defence: 100
   spDefence: 0
-  speed: 493
-  totalStats: 703
-  critical: 78
+  speed: 700
+  totalStats: 900
+  critical: 0
   unitBullet: {fileID: 11400000, guid: 9b0edfb6ef885964c92c7a7162476f78, type: 2}
   unitSkill: {fileID: 0}
