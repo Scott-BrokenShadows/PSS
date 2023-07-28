@@ -19,14 +19,19 @@ public class BulletBase : ScriptableObject
 
     [Separator()]
     // Type of Bullet
+    [LabelOverride("Type")]
     [SerializeField] BulletType bulletType;
     // Range
+    [LabelOverride("Range")]
     [SerializeField] float bulletRange;
     // Count
+    [LabelOverride("Count")]
     [SerializeField] int bulletCount;
     // Timer
+    [LabelOverride("Fire Rate")]
     [SerializeField] float bulletReload;
     // Speed
+    [LabelOverride("Speed")]
     [SerializeField] float bulletSpeed;
 
     public string Name { get { return name; } }
