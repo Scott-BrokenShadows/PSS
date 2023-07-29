@@ -32,7 +32,7 @@ public class BattleUnit : MonoBehaviour
     // Player Unit Controls
     [Separator]
     [Header("Unit Function")]
-    [SerializeField] bool subUnit;
+    public bool subUnit;
 
     // Enemy Unit Controls
     [ReadOnly] public int sLane;
@@ -322,9 +322,10 @@ public class BattleUnit : MonoBehaviour
         {
             #region Instantiate the Asset and Name them
             mySkillActive = HBCharacter.Base.UnitSkill.Asset;
-            GameObject asset = Instantiate(HBCharacter.Base.UnitSkill.Asset, transform);
-            asset.transform.position = transform.position;
-            asset.name = HBCharacter.Base.UnitSkill.Name + "(PlayerSkill)";
+            GameObject assetSkill = Instantiate(HBCharacter.Base.UnitSkill.Asset, transform);
+            assetSkill.transform.SetParent(null);
+            assetSkill.transform.position = (HBCharacter.Base.UnitSkill.SPos) ? transform.position : new Vector3(0f, 0f, 0f); 
+            assetSkill.name = HBCharacter.Base.UnitSkill.Name + "(PlayerSkill)";
             #endregion
         }
     }

@@ -8,7 +8,15 @@ public class BattleSystem : MonoBehaviour
 
     #region Inspector
     public GameObject battleUnit;
-    public GameObject skillUnit;
+    public GameObject skillButtonUI;
+
+    // Position
+    [LabelOverride("Sub Unit Position")]
+    public Transform subUnitPos;
+    //[LabelOverride("Front Unit Position")]
+    //public Transform frontUnitPos;
+    [LabelOverride("Skill Button Position")]
+    public Transform skillButtonPos;
 
     // LevelStage
     [ReadOnly] private LevelStage currentLevel;
@@ -41,6 +49,9 @@ public class BattleSystem : MonoBehaviour
 
     [Range(0, 1)] [SerializeField] List<float> laneSlowDown;
     static public List<float> _laneSlowDown;
+
+    // Testing
+    [SerializeField] BattleUnitSlot bUnitSlot;
     #endregion
 
     // Start & Update------------------------------------------------------------------------
@@ -121,6 +132,17 @@ public class BattleSystem : MonoBehaviour
         // Instantiate the Player Characters
         InstancePlayers();
         InstanceSubPlayers();
+
+        // Testing
+        //TestingStart();
+    }
+    #endregion
+
+    #region Testing
+    void TestingStart()
+    {
+        InstancePlayers();
+        InstanceSubPlayers();
     }
     #endregion
 
@@ -190,12 +212,29 @@ public class BattleSystem : MonoBehaviour
 
     #region Instance Player Unit
     void InstancePlayers()
-    { 
-        
+    {
+        GameObject asset = Instantiate(battleUnit, transform);
+        //asset.transform.position = frontUnitPos.position;
+        asset.GetComponent<BattleUnit>()._base = bUnitSlot.battleUnit.characterBase;
+        asset.GetComponent<BattleUnit>().level = bUnitSlot.battleUnit.level;
+        asset.GetComponent<BattleUnit>().isPlayer = true;
+        asset.GetComponent<BattleUnit>().subUnit = false;
+
     }
     void InstanceSubPlayers()
     {
+        GameObject asset = Instantiate(battleUnit, transform);
+        asset.transform.position = subUnitPos.position;
+        asset.GetComponent<BattleUnit>()._base = bUnitSlot.subBattleUnit.characterBase;
+        asset.GetComponent<BattleUnit>().level = bUnitSlot.subBattleUnit.level;
+        asset.GetComponent<BattleUnit>().isPlayer = true;
+        asset.GetComponent<BattleUnit>().subUnit = true;
 
+        GameObject assetUI = Instantiate(skillButtonUI, transform);
+        assetUI.transform.SetParent(skillButtonPos.transform);
+        assetUI.transform.position = skillButtonPos.position;
+        assetUI.transform.localScale = new Vector3(1f, 1f, 1f);
+        assetUI.GetComponent<BattleSkillButton>().subUnit = asset.GetComponent<BattleUnit>();
     }
     #endregion
 

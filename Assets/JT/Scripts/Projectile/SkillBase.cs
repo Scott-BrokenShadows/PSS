@@ -40,4 +40,10 @@ public class SkillBase : ScriptableObject
     public string Description { get { return description; } }
     public Sprite IconSprite { get { return iconSprite; } }
     public GameObject Asset { get { return asset; } }
+
+    public int StackSkill { get { return stackSkill; } }
+    public bool SPos { get { return sPos; } }
+
+    public float SkillReload { get { return skillReload; } }
+    public float SkillActive { get { return skillActive; } }
 }

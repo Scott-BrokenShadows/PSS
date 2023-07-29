@@ -26,15 +26,13 @@ public class BattleSkill : MonoBehaviour
         if (_base) { SetUp(); }
     }
 
+    void Update()
+    {
+        
+    }
+
     void SetUp()
     {
-        #region Instantiate the Asset and Name them
-        this.gameObject.name = (_base.Name != "") ? _base.Name + ((isPlayer) ? "(Player)" : "(Enemy)") : "Default";
-        myGameObject = _base.Asset;
-        GameObject asset = Instantiate(_base.Asset, transform);
-        asset.transform.position = transform.position;
-        asset.transform.localRotation = Quaternion.Euler(0, ((isPlayer) ? 0 : 180), 0);
-        asset.name = _base.Name + "Model";
-        #endregion
+
     }
 }

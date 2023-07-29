@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a7498571be2254c9642f08bcd3855b, type: 3}
   m_Name: SkillBase
   m_EditorClassIdentifier: 
-  name: 
-  id: 0
+  name: YaY
   description: 
   iconSprite: {fileID: 0}
-  asset: {fileID: 0}
+  asset: {fileID: 439714182302601851, guid: 03a624dc1e6fc8c47b477f0dd92bf4e8, type: 3}
+  stackSkill: 0
+  sPos: 0
+  damage: 0
+  damagePerSecond: 0
+  skillReload: 0
+  skillActive: 0

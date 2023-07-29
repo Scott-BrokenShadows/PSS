@@ -28,4 +28,4 @@ MonoBehaviour:
   totalStats: 1057
   critical: 78
   unitBullet: {fileID: 11400000, guid: 9b0edfb6ef885964c92c7a7162476f78, type: 2}
-  unitSkill: {fileID: 0}
+  unitSkill: {fileID: 11400000, guid: b54d71b5a1895b2498351871f248e163, type: 2}
