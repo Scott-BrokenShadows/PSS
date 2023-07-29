@@ -26,6 +26,6 @@ MonoBehaviour:
   spDefence: 0
   speed: 393
   totalStats: 656
-  critical: 78
-  unitBullet: {fileID: 11400000, guid: 9b0edfb6ef885964c92c7a7162476f78, type: 2}
+  critical: 0
+  unitBullet: {fileID: 11400000, guid: aa77f1c030cb77745ad8aad51152c4f6, type: 2}
   unitSkill: {fileID: 0}
