@@ -27,7 +27,6 @@ public class BattlePlayerControl : MonoBehaviour
     Vector2 _movementInputSmoothVelocity;
 
     // Player Clamping
-    [LabelOverride("Clamp Player")]
     public ClampPlayer cPlayer;
 
     void Awake()
@@ -47,11 +46,11 @@ public class BattlePlayerControl : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        if (_currentTransform.transform.position.x >= 0 && Input.GetAxisRaw("Horizontal") > 0 || _currentTransform.transform.position.x <= -BattleSystem.horizontal && Input.GetAxisRaw("Horizontal") < 0)
+        if (_currentTransform.transform.position.x >= 0 + cPlayer.right && Input.GetAxisRaw("Horizontal") > 0 || _currentTransform.transform.position.x <= -BattleSystem.horizontal + cPlayer.left && Input.GetAxisRaw("Horizontal") < 0)
         {
             moveX = 0;
         }
-        else if (_currentTransform.transform.position.y >= BattleSystem.vertical && Input.GetAxisRaw("Vertical") > 0 || _currentTransform.transform.position.y <= -BattleSystem.vertical && Input.GetAxisRaw("Vertical") < 0)
+        else if (_currentTransform.transform.position.y >= BattleSystem.vertical + cPlayer.top && Input.GetAxisRaw("Vertical") > 0 || _currentTransform.transform.position.y <= -BattleSystem.vertical + cPlayer.down && Input.GetAxisRaw("Vertical") < 0)
         {
             moveY = 0;
         }
@@ -60,4 +59,19 @@ public class BattlePlayerControl : MonoBehaviour
         _smoothMovementInput = Vector2.SmoothDamp(_smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
         _rb.velocity = _smoothMovementInput * speed;
     }
+
+    // Show Gizmos------------------------------------------------------------------------
+
+    #region Gizmos
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        #region 
+        Gizmos.DrawLine(new Vector3(0 + cPlayer.right, -BattleSystem.vertical), new Vector3(0 + cPlayer.right, BattleSystem.vertical));
+        Gizmos.DrawLine(new Vector3(-BattleSystem.horizontal + cPlayer.left, -BattleSystem.vertical), new Vector3(-BattleSystem.horizontal + cPlayer.left, BattleSystem.vertical));
+        Gizmos.DrawLine(new Vector3(-BattleSystem.horizontal, BattleSystem.vertical + cPlayer.top), new Vector3(0, BattleSystem.vertical + cPlayer.top));
+        Gizmos.DrawLine(new Vector3(-BattleSystem.horizontal, -BattleSystem.vertical + cPlayer.down), new Vector3(0, -BattleSystem.vertical + cPlayer.down));
+        #endregion
+    }
+    #endregion
 }

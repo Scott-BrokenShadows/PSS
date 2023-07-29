@@ -17,22 +17,8 @@ public class BattleSkill : MonoBehaviour
     [ReadOnly] public int spAtk;
     [ReadOnly] public int crit;
 
-    // Keep Data this gameobject
-    GameObject myGameObject;
-
-    void Start()
-    {
-        // Set up the data
-        if (_base) { SetUp(); }
-    }
-
     void Update()
     {
         
-    }
-
-    void SetUp()
-    {
-
     }
 }
