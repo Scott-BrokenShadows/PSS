@@ -32,13 +32,14 @@ public class BattleUnit : MonoBehaviour
     // Player Unit Controls
     [Separator]
     [Header("Unit Function")]
-    [ReadOnly] [SerializeField] bool subUnit;
+    [SerializeField] bool subUnit;
 
     // Enemy Unit Controls
     [ReadOnly] public int sLane;
 
     // Keep Data this gameobject
     GameObject myGameObject;
+    GameObject mySkillActive;
 
     #endregion
 
@@ -78,7 +79,7 @@ public class BattleUnit : MonoBehaviour
         // Get the Rigidbody2D
         _rb = GetComponent<Rigidbody2D>();
         // Player set to Player Controller position
-        if (isPlayer) { transform.position = BattlePlayerControl._currentTransform.position; }
+        if (isPlayer && !subUnit) { transform.position = BattlePlayerControl._currentTransform.position; }
         // Set the Unit Data
         bUnitHud.SetData(HBCharacter);
 
@@ -312,6 +313,21 @@ public class BattleUnit : MonoBehaviour
         }
     }
     #endregion
+
+    // Skill Mechanics------------------------------------------------------------------------
+
+    public void SkillActivation()
+    {
+        if (isPlayer && subUnit)
+        {
+            #region Instantiate the Asset and Name them
+            mySkillActive = HBCharacter.Base.UnitSkill.Asset;
+            GameObject asset = Instantiate(HBCharacter.Base.UnitSkill.Asset, transform);
+            asset.transform.position = transform.position;
+            asset.name = HBCharacter.Base.UnitSkill.Name + "(PlayerSkill)";
+            #endregion
+        }
+    }
 
     // Destroy Mechanics------------------------------------------------------------------------
 
