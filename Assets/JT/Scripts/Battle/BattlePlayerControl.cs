@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class ClampPlayer
+{
+    public float top;
+    public float down;
+    public float left;
+    public float right;
+}
+
+
 public class BattlePlayerControl : MonoBehaviour
 {
     public float speed;
@@ -15,6 +25,10 @@ public class BattlePlayerControl : MonoBehaviour
     Vector2 _movementInput;
     Vector2 _smoothMovementInput;
     Vector2 _movementInputSmoothVelocity;
+
+    // Player Clamping
+    [LabelOverride("Clamp Player")]
+    public ClampPlayer cPlayer;
 
     void Awake()
     {
@@ -46,5 +60,4 @@ public class BattlePlayerControl : MonoBehaviour
         _smoothMovementInput = Vector2.SmoothDamp(_smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);
         _rb.velocity = _smoothMovementInput * speed;
     }
-
 }

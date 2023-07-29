@@ -255,12 +255,24 @@ public class BattleSystem : MonoBehaviour
 
         Gizmos.color = Color.red;
         #region Enemy Lane Stop
-        if (_laneSlowDown != null)
+
+        #region Old just ignore this
+        //if (_laneSlowDown != null)
+        //{
+        //    for (int i = 0; i < _laneSlowDown.Count; i++)
+        //    {
+        //        Gizmos.DrawLine(new Vector3(Remap(_laneSlowDown[i], 0, 1, -horizontal, horizontal), -vertical),
+        //            new Vector3(Remap(_laneSlowDown[i], 0, 1, -horizontal, horizontal), vertical));
+        //    }
+        //}
+        #endregion
+
+        if (laneSlowDown != null)
         {
-            for (int i = 0; i < _laneSlowDown.Count; i++)
+            for (int i = 0; i < laneSlowDown.Count; i++)
             {
-                Gizmos.DrawLine(new Vector3(Remap(_laneSlowDown[i], 0, 1, -horizontal, horizontal), -vertical),
-                    new Vector3(Remap(_laneSlowDown[i], 0, 1, -horizontal, horizontal), vertical));
+                Gizmos.DrawLine(new Vector3(Remap(laneSlowDown[i], 0, 1, -horizontal, horizontal), -vertical),
+                    new Vector3(Remap(laneSlowDown[i], 0, 1, -horizontal, horizontal), vertical));
             }
         }
         #endregion
