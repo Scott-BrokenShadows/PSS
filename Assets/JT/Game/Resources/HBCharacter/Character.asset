@@ -18,14 +18,14 @@ MonoBehaviour:
   iconSprite: {fileID: 0}
   asset: {fileID: 8424154798648897263, guid: 3699e8601dd3e6441b64dcfd5f401ec1, type: 3}
   unitType: 0
-  elements: 0
-  maxHP: 5274
-  attack: 139
-  spAttack: 117
-  defence: 124
-  spDefence: 184
-  speed: 493
-  totalStats: 1057
-  critical: 78
+  elements: 2
+  maxHP: 9999
+  attack: 999
+  spAttack: 999
+  defence: 999
+  spDefence: 999
+  speed: 999
+  totalStats: 4995
+  critical: 100
   unitBullet: {fileID: 11400000, guid: 9b0edfb6ef885964c92c7a7162476f78, type: 2}
   unitSkill: {fileID: 11400000, guid: b54d71b5a1895b2498351871f248e163, type: 2}

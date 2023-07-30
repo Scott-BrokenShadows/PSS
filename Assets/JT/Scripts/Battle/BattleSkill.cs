@@ -17,6 +17,11 @@ public class BattleSkill : MonoBehaviour
     [ReadOnly] public int spAtk;
     [ReadOnly] public int crit;
 
+    void Start()
+    {
+        
+    }
+
     void Update()
     {
         

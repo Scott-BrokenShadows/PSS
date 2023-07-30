@@ -6,19 +6,13 @@ public class BattleBullet : MonoBehaviour
 {
     [LabelOverride("Bullet Base")]
     [SerializeField] public BulletBase _base;
-    [LabelOverride("Unit Base")]
-    [SerializeField] public BattleUnit bUnit;
+    [SerializeField] public BattleTransferDamage transferDamage;
 
     // Get the Data from Bullet Base
     [ReadOnly] public float speed;
 
     // Check if this is a Player or Enemy
     [HideInInspector] public bool isPlayer;
-
-    // Store the BattleUnit Data
-    [ReadOnly] public int atk;
-    [ReadOnly] public int spAtk;
-    [ReadOnly] public int crit;
 
     // Keep Data this gameobject
     GameObject myGameObject;
@@ -42,7 +36,7 @@ public class BattleBullet : MonoBehaviour
         if (collision.transform.GetComponent<BattleUnit>() != null && collision.GetComponent<BattleUnit>().isPlayer != isPlayer)
         {
             // target unit damage calculation
-            DamageDetails damageDetails = collision.transform.GetComponent<BattleUnit>().HBCharacter.TakeDamage(bUnit.HBCharacter);
+            DamageDetails damageDetails = collision.transform.GetComponent<BattleUnit>().HBCharacter.TakeDamage(transferDamage);
             // HP Refection
             collision.transform.GetComponent<BattleUnit>().bUnitHud.UpdateHP();
             // Destroy Bullet

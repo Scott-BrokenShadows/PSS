@@ -214,9 +214,11 @@ public class BattleUnit : MonoBehaviour
         GameObject asset = Instantiate(bulletAsset, transform.position, Quaternion.LookRotation(transform.forward));
         asset.GetComponent<BattleBullet>().isPlayer = (isPlayer) ? true : false;
         asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
-        asset.GetComponent<BattleBullet>().atk = HBCharacter.Attack;
-        asset.GetComponent<BattleBullet>().spAtk = HBCharacter.SpAttack;
-        asset.GetComponent<BattleBullet>().bUnit = this;
+
+        asset.GetComponent<BattleTransferDamage>().transferDamage.elements = HBCharacter.Base.Elements;
+        asset.GetComponent<BattleTransferDamage>().transferDamage.atk = HBCharacter.Attack;
+        asset.GetComponent<BattleTransferDamage>().transferDamage.spAtk = HBCharacter.SpAttack;
+        asset.GetComponent<BattleTransferDamage>().transferDamage.crit = HBCharacter.Base.Critical;
     }
 
     void MultiSpreadShot()
@@ -227,9 +229,11 @@ public class BattleUnit : MonoBehaviour
             GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
             asset.GetComponent<BattleBullet>().isPlayer = (isPlayer) ? true : false;
             asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
-            asset.GetComponent<BattleBullet>().atk = HBCharacter.Attack;
-            asset.GetComponent<BattleBullet>().spAtk = HBCharacter.SpAttack;
-            asset.GetComponent<BattleBullet>().bUnit = this;
+
+            asset.GetComponent<BattleTransferDamage>().transferDamage.elements = HBCharacter.Base.Elements;
+            asset.GetComponent<BattleTransferDamage>().transferDamage.atk = HBCharacter.Attack;
+            asset.GetComponent<BattleTransferDamage>().transferDamage.spAtk = HBCharacter.SpAttack;
+            asset.GetComponent<BattleTransferDamage>().transferDamage.crit = HBCharacter.Base.Critical;
         }
     }
 
@@ -241,9 +245,11 @@ public class BattleUnit : MonoBehaviour
             GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
             asset.GetComponent<BattleBullet>().isPlayer = (isPlayer) ? true : false;
             asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
-            asset.GetComponent<BattleBullet>().atk = HBCharacter.Attack;
-            asset.GetComponent<BattleBullet>().spAtk = HBCharacter.SpAttack;
-            asset.GetComponent<BattleBullet>().bUnit = this;
+
+            asset.GetComponent<BattleTransferDamage>().transferDamage.elements = HBCharacter.Base.Elements;
+            asset.GetComponent<BattleTransferDamage>().transferDamage.atk = HBCharacter.Attack;
+            asset.GetComponent<BattleTransferDamage>().transferDamage.spAtk = HBCharacter.SpAttack;
+            asset.GetComponent<BattleTransferDamage>().transferDamage.crit = HBCharacter.Base.Critical;
         }
     }
     #endregion

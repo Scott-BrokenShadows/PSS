@@ -41,23 +41,24 @@ public class HBCharacter
     int CalculateMaxHP() { return Mathf.FloorToInt(((Base.MaxHP * Level) / 100f) + 10); }
     // Take Damage------------------------------------------------------------------------
     #region Take Damage Calculation
-    public DamageDetails TakeDamage(HBCharacter attacker) // Attack
+    //public DamageDetails TakeDamage(HBCharacter attacker) // Attack
+    public DamageDetails TakeDamage(BattleTransferDamage attacker) // Attack
     {
         // Critical
         float critical = 1f; // Normal damage <no critical>
-        if (Random.value * 100f <= attacker.Base.Critical) // HBCharacter Critical% chance critical 
+        if (Random.value * 100f <= attacker.transferDamage.crit) // HBCharacter Critical% chance critical 
         {
             // Critical Damage
             critical = 1.5f;
         }
         // Compability
-        float type = ElementChart.GetEffectiveness(attacker.Base.Elements, this.Base.Elements);
+        float type = ElementChart.GetEffectiveness(attacker.transferDamage.elements, this.Base.Elements);
 
         float modifiers = Random.Range(0.85f, 1.05f) * type * critical;
 
         // Attack Damage
         int damageBasic = 0;
-        float basic = (float)attacker.Attack * 50 / (float)this.Defense;
+        float basic = (float)attacker.transferDamage.atk * 50 / (float)this.Defense;
         damageBasic = Mathf.FloorToInt(basic * modifiers);
 
         int damage = damageBasic;

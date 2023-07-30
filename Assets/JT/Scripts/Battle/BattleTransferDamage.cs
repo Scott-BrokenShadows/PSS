@@ -6,15 +6,19 @@ using UnityEngine;
 public class TransferDamage
 {
     // Store the BattleUnit Data
+    [LabelOverride("Element")]
+    [ReadOnly] public Elements elements;
+    [LabelOverride("Physical Attack")]
     [ReadOnly] public int atk;
+    [LabelOverride("Magic Attack")]
     [ReadOnly] public int spAtk;
+    [LabelOverride("Critical")]
     [ReadOnly] public int crit;
 }
 
 public class BattleTransferDamage : MonoBehaviour
 {
-    [LabelOverride("Transfer Damage")]
-    [SerializeField] public TransferDamage tDamage;
+    [SerializeField] public TransferDamage transferDamage;
 
     // Check if this is a Player or Enemy
     [HideInInspector] public bool isPlayer;
