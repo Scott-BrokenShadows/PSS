@@ -6,11 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/JT/Scenes/All Scenes/Home.unity
+    guid: def7cb6ef53a46445bfd243b0ab34a21
+  - enabled: 1
     path: Assets/JT/Scenes/All Scenes/Battle.unity
     guid: 4da503c96836f7c4982dff5863f9690f
   - enabled: 1
-    path: Assets/JT/Scenes/All Scenes/GameHub.unity
-    guid: 8e3da5a0c03e17943a1689574d5df3e0
+    path: Assets/DB/DB_Scenes/DB_GachaMenu.unity
+    guid: b3c8b421bfeb824449f08704e7664e85
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 59d85b0893d303149b1d00789f81a0de, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: c0ebba3b005725d4393ccfa194249617, type: 2}
