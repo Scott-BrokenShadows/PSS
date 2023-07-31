@@ -15,6 +15,7 @@ public class BattleUnit : MonoBehaviour
 
     // Get the data from HBCharacter
     public HBCharacter HBCharacter { get; set; }
+    [LabelOverride("Battle Unit Hud")]
     public BattleUnitHud bUnitHud;
 
     // Bullet Control
@@ -35,7 +36,12 @@ public class BattleUnit : MonoBehaviour
     public bool subUnit;
 
     // Enemy Unit Controls
-    [ReadOnly] public int sLane;
+    [HideInInspector] public int sLane;
+
+    // Color HP
+    [Separator]
+    public Color playerCol;
+    public Color enemyCol;
 
     // Keep Data this gameobject
     GameObject myGameObject;
@@ -96,6 +102,9 @@ public class BattleUnit : MonoBehaviour
         range = HBCharacter.Base.UnitBullet.BulletRange;
         count = HBCharacter.Base.UnitBullet.BulletCount;
         reloadTimeBullet = HBCharacter.Base.UnitBullet.BulletReload;
+
+        // Change HPBar UI Color
+        bUnitHud.hpBar.health.GetComponent<Image>().color = (isPlayer) ? playerCol : enemyCol;
     }
     #endregion
 

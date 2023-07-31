@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BattleUnitHud : MonoBehaviour
 {
-    [SerializeField] HPBar hpBar;
+    [SerializeField] public HPBar hpBar;
 
     HBCharacter _hbCharacter;
 
