@@ -20,5 +20,5 @@ MonoBehaviour:
   sPos: 0
   damage: 0
   damagePerSecond: 0
-  skillReload: 0.1
-  skillActive: 2
+  skillReload: 10
+  skillActive: 10

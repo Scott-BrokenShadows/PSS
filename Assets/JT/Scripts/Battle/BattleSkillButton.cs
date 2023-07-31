@@ -1,3 +1,4 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,18 +17,17 @@ public class BattleSkillButton : MonoBehaviour
     public Text stackSkill;
 
     [ReadOnly] public int currentStack;
-    float cAmount;
+    [ReadOnly] public float cAmount;
     [ReadOnly] public float cActiveTimer;
+    [ReadOnly] public float cReloadTimer;
     [ReadOnly] public bool currentActive;
 
     public void Start()
     {
+        // Set up the data
         sButton = GetComponent<Button>();
         sButton.interactable = (subUnit != null) ? true : false;
-
-        cActiveTimer = subUnit.HBCharacter.Base.UnitSkill.SkillActive;
-
-        SetUp();
+        if (subUnit != null) { SetUp(); }
     }
 
     public void Update()
@@ -39,12 +39,16 @@ public class BattleSkillButton : MonoBehaviour
                 currentStack++;
                 currentStack = Mathf.Clamp(currentStack, 0, subUnit.HBCharacter.Base.UnitSkill.StackSkill);
                 stackSkill.text = $"{currentStack}/{subUnit.HBCharacter.Base.UnitSkill.StackSkill}";
+                
                 cAmount = 0;
+                cReloadTimer = subUnit.HBCharacter.Base.UnitSkill.SkillReload;
             }
 
             if (currentStack != subUnit.HBCharacter.Base.UnitSkill.StackSkill)
             {
-                cAmount += Time.deltaTime * subUnit.HBCharacter.Base.UnitSkill.SkillReload;
+                cReloadTimer -= Time.deltaTime;
+
+                cAmount = BattleSystem.Remap(cReloadTimer, subUnit.HBCharacter.Base.UnitSkill.SkillReload, 0f, 0f, 1f);
                 fillBar.fillAmount = cAmount;
             }
 
@@ -53,6 +57,8 @@ public class BattleSkillButton : MonoBehaviour
 
             return;
         }
+
+        return;
     }
 
     void CurrentActive()
@@ -70,6 +76,9 @@ public class BattleSkillButton : MonoBehaviour
 
     void SetUp()
     {
+        cActiveTimer = subUnit.HBCharacter.Base.UnitSkill.SkillActive;
+        cReloadTimer = subUnit.HBCharacter.Base.UnitSkill.SkillReload;
+
         cAmount = 0;
         fillBar.fillAmount = cAmount;
 
