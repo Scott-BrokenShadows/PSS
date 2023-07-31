@@ -61,7 +61,7 @@ public class BattleUnit : MonoBehaviour
     void Update()
     {
         // Shoot after timer
-        ReloadTimerBullet();
+        //ReloadTimerBullet();
         // If enemy outside of bound Destroy
         if (!isPlayer) { DestroyOutside(); }
         // When HP reaches 0 Destroy
@@ -221,7 +221,7 @@ public class BattleUnit : MonoBehaviour
     void SingleShot()
     {
         GameObject asset = Instantiate(bulletAsset, transform.position, Quaternion.LookRotation(transform.forward));
-        asset.GetComponent<BattleBullet>().isPlayer = (isPlayer) ? true : false;
+        asset.GetComponent<BattleTransferDamage>().isPlayer = (isPlayer) ? true : false;
         asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
 
         asset.GetComponent<BattleTransferDamage>().transferDamage.elements = HBCharacter.Base.Elements;
@@ -331,6 +331,7 @@ public class BattleUnit : MonoBehaviour
 
     // Skill Mechanics------------------------------------------------------------------------
 
+    #region Skill Activation
     public void SkillActivation()
     {
         if (isPlayer && subUnit)
@@ -344,6 +345,7 @@ public class BattleUnit : MonoBehaviour
             #endregion
         }
     }
+    #endregion
 
     // Destroy Mechanics------------------------------------------------------------------------
 

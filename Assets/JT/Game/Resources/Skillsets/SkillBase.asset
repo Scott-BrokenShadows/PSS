@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a7498571be2254c9642f08bcd3855b, type: 3}
   m_Name: SkillBase
   m_EditorClassIdentifier: 
-  name: YaY
+  name: 5 Lane Shot
   description: 
   iconSprite: {fileID: 21300000, guid: cc7e65fd16d39483aa18d865a68e9451, type: 3}
-  asset: {fileID: 439714182302601851, guid: 03a624dc1e6fc8c47b477f0dd92bf4e8, type: 3}
+  asset: {fileID: 2590114573400082787, guid: 03a624dc1e6fc8c47b477f0dd92bf4e8, type: 3}
   stackSkill: 4
   sPos: 0
   damage: 0

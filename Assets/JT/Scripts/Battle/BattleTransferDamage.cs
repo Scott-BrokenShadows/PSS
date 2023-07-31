@@ -21,5 +21,5 @@ public class BattleTransferDamage : MonoBehaviour
     [SerializeField] public TransferDamage transferDamage;
 
     // Check if this is a Player or Enemy
-    [HideInInspector] public bool isPlayer;
+    public bool isPlayer;
 }

@@ -20,4 +20,4 @@ MonoBehaviour:
   bulletRange: 0
   bulletCount: 0
   bulletReload: 0.1
-  bulletSpeed: 100
+  bulletSpeed: 5

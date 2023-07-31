@@ -46,6 +46,7 @@ public class BattleBullet : MonoBehaviour
 
     void SetUp()
     {
+        isPlayer = transferDamage.isPlayer;
         speed = _base.BulletSpeed;
 
         #region Instantiate the Asset and Name them

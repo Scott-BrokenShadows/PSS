@@ -1248,8 +1248,8 @@ MonoBehaviour:
   GridRows: []
   cRows: 0
   laneSlowDown:
-  - 0.38
-  - 0.73
+  - 0.862
+  - 0.711
   - 0.559
   bUnitSlot:
     battleUnit:
