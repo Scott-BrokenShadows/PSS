@@ -484,6 +484,9 @@ MonoBehaviour:
   iconSprite: {fileID: 6798753399935483725}
   skillName: {fileID: 7659332339583316172}
   stackSkill: {fileID: 626108649969501296}
+  currentStack: 0
+  cActiveTimer: 0
+  currentActive: 0
 --- !u!1 &4838471699981063151
 GameObject:
   m_ObjectHideFlags: 0
