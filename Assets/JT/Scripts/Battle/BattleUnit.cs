@@ -61,7 +61,7 @@ public class BattleUnit : MonoBehaviour
     void Update()
     {
         // Shoot after timer
-        //ReloadTimerBullet();
+        ReloadTimerBullet();
         // If enemy outside of bound Destroy
         if (!isPlayer) { DestroyOutside(); }
         // When HP reaches 0 Destroy
@@ -223,6 +223,22 @@ public class BattleUnit : MonoBehaviour
         GameObject asset = Instantiate(bulletAsset, transform.position, Quaternion.LookRotation(transform.forward));
         asset.GetComponent<BattleTransferDamage>().isPlayer = (isPlayer) ? true : false;
         asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
+        if (!isPlayer) 
+        {
+            #region old ignore this 
+            //var fixedZ = -90; // Or whatever value is needed to set correct facing of your object. Play with this.
+            //transform.LookAt( new Vector3(BattlePlayerControl._currentTransform.transform.position.x, BattlePlayerControl._currentTransform.transform.position.y, fixedZ));
+
+            //asset.transform.rotation = Quaternion.LookRotation(new Vector3(0, BattlePlayerControl._currentTransform.transform.position.y, 0));
+            #endregion
+
+            // vector from this object towards the target location
+            Vector3 vectorToTarget = BattlePlayerControl._currentTransform.transform.position - this.transform.position;
+            // rotate that vector by -90 degrees around the Z axis
+            Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, -90) * vectorToTarget;
+
+            asset.transform.rotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
+        }
 
         asset.GetComponent<BattleTransferDamage>().transferDamage.elements = HBCharacter.Base.Elements;
         asset.GetComponent<BattleTransferDamage>().transferDamage.atk = HBCharacter.Attack;
@@ -236,7 +252,7 @@ public class BattleUnit : MonoBehaviour
         {
             Debug.DrawRay(r.origin, r.direction * 5);
             GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
-            asset.GetComponent<BattleBullet>().isPlayer = (isPlayer) ? true : false;
+            asset.GetComponent<BattleTransferDamage>().isPlayer = (isPlayer) ? true : false;
             asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
 
             asset.GetComponent<BattleTransferDamage>().transferDamage.elements = HBCharacter.Base.Elements;
@@ -252,7 +268,7 @@ public class BattleUnit : MonoBehaviour
         {
             Debug.DrawRay(r.origin, r.direction * 5);
             GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
-            asset.GetComponent<BattleBullet>().isPlayer = (isPlayer) ? true : false;
+            asset.GetComponent<BattleTransferDamage>().isPlayer = (isPlayer) ? true : false;
             asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
 
             asset.GetComponent<BattleTransferDamage>().transferDamage.elements = HBCharacter.Base.Elements;
@@ -266,32 +282,44 @@ public class BattleUnit : MonoBehaviour
     #region Multi-StraightShot Function
     Ray[] GetStraight(Transform origin, float range, int count)
     {
-        if (isPlayer)
+        #region Old just ignore this
+        //if (isPlayer)
+        //{
+        //    Ray[] rays = new Ray[count];
+        //    float s = range / (count - 1);
+        //    float a = -range / 2f;
+        //    for (int i = 0; i < count; i++)
+        //    {
+        //        float ca = a + i * s;
+        //        rays[i].origin = new Vector3(0, ca, 0) + origin.position;
+        //        rays[i].direction = origin.right;
+        //    }
+        //    return rays;
+        //}
+        //else
+        //{
+        //    Ray[] rays = new Ray[count];
+        //    float s = range / (count - 1);
+        //    float a = -range / 2f;
+        //    for (int i = 0; i < count; i++)
+        //    {
+        //        float ca = a + i * s;
+        //        rays[i].origin = new Vector3(0, ca, 0) + origin.position;
+        //        rays[i].direction = -origin.right;
+        //    }
+        //    return rays;
+        //}
+        #endregion
+
+        Ray[] rays = new Ray[count];
+        float s = range / (count - 1);
+        float a = -range / 2f;
+        for (int i = 0; i < count; i++)
         {
-            Ray[] rays = new Ray[count];
-            float s = range / (count - 1);
-            float a = -range / 2f;
-            for (int i = 0; i < count; i++)
-            {
-                float ca = a + i * s;
-                rays[i].origin = new Vector3(0, ca, 0) + origin.position;
-                rays[i].direction = origin.right;
-            }
-            return rays;
+            float ca = a + i * s;
+            rays[i].origin = new Vector3(0, ca, 0) + origin.position;
         }
-        else
-        {
-            Ray[] rays = new Ray[count];
-            float s = range / (count - 1);
-            float a = -range / 2f;
-            for (int i = 0; i < count; i++)
-            {
-                float ca = a + i * s;
-                rays[i].origin = new Vector3(0, ca, 0) + origin.position;
-                rays[i].direction = -origin.right;
-            }
-            return rays;
-        }
+        return rays;
     }
     #endregion
 

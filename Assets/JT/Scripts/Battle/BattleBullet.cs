@@ -12,7 +12,7 @@ public class BattleBullet : MonoBehaviour
     [ReadOnly] public float speed;
 
     // Check if this is a Player or Enemy
-    [HideInInspector] public bool isPlayer;
+    public bool isPlayer;
 
     // Keep Data this gameobject
     GameObject myGameObject;
