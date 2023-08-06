@@ -208,6 +208,7 @@ public class BattleSystem : MonoBehaviour
         asset.GetComponent<BattleUnit>().level = bUnitSlot.battleUnit.level;
         asset.GetComponent<BattleUnit>().isPlayer = true;
         asset.GetComponent<BattleUnit>().subUnit = false;
+        asset.transform.SetParent(null);
 
     }
     void InstanceSubPlayers()
@@ -218,6 +219,7 @@ public class BattleSystem : MonoBehaviour
         asset.GetComponent<BattleUnit>().level = bUnitSlot.subBattleUnit.level;
         asset.GetComponent<BattleUnit>().isPlayer = true;
         asset.GetComponent<BattleUnit>().subUnit = true;
+        asset.transform.SetParent(null);
 
         GameObject assetUI = Instantiate(skillButtonUI, transform);
         assetUI.transform.SetParent(skillButtonPos.transform);

@@ -61,7 +61,7 @@ public class BattleUnit : MonoBehaviour
     void Update()
     {
         // Shoot after timer
-        ReloadTimerBullet();
+        if (isPlayer && !subUnit || !isPlayer) { ReloadTimerBullet(); }
         // If enemy outside of bound Destroy
         if (!isPlayer) { DestroyOutside(); }
         // When HP reaches 0 Destroy
@@ -94,7 +94,7 @@ public class BattleUnit : MonoBehaviour
         myGameObject = HBCharacter.Base.Asset;
         GameObject asset = Instantiate(HBCharacter.Base.Asset, transform);
         asset.transform.position = transform.position;
-        asset.transform.localRotation = Quaternion.Euler(0, ((isPlayer) ? 0 : 180), 0);
+        asset.transform.localRotation = Quaternion.Euler(((isPlayer) ? -90 : 90), ((isPlayer) ? 0 : 180), 0);
         asset.name = HBCharacter.Base.Name + "Model";
         #endregion
 
@@ -223,7 +223,7 @@ public class BattleUnit : MonoBehaviour
         GameObject asset = Instantiate(bulletAsset, transform.position, Quaternion.LookRotation(transform.forward));
         asset.GetComponent<BattleTransferDamage>().isPlayer = (isPlayer) ? true : false;
         asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
-        if (!isPlayer) 
+        if (!isPlayer)
         {
             #region old ignore this 
             //var fixedZ = -90; // Or whatever value is needed to set correct facing of your object. Play with this.
@@ -251,9 +251,20 @@ public class BattleUnit : MonoBehaviour
         foreach (var r in GetSpread(transform, range, count))
         {
             Debug.DrawRay(r.origin, r.direction * 5);
-            GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
+            GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(transform.forward));
+            //GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
             asset.GetComponent<BattleTransferDamage>().isPlayer = (isPlayer) ? true : false;
             asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
+
+            if (!isPlayer)
+            {
+                // vector from this object towards the target location
+                Vector3 vectorToTarget = BattlePlayerControl._currentTransform.transform.position - this.transform.position;
+                // rotate that vector by -90 degrees around the Z axis
+                Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, -90) * vectorToTarget;
+
+                asset.transform.rotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
+            }
 
             asset.GetComponent<BattleTransferDamage>().transferDamage.elements = HBCharacter.Base.Elements;
             asset.GetComponent<BattleTransferDamage>().transferDamage.atk = HBCharacter.Attack;
@@ -267,9 +278,24 @@ public class BattleUnit : MonoBehaviour
         foreach (var r in GetStraight(transform, range, count))
         {
             Debug.DrawRay(r.origin, r.direction * 5);
+            //GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(transform.forward));
             GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
             asset.GetComponent<BattleTransferDamage>().isPlayer = (isPlayer) ? true : false;
             asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
+
+            if (!isPlayer)
+            {
+                // vector from this object towards the target location
+                Vector3 vectorToTarget = BattlePlayerControl._currentTransform.transform.position - this.transform.position;
+                // rotate that vector by -90 degrees around the Z axis
+                Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, -90) * vectorToTarget;
+
+                asset.transform.rotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
+            }
+            else
+            {
+                asset.transform.rotation = this.transform.rotation;
+            }
 
             asset.GetComponent<BattleTransferDamage>().transferDamage.elements = HBCharacter.Base.Elements;
             asset.GetComponent<BattleTransferDamage>().transferDamage.atk = HBCharacter.Attack;
@@ -280,45 +306,70 @@ public class BattleUnit : MonoBehaviour
     #endregion
 
     #region Multi-StraightShot Function
+    //Ray[] GetStraight(Transform origin, float range, int count)
+    //{
+    #region Old just ignore this
+    //if (isPlayer)
+    //{
+    //    Ray[] rays = new Ray[count];
+    //    float s = range / (count - 1);
+    //    float a = -range / 2f;
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        float ca = a + i * s;
+    //        rays[i].origin = new Vector3(0, ca, 0) + origin.position;
+    //        rays[i].direction = origin.right;
+    //    }
+    //    return rays;
+    //}
+    //else
+    //{
+    //    Ray[] rays = new Ray[count];
+    //    float s = range / (count - 1);
+    //    float a = -range / 2f;
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        float ca = a + i * s;
+    //        rays[i].origin = new Vector3(0, ca, 0) + origin.position;
+    //        rays[i].direction = -origin.right;
+    //    }
+    //    return rays;
+    //}
+    #endregion
+
+    //    Ray[] rays = new Ray[count];
+    //    float s = range / (count - 1);
+    //    float a = -range / 2f;
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        float ca = a + i * s;
+    //        rays[i].origin = new Vector3(0, ca, 0) + origin.position;
+    //    }
+    //    return rays;
+    //}
+
     Ray[] GetStraight(Transform origin, float range, int count)
     {
-        #region Old just ignore this
-        //if (isPlayer)
-        //{
-        //    Ray[] rays = new Ray[count];
-        //    float s = range / (count - 1);
-        //    float a = -range / 2f;
-        //    for (int i = 0; i < count; i++)
-        //    {
-        //        float ca = a + i * s;
-        //        rays[i].origin = new Vector3(0, ca, 0) + origin.position;
-        //        rays[i].direction = origin.right;
-        //    }
-        //    return rays;
-        //}
-        //else
-        //{
-        //    Ray[] rays = new Ray[count];
-        //    float s = range / (count - 1);
-        //    float a = -range / 2f;
-        //    for (int i = 0; i < count; i++)
-        //    {
-        //        float ca = a + i * s;
-        //        rays[i].origin = new Vector3(0, ca, 0) + origin.position;
-        //        rays[i].direction = -origin.right;
-        //    }
-        //    return rays;
-        //}
-        #endregion
+        // vector from this object towards the target location
+        Vector3 vectorToTarget = BattlePlayerControl._currentTransform.transform.position - this.transform.position;
+        // rotate that vector by -90 degrees around the Z axis
+        Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, -90) * vectorToTarget;
 
         Ray[] rays = new Ray[count];
         float s = range / (count - 1);
         float a = -range / 2f;
+
         for (int i = 0; i < count; i++)
         {
             float ca = a + i * s;
-            rays[i].origin = new Vector3(0, ca, 0) + origin.position;
+            Vector3 rayOriginOffset = new Vector3(0, ca, 0);
+
+            // Rotate the ray origin offset based on the object's rotation
+            Vector3 rotatedOffset = ((isPlayer) ? origin.rotation : Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget)) * rayOriginOffset;
+
+            rays[i] = new Ray(origin.position + rotatedOffset, origin.forward);
         }
+
         return rays;
     }
     #endregion
