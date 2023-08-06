@@ -137,7 +137,6 @@ public class BattleSystem : MonoBehaviour
         // Instantiate the Player Characters
         InstancePlayers();
         InstanceSubPlayers();
-        InstanceHyperSkill();
     }
     #endregion
 
@@ -216,10 +215,19 @@ public class BattleSystem : MonoBehaviour
         asset.GetComponent<BattleUnit>().subUnit = false;
         asset.transform.SetParent(null);
 
+        // Element
         GameObject assetUI = Instantiate(elementButtonUI, transform);
         assetUI.transform.SetParent(elementButtonPos.transform);
         assetUI.transform.position = elementButtonPos.position;
         assetUI.transform.localScale = new Vector3(1f, 1f, 1f);
+
+        // HyperSkill
+        GameObject assetHS = Instantiate(hyperSkillButtonUI, transform);
+        assetHS.transform.SetParent(hyperSkillButtonPos.transform);
+        assetHS.transform.position = hyperSkillButtonPos.position;
+        assetHS.transform.localScale = new Vector3(1f, 1f, 1f);
+        assetHS.GetComponent<BattleHyperSkillButton>().mainUnit = asset.GetComponent<BattleUnit>();
+        assetHS.GetComponent<BattleHyperSkillButton>().bSystem = this;
     }
     void InstanceSubPlayers()
     {
@@ -231,18 +239,12 @@ public class BattleSystem : MonoBehaviour
         asset.GetComponent<BattleUnit>().subUnit = true;
         asset.transform.SetParent(null);
 
+        // Skill
         GameObject assetUI = Instantiate(skillButtonUI, transform);
         assetUI.transform.SetParent(skillButtonPos.transform);
         assetUI.transform.position = skillButtonPos.position;
         assetUI.transform.localScale = new Vector3(1f, 1f, 1f);
         assetUI.GetComponent<BattleSkillButton>().subUnit = asset.GetComponent<BattleUnit>();
-    }
-    void InstanceHyperSkill()
-    {
-        GameObject assetUI = Instantiate(hyperSkillButtonUI, transform);
-        assetUI.transform.SetParent(hyperSkillButtonPos.transform);
-        assetUI.transform.position = hyperSkillButtonPos.position;
-        assetUI.transform.localScale = new Vector3(1f, 1f, 1f);
     }
     #endregion
 

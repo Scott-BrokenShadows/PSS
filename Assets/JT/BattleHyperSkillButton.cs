@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class BattleHyperSkillButton : MonoBehaviour
 {
-    public GameObject mainUnit;
+    public BattleUnit mainUnit;
     public BattleSystem bSystem;
     Button hsButton;
 
@@ -69,8 +69,23 @@ public class BattleHyperSkillButton : MonoBehaviour
     {
         if (cAmount >= 1)
         {
+            DestroyEnemiesInsideBorders();
             cAmount = 0;
             cReloadTimer = skillReload;
+        }
+    }
+
+    void DestroyEnemiesInsideBorders()
+    {
+        if (transform.position.x > -BattleSystem.horizontal ||
+            transform.position.x <  BattleSystem.horizontal ||
+            transform.position.y > -BattleSystem.vertical   ||
+            transform.position.y <  BattleSystem.vertical   )
+        {
+            foreach (var var in bSystem.cEnemy)
+            {
+                Destroy(var);
+            }
         }
     }
 }
