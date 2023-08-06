@@ -9,14 +9,19 @@ public class BattleSystem : MonoBehaviour
     #region Inspector
     public GameObject battleUnit;
     public GameObject skillButtonUI;
+    public GameObject hyperSkillButtonUI;
+    public GameObject elementButtonUI;
 
     // Position
     [LabelOverride("Sub Unit Position")]
     public Transform subUnitPos;
-    //[LabelOverride("Front Unit Position")]
-    //public Transform frontUnitPos;
+
     [LabelOverride("Skill Button Position")]
     public Transform skillButtonPos;
+    [LabelOverride("Hyper Skill Button Position")]
+    public Transform hyperSkillButtonPos;
+    [LabelOverride("Element Button Position")]
+    public Transform elementButtonPos;
 
     // LevelStage
     [ReadOnly] private LevelStage currentLevel;
@@ -132,6 +137,7 @@ public class BattleSystem : MonoBehaviour
         // Instantiate the Player Characters
         InstancePlayers();
         InstanceSubPlayers();
+        InstanceHyperSkill();
     }
     #endregion
 
@@ -210,6 +216,10 @@ public class BattleSystem : MonoBehaviour
         asset.GetComponent<BattleUnit>().subUnit = false;
         asset.transform.SetParent(null);
 
+        GameObject assetUI = Instantiate(elementButtonUI, transform);
+        assetUI.transform.SetParent(elementButtonPos.transform);
+        assetUI.transform.position = elementButtonPos.position;
+        assetUI.transform.localScale = new Vector3(1f, 1f, 1f);
     }
     void InstanceSubPlayers()
     {
@@ -226,6 +236,13 @@ public class BattleSystem : MonoBehaviour
         assetUI.transform.position = skillButtonPos.position;
         assetUI.transform.localScale = new Vector3(1f, 1f, 1f);
         assetUI.GetComponent<BattleSkillButton>().subUnit = asset.GetComponent<BattleUnit>();
+    }
+    void InstanceHyperSkill()
+    {
+        GameObject assetUI = Instantiate(hyperSkillButtonUI, transform);
+        assetUI.transform.SetParent(hyperSkillButtonPos.transform);
+        assetUI.transform.position = hyperSkillButtonPos.position;
+        assetUI.transform.localScale = new Vector3(1f, 1f, 1f);
     }
     #endregion
 
