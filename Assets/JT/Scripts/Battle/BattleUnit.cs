@@ -239,6 +239,10 @@ public class BattleUnit : MonoBehaviour
 
             asset.transform.rotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
         }
+        else
+        {
+            asset.transform.rotation = this.transform.rotation;
+        }
 
         asset.GetComponent<BattleTransferDamage>().transferDamage.elements = HBCharacter.Base.Elements;
         asset.GetComponent<BattleTransferDamage>().transferDamage.atk = HBCharacter.Attack;
@@ -251,25 +255,43 @@ public class BattleUnit : MonoBehaviour
         foreach (var r in GetSpread(transform, range, count))
         {
             Debug.DrawRay(r.origin, r.direction * 5);
-            GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(transform.forward));
-            //GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
-            asset.GetComponent<BattleTransferDamage>().isPlayer = (isPlayer) ? true : false;
-            asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
 
             if (!isPlayer)
             {
-                // vector from this object towards the target location
-                Vector3 vectorToTarget = BattlePlayerControl._currentTransform.transform.position - this.transform.position;
-                // rotate that vector by -90 degrees around the Z axis
-                Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, -90) * vectorToTarget;
+                GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.identity);
 
-                asset.transform.rotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
+                Vector2 spreadDirection = r.direction; // Get the spread direction
+                Vector2 targetDirection = BattlePlayerControl._currentTransform.transform.position - asset.transform.position;
+
+                // Calculate the angle to look at the target while maintaining spread direction
+                float angleToLook = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+
+                // Rotate the bullet to face the target while maintaining the spread direction
+                asset.transform.rotation = Quaternion.Euler(0, 0, angleToLook + 180); // Add 180 degrees
+
+                // Apply additional rotation based on the spread direction
+                asset.transform.Rotate(0, 0, Mathf.Atan2(spreadDirection.y, spreadDirection.x) * Mathf.Rad2Deg);
+
+                asset.GetComponent<BattleTransferDamage>().isPlayer = (isPlayer) ? true : false;
+                asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
+
+                asset.GetComponent<BattleTransferDamage>().transferDamage.elements = HBCharacter.Base.Elements;
+                asset.GetComponent<BattleTransferDamage>().transferDamage.atk = HBCharacter.Attack;
+                asset.GetComponent<BattleTransferDamage>().transferDamage.spAtk = HBCharacter.SpAttack;
+                asset.GetComponent<BattleTransferDamage>().transferDamage.crit = HBCharacter.Base.Critical;
             }
+            else
+            {
+                GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.Euler(0, 0, Mathf.Atan2(r.direction.y, r.direction.x) * Mathf.Rad2Deg));
 
-            asset.GetComponent<BattleTransferDamage>().transferDamage.elements = HBCharacter.Base.Elements;
-            asset.GetComponent<BattleTransferDamage>().transferDamage.atk = HBCharacter.Attack;
-            asset.GetComponent<BattleTransferDamage>().transferDamage.spAtk = HBCharacter.SpAttack;
-            asset.GetComponent<BattleTransferDamage>().transferDamage.crit = HBCharacter.Base.Critical;
+                asset.GetComponent<BattleTransferDamage>().isPlayer = (isPlayer) ? true : false;
+                asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
+
+                asset.GetComponent<BattleTransferDamage>().transferDamage.elements = HBCharacter.Base.Elements;
+                asset.GetComponent<BattleTransferDamage>().transferDamage.atk = HBCharacter.Attack;
+                asset.GetComponent<BattleTransferDamage>().transferDamage.spAtk = HBCharacter.SpAttack;
+                asset.GetComponent<BattleTransferDamage>().transferDamage.crit = HBCharacter.Base.Critical;
+            }
         }
     }
 
@@ -278,7 +300,6 @@ public class BattleUnit : MonoBehaviour
         foreach (var r in GetStraight(transform, range, count))
         {
             Debug.DrawRay(r.origin, r.direction * 5);
-            //GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(transform.forward));
             GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.LookRotation(r.direction));
             asset.GetComponent<BattleTransferDamage>().isPlayer = (isPlayer) ? true : false;
             asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
@@ -306,48 +327,6 @@ public class BattleUnit : MonoBehaviour
     #endregion
 
     #region Multi-StraightShot Function
-    //Ray[] GetStraight(Transform origin, float range, int count)
-    //{
-    #region Old just ignore this
-    //if (isPlayer)
-    //{
-    //    Ray[] rays = new Ray[count];
-    //    float s = range / (count - 1);
-    //    float a = -range / 2f;
-    //    for (int i = 0; i < count; i++)
-    //    {
-    //        float ca = a + i * s;
-    //        rays[i].origin = new Vector3(0, ca, 0) + origin.position;
-    //        rays[i].direction = origin.right;
-    //    }
-    //    return rays;
-    //}
-    //else
-    //{
-    //    Ray[] rays = new Ray[count];
-    //    float s = range / (count - 1);
-    //    float a = -range / 2f;
-    //    for (int i = 0; i < count; i++)
-    //    {
-    //        float ca = a + i * s;
-    //        rays[i].origin = new Vector3(0, ca, 0) + origin.position;
-    //        rays[i].direction = -origin.right;
-    //    }
-    //    return rays;
-    //}
-    #endregion
-
-    //    Ray[] rays = new Ray[count];
-    //    float s = range / (count - 1);
-    //    float a = -range / 2f;
-    //    for (int i = 0; i < count; i++)
-    //    {
-    //        float ca = a + i * s;
-    //        rays[i].origin = new Vector3(0, ca, 0) + origin.position;
-    //    }
-    //    return rays;
-    //}
-
     Ray[] GetStraight(Transform origin, float range, int count)
     {
         // vector from this object towards the target location
@@ -377,34 +356,54 @@ public class BattleUnit : MonoBehaviour
     #region Multi-SpreadShot Function
     Ray[] GetSpread(Transform origin, float range, int count)
     {
-        if (isPlayer)
+        #region
+        //if (isPlayer)
+        //{
+        //    Ray[] rays = new Ray[count];
+        //    float s = range / (count - 1);
+        //    float a = -range / 2f;
+        //    for (int i = 0; i < count; i++)
+        //    {
+        //        rays[i].origin = origin.position;
+        //        float ca = a + i * s;
+        //        Quaternion rotation = Quaternion.AngleAxis(ca, transform.forward);
+        //        rays[i].direction = rotation * origin.right;
+        //    }
+        //    return rays;
+        //}
+        //else
+        //{
+        //    Ray[] rays = new Ray[count];
+        //    float s = range / (count - 1);
+        //    float a = -range / 2f;
+        //    for (int i = 0; i < count; i++)
+        //    {
+        //        rays[i].origin = origin.position;
+        //        float ca = a + i * s;
+        //        Quaternion rotation = Quaternion.AngleAxis(ca, transform.forward);
+        //        rays[i].direction = rotation * -origin.right;
+        //    }
+        //    return rays;
+        //}
+        #endregion
+
+        // vector from this object towards the target location
+        Vector3 vectorToTarget = BattlePlayerControl._currentTransform.transform.position - this.transform.position;
+        // rotate that vector by -90 degrees around the Z axis
+        Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, -90) * vectorToTarget;
+
+        Ray[] rays = new Ray[count];
+        float s = range / (count - 1);
+        float a = -range / 2f;
+
+        for (int i = 0; i < count; i++)
         {
-            Ray[] rays = new Ray[count];
-            float s = range / (count - 1);
-            float a = -range / 2f;
-            for (int i = 0; i < count; i++)
-            {
-                rays[i].origin = origin.position;
-                float ca = a + i * s;
-                Quaternion rotation = Quaternion.AngleAxis(ca, transform.forward);
-                rays[i].direction = rotation * origin.right;
-            }
-            return rays;
+            float ca = a + i * s;
+            Quaternion rotation = Quaternion.AngleAxis(ca, transform.forward);
+            rays[i] = new Ray(origin.position, rotation * origin.right);
         }
-        else
-        {
-            Ray[] rays = new Ray[count];
-            float s = range / (count - 1);
-            float a = -range / 2f;
-            for (int i = 0; i < count; i++)
-            {
-                rays[i].origin = origin.position;
-                float ca = a + i * s;
-                Quaternion rotation = Quaternion.AngleAxis(ca, transform.forward);
-                rays[i].direction = rotation * -origin.right;
-            }
-            return rays;
-        }
+
+        return rays;
     }
     #endregion
 
