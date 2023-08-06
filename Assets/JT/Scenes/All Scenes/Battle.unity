@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc8a79bdba61224cb1a00735b8302f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 0
   targetRange: 0.1
   ScreenSpace: {x: 0, y: 0}
   cPlayer:
@@ -1316,19 +1316,20 @@ MonoBehaviour:
   skillButtonUI: {fileID: 3124508097746994976, guid: f2d82a22a9be38a45abdbe2f81208b4c, type: 3}
   hyperSkillButtonUI: {fileID: 3124508097746994976, guid: 4ec3feb51b5fa2244a912ba800d96624, type: 3}
   elementButtonUI: {fileID: 3124508097746994976, guid: 3186c8f185f76cb4885efc87329380d2, type: 3}
-  subUnitPos: {fileID: 806016614}
   skillButtonPos: {fileID: 1250813546}
   hyperSkillButtonPos: {fileID: 74800541}
   elementButtonPos: {fileID: 196558442}
+  subUnitPos: {fileID: 806016614}
+  mainUnitPos: {fileID: 1982533294}
   currentWaveOnScene: []
   cEnemy: []
   screenSpace: {x: 10, y: 5}
   GridRows: []
   cRows: 0
   laneSlowDown:
-  - 0.862
-  - 0.711
-  - 0.559
+  - 0.724
+  - 0.608
+  - 0.451
   bUnitSlot:
     battleUnit:
       characterBase: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}

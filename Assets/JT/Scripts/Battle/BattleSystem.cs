@@ -13,15 +13,17 @@ public class BattleSystem : MonoBehaviour
     public GameObject elementButtonUI;
 
     // Position
-    [LabelOverride("Sub Unit Position")]
-    public Transform subUnitPos;
-
     [LabelOverride("Skill Button Position")]
     public Transform skillButtonPos;
     [LabelOverride("Hyper Skill Button Position")]
     public Transform hyperSkillButtonPos;
     [LabelOverride("Element Button Position")]
     public Transform elementButtonPos;
+
+    [LabelOverride("Sub Unit Position")]
+    public Transform subUnitPos;
+    [LabelOverride("Main Unit Position")]
+    public Transform mainUnitPos;
 
     // LevelStage
     [ReadOnly] private LevelStage currentLevel;
@@ -58,6 +60,19 @@ public class BattleSystem : MonoBehaviour
     // Testing
     [SerializeField] BattleUnitSlot bUnitSlot;
     #endregion
+
+    private void OnValidate()
+    {
+        // Loop through the list (starting from the second element)
+        for (int i = 1; i < laneSlowDown.Count; i++)
+        {
+            // Clamp the current float to a maximum of 1
+            laneSlowDown[i] = Mathf.Clamp(laneSlowDown[i], 0f, 1f);
+
+            // Limit the current float by the previous float
+            laneSlowDown[i] = Mathf.Min(laneSlowDown[i], laneSlowDown[i - 1]);
+        }
+    }
 
     // Start & Update------------------------------------------------------------------------
 
@@ -137,6 +152,9 @@ public class BattleSystem : MonoBehaviour
         // Instantiate the Player Characters
         InstancePlayers();
         InstanceSubPlayers();
+
+        mainUnitPos.GetComponent<BattlePlayerControl>().speed =
+        ((bUnitSlot.battleUnit.characterBase.Speed / 999f) * 15f);
     }
     #endregion
 
