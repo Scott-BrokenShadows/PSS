@@ -578,6 +578,7 @@ MonoBehaviour:
   stackSkill: {fileID: 626108649969501296}
   cAmount: 0
   cReloadTimer: 0
+  hyperSkillName: Screen Wipe
   skillReload: 10
 --- !u!1 &4838471699981063151
 GameObject:

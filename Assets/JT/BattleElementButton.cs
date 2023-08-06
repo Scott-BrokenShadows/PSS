@@ -16,11 +16,10 @@ public class BattleElementButton : MonoBehaviour
     public Text skillName;
     public Text stackSkill;
 
-    [ReadOnly] public int currentStack;
     [ReadOnly] public float cAmount;
-    [ReadOnly] public float cActiveTimer;
     [ReadOnly] public float cReloadTimer;
-    [ReadOnly] public bool currentActive;
+
+    public float skillReload;
 
     public void Start()
     {
@@ -34,69 +33,40 @@ public class BattleElementButton : MonoBehaviour
     {
         if (mainUnit != null)
         {
-            if (cAmount >= 1 && currentStack < mainUnit.HBCharacter.Base.UnitSkill.StackSkill)
+            if (cAmount >= 1)
             {
-                currentStack++;
-                currentStack = Mathf.Clamp(currentStack, 0, mainUnit.HBCharacter.Base.UnitSkill.StackSkill);
-                stackSkill.text = $"{currentStack}/{mainUnit.HBCharacter.Base.UnitSkill.StackSkill}";
-                
-                cAmount = 0;
-                cReloadTimer = mainUnit.HBCharacter.Base.UnitSkill.SkillReload;
+                eButton.interactable = true;
             }
 
-            if (currentStack != mainUnit.HBCharacter.Base.UnitSkill.StackSkill)
+            if (cAmount < 1)
             {
+                eButton.interactable = false;
                 cReloadTimer -= Time.deltaTime;
 
-                cAmount = BattleSystem.Remap(cReloadTimer, mainUnit.HBCharacter.Base.UnitSkill.SkillReload, 0f, 0f, 1f);
+                cAmount = BattleSystem.Remap(cReloadTimer, skillReload, 0f, 0f, 1f);
                 fillBar.fillAmount = cAmount;
             }
-
-            if (currentActive && currentStack > 0) { CurrentActive(); }
-            eButton.interactable = (currentActive) ? false : true;
-
             return;
         }
 
         return;
     }
 
-    void CurrentActive()
-    {
-        cActiveTimer -= Time.deltaTime;
-
-        if (cActiveTimer <= 0)
-        {
-            currentActive = false;
-
-            // reset timer
-            cActiveTimer = mainUnit.HBCharacter.Base.UnitSkill.SkillActive;
-        }
-    }
-
     void SetUp()
     {
-        cActiveTimer = mainUnit.HBCharacter.Base.UnitSkill.SkillActive;
-        cReloadTimer = mainUnit.HBCharacter.Base.UnitSkill.SkillReload;
+        cReloadTimer = skillReload;
 
         cAmount = 0;
         fillBar.fillAmount = cAmount;
-
-        skillName.text = mainUnit.HBCharacter.Base.UnitSkill.Name;
-        stackSkill.text = $"{currentStack}/{mainUnit.HBCharacter.Base.UnitSkill.StackSkill}";
-        iconSprite.sprite = mainUnit.HBCharacter.Base.UnitSkill.IconSprite;
     }
 
     // Activate when press button
     public void SkillButtonActivation()
     {
-        if (!currentActive && currentStack > 0)
+        if (cAmount >= 1)
         {
-            currentStack--;
-            stackSkill.text = $"{currentStack}/{mainUnit.HBCharacter.Base.UnitSkill.StackSkill}";
-            currentActive = true;
+            cAmount = 0;
+            cReloadTimer = skillReload;
         }
-
-        mainUnit.SkillActivation();
     }
 }

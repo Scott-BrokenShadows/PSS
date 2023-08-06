@@ -20,6 +20,8 @@ public class BattleHyperSkillButton : MonoBehaviour
     [ReadOnly] public float cAmount;
     [ReadOnly] public float cReloadTimer;
 
+    [Separator]
+    public string hyperSkillName;
     public float skillReload;
 
     public void Start()
@@ -55,6 +57,7 @@ public class BattleHyperSkillButton : MonoBehaviour
 
     void SetUp()
     {
+        skillName.text = hyperSkillName;
         cReloadTimer = skillReload;
 
         cAmount = 0;
