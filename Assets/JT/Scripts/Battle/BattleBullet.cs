@@ -29,6 +29,7 @@ public class BattleBullet : MonoBehaviour
         transform.Translate(((isPlayer) ? Vector3.right : -Vector3.right) * speed * Time.deltaTime);
 
         DestroyOutside();
+        DestroyEndGame();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -67,6 +68,14 @@ public class BattleBullet : MonoBehaviour
             transform.position.y >  BattleSystem.vertical   + BattleSystem._screenSpace.y)
         {
             //Debug.Log("Outside!");
+            Destroy(this.gameObject);
+        }
+    }
+
+    void DestroyEndGame()
+    {
+        if (BattleSystem.gBattleOver)
+        {
             Destroy(this.gameObject);
         }
     }

@@ -379,7 +379,7 @@ MonoBehaviour:
   gridRows: 5
   levelWave:
   - name: Wave 1
-    countDownTimer: 5
+    countDownTimer: 10
     EnemyList:
     - name: Enemy Slot 1
       _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}

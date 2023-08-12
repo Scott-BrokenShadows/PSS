@@ -28,7 +28,7 @@ public class BattleUnit : MonoBehaviour
     private float timerBullet;
 
     // Player Movement Control
-    Rigidbody2D _rb;
+    [HideInInspector] public Rigidbody2D _rb;
 
     // Player Unit Controls
     [Separator]
@@ -66,6 +66,8 @@ public class BattleUnit : MonoBehaviour
         if (!isPlayer) { DestroyOutside(); }
         // When HP reaches 0 Destroy
         DestroyDeath();
+        // When Battle is over
+        DestroyEndGame();
     }
 
     void FixedUpdate()
@@ -442,6 +444,14 @@ public class BattleUnit : MonoBehaviour
     void DestroyDeath()
     {
         if (HBCharacter.HP <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void DestroyEndGame()
+    {
+        if (BattleSystem.gBattleOver)
         {
             Destroy(this.gameObject);
         }

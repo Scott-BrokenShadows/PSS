@@ -329,13 +329,8 @@ public class BattleSystem : MonoBehaviour
         hyperSkillButtonPos.gameObject.SetActive(false);
         elementButtonPos.gameObject.SetActive(false);
 
-        foreach (var enemy in cEnemy)
-        {
-            enemy.GetComponent<BattleUnit>().enabled = false;
-        }
-
-        cPlayer.GetComponent<BattleUnit>().enabled = false;
-        cPlayer.GetComponent<BattleUnit>().enabled = false;
+        Destroy(subUnitPos.gameObject);
+        Destroy(mainUnitPos.gameObject);
 
         BattleGameWin();
         BattleGameLose();
