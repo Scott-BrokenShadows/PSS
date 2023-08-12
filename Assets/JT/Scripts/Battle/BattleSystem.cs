@@ -298,26 +298,21 @@ public class BattleSystem : MonoBehaviour
     // EXP Function------------------------------------------------------------------------
 
     #region EXP Function
-    //public int currentLevel = 1;
-    //public int currentXP = 0;
-    //public int xpIncreasePerLevel = 100;
+    public void GainXP(ref int currentLevel, ref int currentXP, int xpIncreasePerLevel, int amount)
+    {
+        currentXP += amount;
 
-    //public void GainXP(int amount)
-    //{
-    //    currentXP += amount;
-    //    CheckForLevelUp();
-    //}
+        int xpRequiredForNextLevel = currentLevel * xpIncreasePerLevel;
 
-    //private void CheckForLevelUp()
-    //{
-    //    int xpRequiredForNextLevel = currentLevel * xpIncreasePerLevel;
+        if (currentXP >= xpRequiredForNextLevel)
+        {
+            int leftoverXP = currentXP - xpRequiredForNextLevel;
+            currentLevel++;
+            currentXP = leftoverXP;
 
-    //    if (currentXP >= xpRequiredForNextLevel)
-    //    {
-    //        currentLevel++;
-    //        Debug.Log("Level Up! Current level: " + currentLevel);
-    //    }
-    //}
+            Debug.Log("Level Up! Current level: " + currentLevel);
+        }
+    }
     #endregion
 
     // GameOver Function------------------------------------------------------------------------
@@ -325,6 +320,7 @@ public class BattleSystem : MonoBehaviour
     #region GameOver Function
     public void BattleGameEnd()
     {
+        BattleGameWin();
         skillButtonPos.gameObject.SetActive(false);
         hyperSkillButtonPos.gameObject.SetActive(false);
         elementButtonPos.gameObject.SetActive(false);
@@ -332,13 +328,18 @@ public class BattleSystem : MonoBehaviour
         Destroy(subUnitPos.gameObject);
         Destroy(mainUnitPos.gameObject);
 
-        BattleGameWin();
         BattleGameLose();
     }
 
     public void BattleGameWin()
-    { 
-    
+    {
+        // Main Character 100%
+        //bUnitSlot.battleUnit.currentXP += currentLevel.rewards.rEXP;
+        GainXP(ref bUnitSlot.battleUnit.level, ref bUnitSlot.battleUnit.currentXP, 1000, currentLevel.rewards.rEXP);
+
+        // Sub character 50%
+        //bUnitSlot.subBattleUnit.currentXP += currentLevel.rewards.rEXP / 2;
+        GainXP(ref bUnitSlot.subBattleUnit.level, ref bUnitSlot.subBattleUnit.currentXP, 1000, currentLevel.rewards.rEXP / 2);
     }
 
     public void BattleGameLose()

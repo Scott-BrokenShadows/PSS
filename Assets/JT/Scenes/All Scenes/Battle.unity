@@ -379,7 +379,7 @@ MonoBehaviour:
   gridRows: 5
   levelWave:
   - name: Wave 1
-    countDownTimer: 10
+    countDownTimer: 1
     EnemyList:
     - name: Enemy Slot 1
       _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
@@ -409,7 +409,7 @@ MonoBehaviour:
       cTimer: 0
       callOnce: 0
   - name: Wave 2
-    countDownTimer: 5
+    countDownTimer: 1
     EnemyList:
     - name: Enemy Slot 1
       _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
@@ -438,6 +438,9 @@ MonoBehaviour:
       stopLane: 1
       cTimer: 0
       callOnce: 0
+  rewards:
+    rCurrency: 0
+    rEXP: 1000
 --- !u!4 &365282397
 Transform:
   m_ObjectHideFlags: 0
@@ -1333,7 +1336,7 @@ MonoBehaviour:
   bUnitSlot:
     battleUnit:
       characterBase: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      level: 100
+      level: 5
       currentXP: 0
     subBattleUnit:
       characterBase: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
