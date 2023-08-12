@@ -57,10 +57,14 @@ public class BattleSystem : MonoBehaviour
     [Range(0, 1)] [SerializeField] List<float> laneSlowDown;
     static public List<float> _laneSlowDown;
 
+    // Win Lose
+    public static bool gBattleOver; 
+
     // Testing
     [SerializeField] BattleUnitSlot bUnitSlot;
     #endregion
 
+    #region Inspector OnValidate 
     private void OnValidate()
     {
         // Loop through the list (starting from the second element)
@@ -73,6 +77,7 @@ public class BattleSystem : MonoBehaviour
             laneSlowDown[i] = Mathf.Min(laneSlowDown[i], laneSlowDown[i - 1]);
         }
     }
+    #endregion
 
     // Start & Update------------------------------------------------------------------------
 
@@ -84,8 +89,11 @@ public class BattleSystem : MonoBehaviour
 
     private void Update()
     {
-        TimerWave();
-        InstanceEnemies();
+        if (!gBattleOver)
+        {
+            TimerWave();
+            InstanceEnemies();
+        }
     }
     #endregion
 
@@ -183,7 +191,9 @@ public class BattleSystem : MonoBehaviour
             {
                 // What to do when you complete the stage
                 Debug.Log("Complete Stage");
+                BattleGameEnd();
                 cTimer = 0;
+                gBattleOver = true;
             }
         }
     }
@@ -282,6 +292,63 @@ public class BattleSystem : MonoBehaviour
         var to = toAbs + toMin;
 
         return to;
+    }
+    #endregion
+
+    // EXP Function------------------------------------------------------------------------
+
+    #region EXP Function
+    //public int currentLevel = 1;
+    //public int currentXP = 0;
+    //public int xpIncreasePerLevel = 100;
+
+    //public void GainXP(int amount)
+    //{
+    //    currentXP += amount;
+    //    CheckForLevelUp();
+    //}
+
+    //private void CheckForLevelUp()
+    //{
+    //    int xpRequiredForNextLevel = currentLevel * xpIncreasePerLevel;
+
+    //    if (currentXP >= xpRequiredForNextLevel)
+    //    {
+    //        currentLevel++;
+    //        Debug.Log("Level Up! Current level: " + currentLevel);
+    //    }
+    //}
+    #endregion
+
+    // GameOver Function------------------------------------------------------------------------
+
+    #region GameOver Function
+    public void BattleGameEnd()
+    {
+        skillButtonPos.gameObject.SetActive(false);
+        hyperSkillButtonPos.gameObject.SetActive(false);
+        elementButtonPos.gameObject.SetActive(false);
+
+        foreach (var enemy in cEnemy)
+        {
+            enemy.GetComponent<BattleUnit>().enabled = false;
+        }
+
+        cPlayer.GetComponent<BattleUnit>().enabled = false;
+        cPlayer.GetComponent<BattleUnit>().enabled = false;
+
+        BattleGameWin();
+        BattleGameLose();
+    }
+
+    public void BattleGameWin()
+    { 
+    
+    }
+
+    public void BattleGameLose()
+    {
+
     }
     #endregion
 

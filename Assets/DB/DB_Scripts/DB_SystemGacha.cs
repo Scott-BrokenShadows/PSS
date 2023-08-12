@@ -256,11 +256,17 @@ public class DB_SystemGacha : MonoBehaviour
                 {
                     Debug.Log($"Splash Animation of {attempt.itemName} happens here!");
 
-                    gameController.AddCharacterUnit(attempt.rewardType.charBase, 1);
+                    gameController.AddCharacterUnit(attempt.rewardType.charBase, 1, 0);
 
                     gameController.SetCharacters();
 
                 }
+
+                if (attempt.isCharacter == false)
+                { 
+                
+                }
+
                 break;
             }
         }
