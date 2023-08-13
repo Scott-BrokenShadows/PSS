@@ -57,7 +57,11 @@ public class BattleSystem : MonoBehaviour
     [Range(0, 1)] [SerializeField] List<float> laneSlowDown;
     static public List<float> _laneSlowDown;
 
+    // Complete Instantiateing Everything
+    [HideInInspector] public bool cStage;
+
     // Win Lose
+    public bool allEnemiesNull = true;
     public static bool gBattleOver; 
 
     // Testing
@@ -91,8 +95,24 @@ public class BattleSystem : MonoBehaviour
     {
         if (!gBattleOver)
         {
-            TimerWave();
-            InstanceEnemies();
+            if (!cStage)
+            {
+                TimerWave();
+                InstanceEnemies();
+            }
+
+            foreach (var enemy in cEnemy)
+            {
+                if (enemy != null)
+                {
+                    allEnemiesNull = false;
+                }
+            }
+
+            if (cStage == true && allEnemiesNull == false)
+            {
+                //BattleEnd();
+            }
         }
     }
     #endregion
@@ -189,11 +209,9 @@ public class BattleSystem : MonoBehaviour
 
             if (cTimer <= 0)
             {
-                // What to do when you complete the stage
-                Debug.Log("Complete Stage");
-                BattleGameEnd();
                 cTimer = 0;
-                gBattleOver = true;
+                cStage = true;
+                Debug.Log("Current Stage = " + cStage);
             }
         }
     }
@@ -318,6 +336,14 @@ public class BattleSystem : MonoBehaviour
     // GameOver Function------------------------------------------------------------------------
 
     #region GameOver Function
+
+    public void BattleEnd()
+    {
+        BattleGameEnd();
+        gBattleOver = true;
+        Debug.Log("Game Battle End = " + gBattleOver);
+    }
+
     public void BattleGameEnd()
     {
         BattleGameWin();

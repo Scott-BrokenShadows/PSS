@@ -83,6 +83,7 @@ public class BattleHyperSkillButton : MonoBehaviour
             transform.position.y <  BattleSystem.vertical   )
         {
             foreach (var var in bSystem.cEnemy)
+            //foreach (var var in BattleSystem.cEnemy)
             {
                 Destroy(var);
             }
