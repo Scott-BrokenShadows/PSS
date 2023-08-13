@@ -62,7 +62,8 @@ public class BattleSystem : MonoBehaviour
 
     // Win Lose
     public bool allEnemiesNull = true;
-    public static bool gBattleOver; 
+    public static bool gBattleOver;
+    public bool winLose;
 
     // Testing
     [SerializeField] BattleUnitSlot bUnitSlot;
@@ -101,6 +102,20 @@ public class BattleSystem : MonoBehaviour
                 InstanceEnemies();
             }
 
+            allEnemiesNull = true;
+
+            //for (int i = cEnemy.Count - 1; i >= 0; i--)
+            //{
+            //    if (cEnemy[i] == null)
+            //    {
+            //        cEnemy.RemoveAt(i);
+            //    }
+            //    else
+            //    {
+            //        allEnemiesNull = false;
+            //    }
+            //}
+
             foreach (var enemy in cEnemy)
             {
                 if (enemy != null)
@@ -109,9 +124,16 @@ public class BattleSystem : MonoBehaviour
                 }
             }
 
-            if (cStage == true && allEnemiesNull == false)
+            if (cStage && allEnemiesNull)
             {
-                //BattleEnd();
+                winLose = true;
+                BattleEnd();
+            }
+
+            if (cPlayer.GetComponent<BattleUnit>().HBCharacter.HP <= 0)
+            {
+                winLose = false;
+                BattleEnd();
             }
         }
     }
@@ -255,6 +277,7 @@ public class BattleSystem : MonoBehaviour
     {
         GameObject asset = Instantiate(battleUnit, transform);
         //asset.transform.position = frontUnitPos.position;
+        cPlayer = asset;
         asset.GetComponent<BattleUnit>()._base = bUnitSlot.battleUnit.characterBase;
         asset.GetComponent<BattleUnit>().level = bUnitSlot.battleUnit.level;
         asset.GetComponent<BattleUnit>().isPlayer = true;
@@ -346,7 +369,6 @@ public class BattleSystem : MonoBehaviour
 
     public void BattleGameEnd()
     {
-        BattleGameWin();
         skillButtonPos.gameObject.SetActive(false);
         hyperSkillButtonPos.gameObject.SetActive(false);
         elementButtonPos.gameObject.SetActive(false);
@@ -354,11 +376,13 @@ public class BattleSystem : MonoBehaviour
         Destroy(subUnitPos.gameObject);
         Destroy(mainUnitPos.gameObject);
 
-        BattleGameLose();
+        if (winLose) { BattleGameWin(); } else { BattleGameLose(); };
     }
 
     public void BattleGameWin()
     {
+        Debug.Log("Win");
+
         // Main Character 100%
         //bUnitSlot.battleUnit.currentXP += currentLevel.rewards.rEXP;
         GainXP(ref bUnitSlot.battleUnit.level, ref bUnitSlot.battleUnit.currentXP, 1000, currentLevel.rewards.rEXP);
@@ -370,7 +394,7 @@ public class BattleSystem : MonoBehaviour
 
     public void BattleGameLose()
     {
-
+        Debug.Log("Lose");
     }
     #endregion
 
