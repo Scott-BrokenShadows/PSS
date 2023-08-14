@@ -1335,6 +1335,7 @@ MonoBehaviour:
   - 0.451
   cStage: 0
   allEnemiesNull: 1
+  winLose: 0
   bUnitSlot:
     battleUnit:
       characterBase: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}

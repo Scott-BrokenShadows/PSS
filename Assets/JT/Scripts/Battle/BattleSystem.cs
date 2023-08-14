@@ -104,18 +104,6 @@ public class BattleSystem : MonoBehaviour
 
             allEnemiesNull = true;
 
-            //for (int i = cEnemy.Count - 1; i >= 0; i--)
-            //{
-            //    if (cEnemy[i] == null)
-            //    {
-            //        cEnemy.RemoveAt(i);
-            //    }
-            //    else
-            //    {
-            //        allEnemiesNull = false;
-            //    }
-            //}
-
             foreach (var enemy in cEnemy)
             {
                 if (enemy != null)
@@ -301,6 +289,7 @@ public class BattleSystem : MonoBehaviour
     void InstanceSubPlayers()
     {
         GameObject asset = Instantiate(battleUnit, transform);
+        cSubPlayer = asset;
         asset.transform.position = subUnitPos.position;
         asset.GetComponent<BattleUnit>()._base = bUnitSlot.subBattleUnit.characterBase;
         asset.GetComponent<BattleUnit>().level = bUnitSlot.subBattleUnit.level;
@@ -352,8 +341,32 @@ public class BattleSystem : MonoBehaviour
             currentXP = leftoverXP;
 
             Debug.Log("Level Up! Current level: " + currentLevel);
+
+            //LevelUpAnimation();
         }
     }
+    #endregion
+
+    #region
+    //private IEnumerator LevelUpAnimation()
+    //{
+    //    isAnimating = true;
+    //    float elapsedTime = 0f;
+    //    Vector3 initialScale = levelUpImage.transform.localScale;
+    //    Vector3 targetScale = new Vector3(1f, 1f, 1f);
+
+    //    while (elapsedTime < animationDuration)
+    //    {
+    //        float animationProgress = elapsedTime / animationDuration;
+    //        levelUpImage.transform.localScale = Vector3.Lerp(initialScale, targetScale, animationProgress);
+
+    //        elapsedTime += Time.deltaTime;
+    //        yield return null;
+    //    }
+
+    //    levelUpImage.transform.localScale = targetScale;
+    //    isAnimating = false;
+    //}
     #endregion
 
     // GameOver Function------------------------------------------------------------------------
