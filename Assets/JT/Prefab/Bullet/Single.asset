@@ -16,8 +16,8 @@ MonoBehaviour:
   description: Shoot a single bullet
   iconSprite: {fileID: 0}
   asset: {fileID: 1128758172799917848, guid: 63c929501800ba2408010f7bb6f65a60, type: 3}
-  bulletType: 2
-  bulletRange: 25
+  bulletType: 0
+  bulletRange: 0
   bulletCount: 3
   bulletReload: 1
   bulletSpeed: 5

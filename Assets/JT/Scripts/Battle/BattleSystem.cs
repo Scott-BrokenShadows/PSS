@@ -341,32 +341,8 @@ public class BattleSystem : MonoBehaviour
             currentXP = leftoverXP;
 
             Debug.Log("Level Up! Current level: " + currentLevel);
-
-            //LevelUpAnimation();
         }
     }
-    #endregion
-
-    #region
-    //private IEnumerator LevelUpAnimation()
-    //{
-    //    isAnimating = true;
-    //    float elapsedTime = 0f;
-    //    Vector3 initialScale = levelUpImage.transform.localScale;
-    //    Vector3 targetScale = new Vector3(1f, 1f, 1f);
-
-    //    while (elapsedTime < animationDuration)
-    //    {
-    //        float animationProgress = elapsedTime / animationDuration;
-    //        levelUpImage.transform.localScale = Vector3.Lerp(initialScale, targetScale, animationProgress);
-
-    //        elapsedTime += Time.deltaTime;
-    //        yield return null;
-    //    }
-
-    //    levelUpImage.transform.localScale = targetScale;
-    //    isAnimating = false;
-    //}
     #endregion
 
     // GameOver Function------------------------------------------------------------------------

@@ -412,7 +412,7 @@ MonoBehaviour:
     countDownTimer: 20
     EnemyList:
     - name: Enemy Slot 1
-      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      _base: {fileID: 11400000, guid: f0f3c488203fa2842996c3280949d94b, type: 2}
       lv: 54
       timer: 5
       row: 3
@@ -999,7 +999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1741055713
 Transform:
   m_ObjectHideFlags: 0
