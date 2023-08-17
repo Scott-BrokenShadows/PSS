@@ -15,9 +15,9 @@ MonoBehaviour:
   name: 
   description: 
   iconSprite: {fileID: 0}
-  asset: {fileID: 0}
+  asset: {fileID: 5658448067405806216, guid: 0ad1c52723578434e834199886a5649d, type: 3}
   bulletType: 0
   bulletRange: 0
-  bulletCount: 0
-  bulletReload: 0
-  bulletSpeed: 0
+  bulletCount: 1
+  bulletReload: 0.75
+  bulletSpeed: 10
