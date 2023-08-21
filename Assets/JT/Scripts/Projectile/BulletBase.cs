@@ -34,7 +34,7 @@ public class BulletBase : ScriptableObject
     [LabelOverride("Speed")]
     [SerializeField] float bulletSpeed;
     // Aim at Andy
-    [LabelOverride("AimSetFireAndy")]
+    [LabelOverride("Aim At Player")]
     [SerializeField] bool aimAtPlayer;
 
     public string Name { get { return name; } }

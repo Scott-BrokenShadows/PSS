@@ -227,7 +227,7 @@ public class BattleUnit : MonoBehaviour
         asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
         if (!isPlayer)
         {
-            if (asset.GetComponent<BattleBullet>()._base.AimAtPlayer)
+            if (!asset.GetComponent<BattleBullet>()._base.AimAtPlayer)
             {
                 asset.transform.rotation = this.transform.rotation;
             }
