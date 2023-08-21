@@ -21,3 +21,4 @@ MonoBehaviour:
   bulletCount: 1
   bulletReload: 1
   bulletSpeed: 10
+  aimAtPlayer: 1
