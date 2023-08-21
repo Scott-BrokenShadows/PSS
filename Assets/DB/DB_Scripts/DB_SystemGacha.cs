@@ -72,7 +72,7 @@ public class DB_SystemGacha : MonoBehaviour
     //Sets Roll Buttons active, and disables the Grid and continue Button.
     public void MenuReset()
     {
-        currencyText.text = $"V-Bucks: {currencyGacha}";
+        currencyText.text = $"{currencyGacha}";
         pityText.text = $"Rarity 3 Guaranteed in {pityLimit - highRare} Attempts!";
         rollAttempts = 0;
         currentRollCost = 0;
@@ -136,7 +136,7 @@ public class DB_SystemGacha : MonoBehaviour
 
     public void RollStandby()
     {
-        currencyText.text = $"V-Bucks: {currencyGacha}";
+        currencyText.text = $"{currencyGacha}";
         itemsObtained.Clear();
         grid.SetActive(true);
         gridBG.SetActive(true);
@@ -152,7 +152,7 @@ public class DB_SystemGacha : MonoBehaviour
         rollBackButton.SetActive(false);
         confirmText.text = null;
         currencyGacha -= currentRollCost;
-        currencyText.text = $"V-Bucks: {currencyGacha}";
+        currencyText.text = $"{currencyGacha}";
         RollAttempt();
     }
 
