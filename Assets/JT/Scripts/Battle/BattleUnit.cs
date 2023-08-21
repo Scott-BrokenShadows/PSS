@@ -96,7 +96,7 @@ public class BattleUnit : MonoBehaviour
         myGameObject = HBCharacter.Base.Asset;
         GameObject asset = Instantiate(HBCharacter.Base.Asset, transform);
         asset.transform.position = transform.position;
-        asset.transform.localRotation = Quaternion.Euler(((isPlayer) ? -90 : 90), ((isPlayer) ? 0 : 180), 0);
+        asset.transform.localRotation = Quaternion.Euler(0, 0, (isPlayer) ? 0 : 180);
         asset.name = HBCharacter.Base.Name + "Model";
         #endregion
 
@@ -227,19 +227,19 @@ public class BattleUnit : MonoBehaviour
         asset.GetComponent<BattleBullet>()._base = HBCharacter.Base.UnitBullet;
         if (!isPlayer)
         {
-            #region old ignore this 
-            //var fixedZ = -90; // Or whatever value is needed to set correct facing of your object. Play with this.
-            //transform.LookAt( new Vector3(BattlePlayerControl._currentTransform.transform.position.x, BattlePlayerControl._currentTransform.transform.position.y, fixedZ));
+            if (asset.GetComponent<BattleBullet>()._base.AimAtPlayer)
+            {
+                asset.transform.rotation = this.transform.rotation;
+            }
+            else
+            {
+                // vector from this object towards the target location
+                Vector3 vectorToTarget = BattlePlayerControl._currentTransform.transform.position - this.transform.position;
+                // rotate that vector by -90 degrees around the Z axis
+                Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, -90) * vectorToTarget;
 
-            //asset.transform.rotation = Quaternion.LookRotation(new Vector3(0, BattlePlayerControl._currentTransform.transform.position.y, 0));
-            #endregion
-
-            // vector from this object towards the target location
-            Vector3 vectorToTarget = BattlePlayerControl._currentTransform.transform.position - this.transform.position;
-            // rotate that vector by -90 degrees around the Z axis
-            Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, -90) * vectorToTarget;
-
-            asset.transform.rotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
+                asset.transform.rotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
+            }
         }
         else
         {
@@ -260,6 +260,7 @@ public class BattleUnit : MonoBehaviour
 
             if (!isPlayer)
             {
+
                 GameObject asset = Instantiate(bulletAsset, r.origin, Quaternion.identity);
 
                 Vector2 spreadDirection = r.direction; // Get the spread direction
@@ -346,7 +347,8 @@ public class BattleUnit : MonoBehaviour
             Vector3 rayOriginOffset = new Vector3(0, ca, 0);
 
             // Rotate the ray origin offset based on the object's rotation
-            Vector3 rotatedOffset = ((isPlayer) ? origin.rotation : Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget)) * rayOriginOffset;
+            //Vector3 rotatedOffset = ((isPlayer) ? origin.rotation : Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget)) * rayOriginOffset;
+            Vector3 rotatedOffset = origin.rotation * rayOriginOffset;
 
             rays[i] = new Ray(origin.position + rotatedOffset, origin.forward);
         }
