@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleSystem : MonoBehaviour
 {
@@ -60,11 +61,21 @@ public class BattleSystem : MonoBehaviour
     // Complete Instantiateing Everything
     [HideInInspector] public bool cStage;
 
+    [Separator]
     // Win Lose
-    public bool allEnemiesNull = true;
-    public static bool gBattleOver;
-    public bool winLose;
+    [SerializeField] GameObject battleOverHud;
+    [SerializeField] GameObject winHud;
+    [SerializeField] GameObject loseHud;
 
+    [SerializeField] Text character1GainEXP;
+    [SerializeField] Text character2GainEXP;
+    [SerializeField] Text rewardMoney;
+
+    bool allEnemiesNull = true;
+    public static bool gBattleOver;
+    bool winLose;
+
+    [Separator]
     // Testing
     [SerializeField] BattleUnitSlot bUnitSlot;
     #endregion
@@ -152,6 +163,9 @@ public class BattleSystem : MonoBehaviour
     // Do what on the start
     void SetupBattle()
     {
+        // BattleOverHud OFF
+        BattleEndSetUp();
+
         // Lane to stop
         _laneSlowDown = laneSlowDown;
 
@@ -349,6 +363,13 @@ public class BattleSystem : MonoBehaviour
 
     #region GameOver Function
 
+    void BattleEndSetUp()
+    {
+        battleOverHud.SetActive(false);
+        winHud.SetActive(false);
+        loseHud.SetActive(false);
+    }
+
     public void BattleEnd()
     {
         BattleGameEnd();
@@ -365,25 +386,34 @@ public class BattleSystem : MonoBehaviour
         Destroy(subUnitPos.gameObject);
         Destroy(mainUnitPos.gameObject);
 
+        battleOverHud.SetActive(true);
         if (winLose) { BattleGameWin(); } else { BattleGameLose(); };
     }
 
     public void BattleGameWin()
     {
         Debug.Log("Win");
+        winHud.SetActive(true);
 
         // Main Character 100%
         //bUnitSlot.battleUnit.currentXP += currentLevel.rewards.rEXP;
         GainXP(ref bUnitSlot.battleUnit.level, ref bUnitSlot.battleUnit.currentXP, 1000, currentLevel.rewards.rEXP);
+        character1GainEXP.text = $"+{currentLevel.rewards.rEXP} EXP";
 
         // Sub character 50%
         //bUnitSlot.subBattleUnit.currentXP += currentLevel.rewards.rEXP / 2;
         GainXP(ref bUnitSlot.subBattleUnit.level, ref bUnitSlot.subBattleUnit.currentXP, 1000, currentLevel.rewards.rEXP / 2);
+        character2GainEXP.text = $"+{currentLevel.rewards.rEXP / 2} EXP";
     }
 
     public void BattleGameLose()
     {
         Debug.Log("Lose");
+        loseHud.SetActive(true);
+
+        character1GainEXP.text = $"+0 EXP";
+        character2GainEXP.text = $"+0 EXP";
+        rewardMoney.text = $"+$0";
     }
     #endregion
 
