@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class LevelWave
@@ -40,6 +41,10 @@ public class LevelStage : MonoBehaviour
 {
     [LabelOverride("StageScene")]
     public string lStageScene;
+
+    public Sprite backgroundImage;
+    public Color backgroundImageColor;
+
     [Min(0)] public int gridRows = 5;
 
     public List<LevelWave> levelWave;

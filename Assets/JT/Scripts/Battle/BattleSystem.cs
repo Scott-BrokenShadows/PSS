@@ -26,6 +26,8 @@ public class BattleSystem : MonoBehaviour
     [LabelOverride("Main Unit Position")]
     public Transform mainUnitPos;
 
+    public GameObject backgroundImage;
+
     // LevelStage
     [ReadOnly] private LevelStage currentLevel;
 
@@ -174,6 +176,11 @@ public class BattleSystem : MonoBehaviour
 
         // Get the current Stage Information
         currentLevel = FindObjectOfType<LevelStage>();
+
+        // Background
+        backgroundImage.GetComponent<SpriteRenderer>().sprite = currentLevel.backgroundImage;
+        backgroundImage.GetComponent<SpriteRenderer>().color = currentLevel.backgroundImageColor;
+        backgroundImage.GetComponent<SpriteStretch>().callOnceStretch = true;
 
         // Set the current Wave 
         currentWave = cWave + 1;
