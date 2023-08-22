@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238135fec6be38544872501b07c2c2d4, type: 3}
+  m_Name: BulletSpread3
+  m_EditorClassIdentifier: 
+  name: 
+  description: 
+  iconSprite: {fileID: 0}
+  asset: {fileID: 5700378812314983380, guid: 347dbc9cc2e2e03419aa800781d629f0, type: 3}
+  bulletType: 2
+  bulletRange: 10
+  bulletCount: 3
+  bulletReload: 1
+  bulletSpeed: 5
+  aimAtPlayer: 1

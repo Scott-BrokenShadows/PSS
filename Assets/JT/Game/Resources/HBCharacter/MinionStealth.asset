@@ -9,15 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 238135fec6be38544872501b07c2c2d4, type: 3}
-  m_Name: HaiyaJames
+  m_Script: {fileID: 11500000, guid: a1fce225cd4d6b54695f92ed1ab8cbe8, type: 3}
+  m_Name: MinionStealth
   m_EditorClassIdentifier: 
   name: 
+  id: 0
   description: 
   iconSprite: {fileID: 0}
-  asset: {fileID: 1128758172799917848, guid: 0e7c964dc0fbe4844b63f2f28194b308, type: 3}
-  bulletType: 0
-  bulletRange: 0
-  bulletCount: 0
-  bulletReload: 0
-  bulletSpeed: 0
+  asset: {fileID: 0}
+  unitType: 0
+  elements: 0
+  maxHP: 0
+  attack: 0
+  spAttack: 0
+  defence: 0
+  spDefence: 0
+  speed: 0
+  totalStats: 0
+  critical: 0
+  unitBullet: {fileID: 0}
+  unitSkill: {fileID: 0}

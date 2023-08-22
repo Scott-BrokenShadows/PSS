@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 238135fec6be38544872501b07c2c2d4, type: 3}
-  m_Name: FastBullet
+  m_Name: BulletMulti3
   m_EditorClassIdentifier: 
-  name: 
+  name: Multi lane shot non aim
   description: 
   iconSprite: {fileID: 0}
-  asset: {fileID: 5658448067405806216, guid: 0ad1c52723578434e834199886a5649d, type: 3}
-  bulletType: 0
-  bulletRange: 0
-  bulletCount: 1
-  bulletReload: 0.75
-  bulletSpeed: 10
-  aimAtPlayer: 1
+  asset: {fileID: 1128758172799917848, guid: 63c929501800ba2408010f7bb6f65a60, type: 3}
+  bulletType: 1
+  bulletRange: 2
+  bulletCount: 3
+  bulletReload: 1
+  bulletSpeed: 5
+  aimAtPlayer: 0
