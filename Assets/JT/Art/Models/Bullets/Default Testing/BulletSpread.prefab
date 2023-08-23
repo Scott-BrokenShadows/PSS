@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 8709388990614723317}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4596, y: 1.4596, z: 1.4596}
+  m_LocalScale: {x: 2.0401006, y: 2.0401006, z: 2.0401006}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1725239649152226251}
@@ -94,11 +94,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1128758172799917848, guid: 63c929501800ba2408010f7bb6f65a60, type: 3}
       propertyPath: m_Name
-      value: BulletSpread Variant
+      value: BulletSpread
       objectReference: {fileID: 0}
     - target: {fileID: 6287235713295390471, guid: 63c929501800ba2408010f7bb6f65a60, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6287235713295390471, guid: 63c929501800ba2408010f7bb6f65a60, type: 3}
       propertyPath: m_LocalPosition.x

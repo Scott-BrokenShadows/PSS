@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Multi lane shot non aim
   description: 
   iconSprite: {fileID: 0}
-  asset: {fileID: 1128758172799917848, guid: 63c929501800ba2408010f7bb6f65a60, type: 3}
+  asset: {fileID: 4528073418227455201, guid: bb2531a2aa79db343827705aecf742f1, type: 3}
   bulletType: 1
   bulletRange: 2
   bulletCount: 3

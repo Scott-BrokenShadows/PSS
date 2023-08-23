@@ -15,10 +15,10 @@ MonoBehaviour:
   name: 
   description: 
   iconSprite: {fileID: 0}
-  asset: {fileID: 0}
-  bulletType: 0
-  bulletRange: 0
-  bulletCount: 0
-  bulletReload: 0
-  bulletSpeed: 0
+  asset: {fileID: 975613106854732694, guid: 4f4da36b7ea1bfc44ac5f1d2b43d2d0f, type: 3}
+  bulletType: 1
+  bulletRange: 1
+  bulletCount: 2
+  bulletReload: 1
+  bulletSpeed: 5
   aimAtPlayer: 0

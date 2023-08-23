@@ -20,5 +20,5 @@ MonoBehaviour:
   bulletRange: 0
   bulletCount: 1
   bulletReload: 1
-  bulletSpeed: 10
+  bulletSpeed: 7
   aimAtPlayer: 1
