@@ -379,21 +379,21 @@ MonoBehaviour:
   gridRows: 5
   levelWave:
   - name: Wave 1
-    countDownTimer: 20
+    countDownTimer: 13
     EnemyList:
     - name: Enemy Slot 1
-      _base: {fileID: 11400000, guid: 81bc7bfb5cf2ae344b72f9223d5d45b4, type: 2}
-      lv: 25
-      timer: 0
+      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      lv: 50
+      timer: 3
       row: 1
       position: 10
       stopLane: 1
       cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
-      _base: {fileID: 11400000, guid: f0f3c488203fa2842996c3280949d94b, type: 2}
+      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
       lv: 50
-      timer: 2
+      timer: 8
       row: 2
       position: 12
       stopLane: 1
@@ -402,39 +402,21 @@ MonoBehaviour:
     - name: Enemy Slot 3
       _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
       lv: 50
-      timer: 20
+      timer: 12
       row: 3
       position: 8
-      stopLane: 0
+      stopLane: 1
       cTimer: 0
       callOnce: 0
   - name: Wave 2
-    countDownTimer: 20
+    countDownTimer: 6
     EnemyList:
     - name: Enemy Slot 1
-      _base: {fileID: 11400000, guid: f0f3c488203fa2842996c3280949d94b, type: 2}
-      lv: 54
+      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      lv: 50
       timer: 5
-      row: 3
+      row: 1
       position: 10
-      stopLane: 1
-      cTimer: 0
-      callOnce: 0
-    - name: Enemy Slot 2
-      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
-      lv: 35
-      timer: 5
-      row: 4
-      position: 20
-      stopLane: 1
-      cTimer: 0
-      callOnce: 0
-    - name: Enemy Slot 3
-      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
-      lv: 44
-      timer: 10
-      row: 5
-      position: 5
       stopLane: 1
       cTimer: 0
       callOnce: 0
@@ -1330,9 +1312,9 @@ MonoBehaviour:
   GridRows: []
   cRows: 0
   laneSlowDown:
-  - 0.724
-  - 0.608
-  - 0.451
+  - 0.897
+  - 0.702
+  - 0.508
   cStage: 0
   allEnemiesNull: 1
   winLose: 0

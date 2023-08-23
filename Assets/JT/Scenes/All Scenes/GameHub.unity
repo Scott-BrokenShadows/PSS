@@ -230,6 +230,101 @@ MonoBehaviour:
       stopLane: 0
       cTimer: 0
       callOnce: 0
+  rewards:
+    rCurrency: 0
+    rEXP: 0
+--- !u!1 &139388906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 139388907}
+  - component: {fileID: 139388908}
+  m_Layer: 0
+  m_Name: LevelStage 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &139388907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139388906}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 842119698}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &139388908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139388906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 776f4d058a1cb36479ae3c6e52fec952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lStageScene: Battle
+  gridRows: 5
+  levelWave:
+  - name: Wave 1
+    countDownTimer: 13
+    EnemyList:
+    - name: Enemy Slot 1
+      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      lv: 50
+      timer: 3
+      row: 1
+      position: 10
+      stopLane: 1
+      cTimer: 0
+      callOnce: 0
+    - name: Enemy Slot 2
+      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      lv: 50
+      timer: 8
+      row: 2
+      position: 12
+      stopLane: 1
+      cTimer: 0
+      callOnce: 0
+    - name: Enemy Slot 3
+      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      lv: 50
+      timer: 12
+      row: 3
+      position: 8
+      stopLane: 1
+      cTimer: 0
+      callOnce: 0
+  - name: Wave 2
+    countDownTimer: 6
+    EnemyList:
+    - name: Enemy Slot 1
+      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      lv: 50
+      timer: 5
+      row: 1
+      position: 10
+      stopLane: 1
+      cTimer: 0
+      callOnce: 0
+  rewards:
+    rCurrency: 0
+    rEXP: 1000
 --- !u!1 &210077322
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +432,9 @@ MonoBehaviour:
       stopLane: 0
       cTimer: 0
       callOnce: 0
+  rewards:
+    rCurrency: 0
+    rEXP: 0
 --- !u!1 &337001712
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +542,9 @@ MonoBehaviour:
       stopLane: 0
       cTimer: 0
       callOnce: 0
+  rewards:
+    rCurrency: 0
+    rEXP: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +744,9 @@ MonoBehaviour:
       stopLane: 0
       cTimer: 0
       callOnce: 0
+  rewards:
+    rCurrency: 0
+    rEXP: 0
 --- !u!1 &696356967
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,143 +815,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &726983764
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 726983765}
-  - component: {fileID: 726983766}
-  m_Layer: 0
-  m_Name: LevelStage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &726983765
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726983764}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 842119698}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &726983766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726983764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 776f4d058a1cb36479ae3c6e52fec952, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lStageScene: Battle
-  gridRows: 5
-  levelWave:
-  - name: Wave 1
-    countDownTimer: 50
-    EnemyList:
-    - name: Enemy Slot 1
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
-      timer: 5
-      row: 1
-      position: 8
-      stopLane: 0
-      cTimer: 0
-      callOnce: 0
-    - name: Enemy Slot 2
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
-      timer: 10
-      row: 2
-      position: 8
-      stopLane: 0
-      cTimer: 0
-      callOnce: 0
-    - name: Enemy Slot 3
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
-      timer: 20
-      row: 3
-      position: 8
-      stopLane: 0
-      cTimer: 0
-      callOnce: 0
-  - name: Wave 2
-    countDownTimer: 50
-    EnemyList:
-    - name: Enemy Slot 1
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
-      timer: 5
-      row: 3
-      position: 0
-      stopLane: 0
-      cTimer: 0
-      callOnce: 0
-    - name: Enemy Slot 2
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
-      timer: 5
-      row: 4
-      position: 0
-      stopLane: 0
-      cTimer: 0
-      callOnce: 0
-    - name: Enemy Slot 3
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
-      timer: 10
-      row: 5
-      position: 0
-      stopLane: 0
-      cTimer: 0
-      callOnce: 0
-  - name: Wave 3
-    countDownTimer: 50
-    EnemyList:
-    - name: Enemy Slot 1
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
-      timer: 3
-      row: 3
-      position: 0
-      stopLane: 0
-      cTimer: 0
-      callOnce: 0
-    - name: Enemy Slot 2
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
-      timer: 5
-      row: 4
-      position: 0
-      stopLane: 0
-      cTimer: 0
-      callOnce: 0
-    - name: Enemy Slot 3
-      _base: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-      lv: 0
-      timer: 10
-      row: 5
-      position: 0
-      stopLane: 0
-      cTimer: 0
-      callOnce: 0
 --- !u!1 &836971362
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,24 +869,27 @@ MonoBehaviour:
   listCharSlot:
   - characterBase: {fileID: 0}
     level: 0
+    currentXP: 0
   - characterBase: {fileID: 0}
     level: 0
+    currentXP: 0
   - characterBase: {fileID: 0}
     level: 0
+    currentXP: 0
   bUnitSlot:
     battleUnit:
       characterBase: {fileID: 0}
       level: 0
+      currentXP: 0
     subBattleUnit:
       characterBase: {fileID: 0}
       level: 0
+      currentXP: 0
   listItems:
   - id: 0
     quantity: 0
   - id: 0
     quantity: 0
-  updateCI: 0
-  updateCI2: 0
 --- !u!4 &836971366
 Transform:
   m_ObjectHideFlags: 0
@@ -978,7 +948,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 726983765}
+  - {fileID: 139388907}
   - {fileID: 63157231}
   - {fileID: 639101537}
   - {fileID: 1575731274}
@@ -1099,6 +1069,9 @@ MonoBehaviour:
       stopLane: 0
       cTimer: 0
       callOnce: 0
+  rewards:
+    rCurrency: 0
+    rEXP: 0
 --- !u!1 &1069705282
 GameObject:
   m_ObjectHideFlags: 1
@@ -1282,6 +1255,9 @@ MonoBehaviour:
       stopLane: 0
       cTimer: 0
       callOnce: 0
+  rewards:
+    rCurrency: 0
+    rEXP: 0
 --- !u!1 &1607774541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,6 +1365,9 @@ MonoBehaviour:
       stopLane: 0
       cTimer: 0
       callOnce: 0
+  rewards:
+    rCurrency: 0
+    rEXP: 0
 --- !u!1 &1857205938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,6 +1475,9 @@ MonoBehaviour:
       stopLane: 0
       cTimer: 0
       callOnce: 0
+  rewards:
+    rCurrency: 0
+    rEXP: 0
 --- !u!1 &2054358220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,6 +1585,9 @@ MonoBehaviour:
       stopLane: 0
       cTimer: 0
       callOnce: 0
+  rewards:
+    rCurrency: 0
+    rEXP: 0
 --- !u!1 &2105190586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,3 +1695,6 @@ MonoBehaviour:
       stopLane: 0
       cTimer: 0
       callOnce: 0
+  rewards:
+    rCurrency: 0
+    rEXP: 0
