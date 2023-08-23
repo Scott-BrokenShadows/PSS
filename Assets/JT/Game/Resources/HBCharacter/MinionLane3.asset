@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1fce225cd4d6b54695f92ed1ab8cbe8, type: 3}
-  m_Name: Minion
+  m_Name: MinionLane3
   m_EditorClassIdentifier: 
-  name: LOL2
-  id: 5
+  name: 
+  id: 0
   description: 
   iconSprite: {fileID: 0}
-  asset: {fileID: 8424154798648897263, guid: 595bdc0d84daf024d8e76f90c17eb17f, type: 3}
-  unitType: 1
+  asset: {fileID: 611942243742233774, guid: 6aee48d25fe8902479d5da13b0ee6579, type: 3}
+  unitType: 0
   elements: 0
   maxHP: 3000
-  attack: 130
-  spAttack: 130
-  defence: 125
-  spDefence: 125
-  speed: 400
-  totalStats: 910
+  attack: 250
+  spAttack: 250
+  defence: 250
+  spDefence: 250
+  speed: 250
+  totalStats: 1250
   critical: 0
-  unitBullet: {fileID: 11400000, guid: 9b0edfb6ef885964c92c7a7162476f78, type: 2}
+  unitBullet: {fileID: 11400000, guid: 388e1a438d06f834fa26e82f4a6ee296, type: 2}
   unitSkill: {fileID: 0}

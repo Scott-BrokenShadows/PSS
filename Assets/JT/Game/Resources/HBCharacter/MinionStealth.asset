@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1fce225cd4d6b54695f92ed1ab8cbe8, type: 3}
-  m_Name: Minion
+  m_Name: MinionStealth
   m_EditorClassIdentifier: 
-  name: LOL2
-  id: 5
+  name: 
+  id: 0
   description: 
   iconSprite: {fileID: 0}
-  asset: {fileID: 8424154798648897263, guid: 595bdc0d84daf024d8e76f90c17eb17f, type: 3}
-  unitType: 1
+  asset: {fileID: 4122924192093529513, guid: ca0c5797784a7e1449d3eba6f378ad83, type: 3}
+  unitType: 0
   elements: 0
-  maxHP: 3000
-  attack: 130
-  spAttack: 130
-  defence: 125
-  spDefence: 125
-  speed: 400
-  totalStats: 910
-  critical: 0
-  unitBullet: {fileID: 11400000, guid: 9b0edfb6ef885964c92c7a7162476f78, type: 2}
+  maxHP: 1006
+  attack: 525
+  spAttack: 525
+  defence: 0
+  spDefence: 0
+  speed: 622
+  totalStats: 1672
+  critical: 100
+  unitBullet: {fileID: 11400000, guid: f25c1327572a1c34d8fd21894777d79e, type: 2}
   unitSkill: {fileID: 0}

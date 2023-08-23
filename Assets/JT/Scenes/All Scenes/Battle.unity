@@ -1080,7 +1080,7 @@ MonoBehaviour:
     countDownTimer: 20
     EnemyList:
     - name: Enemy Slot 1
-      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      _base: {fileID: 11400000, guid: 81bc7bfb5cf2ae344b72f9223d5d45b4, type: 2}
       lv: 25
       timer: 0
       row: 1
@@ -1089,12 +1089,12 @@ MonoBehaviour:
       cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
-      _base: {fileID: 11400000, guid: 4ba1a6eadfad6fe4d84d3330127cbd13, type: 2}
+      _base: {fileID: 11400000, guid: f0f3c488203fa2842996c3280949d94b, type: 2}
       lv: 50
-      timer: 10
+      timer: 2
       row: 2
-      position: 8
-      stopLane: 2
+      position: 12
+      stopLane: 1
       cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
