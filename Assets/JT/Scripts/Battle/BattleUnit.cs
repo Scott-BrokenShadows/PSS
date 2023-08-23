@@ -323,12 +323,19 @@ public class BattleUnit : MonoBehaviour
 
             if (!isPlayer)
             {
-                // vector from this object towards the target location
-                Vector3 vectorToTarget = BattlePlayerControl._currentTransform.transform.position - this.transform.position;
-                // rotate that vector by -90 degrees around the Z axis
-                Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, -90) * vectorToTarget;
+                if (!HBCharacter.Base.UnitBullet.AimAtPlayer)
+                {
+                    asset.transform.rotation = this.transform.rotation;
+                }
+                else
+                {
+                    // vector from this object towards the target location
+                    Vector3 vectorToTarget = BattlePlayerControl._currentTransform.transform.position - this.transform.position;
+                    // rotate that vector by -90 degrees around the Z axis
+                    Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, -90) * vectorToTarget;
 
-                asset.transform.rotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
+                    asset.transform.rotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
+                }
             }
             else
             {
