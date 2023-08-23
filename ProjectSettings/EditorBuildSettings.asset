@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/DB/DB_Scenes/DB_MenuArmoury.unity
     guid: cd1c4549ac855bc43bd84aeadc906db2
+  - enabled: 1
+    path: Assets/Scenes/CentralLoadingScene.unity
+    guid: 56dc5ac60b957ad489381efa9b790114
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 59d85b0893d303149b1d00789f81a0de, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: c0ebba3b005725d4393ccfa194249617, type: 2}
