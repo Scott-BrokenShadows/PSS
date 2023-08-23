@@ -7,17 +7,17 @@ public class GameController : MonoBehaviour
     // Inspector------------------------------------------------------------------------
 
     #region Inspector
-    [HideInInspector] public HBCharacterBase _cUnit;
+    public HBCharacterBase _cUnit;
     [Separator]
     [HideInInspector] [SerializeField] string currentDateTime;
     [HideInInspector] [SerializeField] string currentGameplayTime;
     [HideInInspector] [SerializeField] string currency;
     [Separator]
-    [ReadOnly] [SerializeField] List<UserCharactersSlot> listCharSlot = new List<UserCharactersSlot>();
-    [HideInInspector] [SerializeField] BattleUnitSlot bUnitSlot;
-    [ReadOnly] [SerializeField] List<ItemSlot> listItems;
+    [ReadOnly] public List<UserCharactersSlot> listCharSlot = new List<UserCharactersSlot>();
+    [ReadOnly] public BattleUnitSlot bUnitSlot;
+    [ReadOnly] public List<ItemSlot> listItems;
     //[Separator]
-    //[SerializeField] bool updateCI;
+    [SerializeField] bool updateCI;
     //[SerializeField] bool updateCI2;
     #endregion
 
@@ -35,26 +35,26 @@ public class GameController : MonoBehaviour
         //SetTotalPlayTime();
         //SetCurrency();
 
-        //TestingButton();
+        TestingButton();
     }
     #endregion
 
     // This is testing the function is working------------------------------------------------------------------------
 
     #region Testing
-    //void TestingButton()
-    //{
-    //    if (updateCI)
-    //    {
-    //        //AddCharacterUnit(_cUnit, 77);
-    //        SetCharacters();
+    void TestingButton()
+    {
+        if (updateCI)
+        {
+            AddCharacterUnit(_cUnit, 77, 0);
+            SetCharacters();
 
-    //        SetItems();
+            SetItems();
 
-    //        updateCI = false;
-    //        return;
-    //    }
-    //}
+            updateCI = false;
+            return;
+        }
+    }
     #endregion
 
     // Setting Data to GameData------------------------------------------------------------------------
