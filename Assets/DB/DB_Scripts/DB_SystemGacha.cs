@@ -63,6 +63,8 @@ public class DB_SystemGacha : MonoBehaviour
 
     void Start()
     {
+        gameController = FindObjectOfType<GameController>();
+
         singleRollText.text = $"x{singleRollCost}";
         tenRollText.text = $"x{tenRollCost}";
         pityText.text = $"Rarity 3 Guaranteed in {pityLimit - highRare} Attempts!";

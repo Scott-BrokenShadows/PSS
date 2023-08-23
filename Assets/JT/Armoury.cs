@@ -6,8 +6,10 @@ public class Armoury : MonoBehaviour
 {
     [ReadOnly] public GameController cController;
     public Transform parentArmouryList;
-
     public GameObject characterBoxUI;
+
+    public GameObject mainCharacter;
+    public GameObject subCharacter;
     [ReadOnly] public List<GameObject> charListUI;
 
     public bool callOnce;
@@ -16,6 +18,14 @@ public class Armoury : MonoBehaviour
     void Start()
     {
         cController = FindObjectOfType<GameController>();
+
+        foreach (var var in cController.listCharSlot)
+        {
+            GameObject assetUI = Instantiate(characterBoxUI);
+            charListUI.Add(assetUI);
+            assetUI.GetComponent<ArmouryCharacterBoxUI>().charName.text = var.characterBase.Name;
+            assetUI.transform.SetParent(parentArmouryList.transform);
+        }
     }
 
     // Update is called once per frame
