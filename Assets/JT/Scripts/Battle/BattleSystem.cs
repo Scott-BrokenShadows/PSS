@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleSystem : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class BattleSystem : MonoBehaviour
     public Transform subUnitPos;
     [LabelOverride("Main Unit Position")]
     public Transform mainUnitPos;
+
+    public GameObject backgroundImage;
 
     // LevelStage
     [ReadOnly] private LevelStage currentLevel;
@@ -57,10 +60,29 @@ public class BattleSystem : MonoBehaviour
     [Range(0, 1)] [SerializeField] List<float> laneSlowDown;
     static public List<float> _laneSlowDown;
 
+    // Complete Instantiateing Everything
+    [HideInInspector] public bool cStage;
+
+    [Separator]
+    // Win Lose
+    [SerializeField] GameObject battleOverHud;
+    [SerializeField] GameObject winHud;
+    [SerializeField] GameObject loseHud;
+
+    [SerializeField] Text character1GainEXP;
+    [SerializeField] Text character2GainEXP;
+    [SerializeField] Text rewardMoney;
+
+    bool allEnemiesNull = true;
+    public static bool gBattleOver;
+    bool winLose;
+
+    [Separator]
     // Testing
     [SerializeField] BattleUnitSlot bUnitSlot;
     #endregion
 
+    #region Inspector OnValidate 
     private void OnValidate()
     {
         // Loop through the list (starting from the second element)
@@ -73,6 +95,7 @@ public class BattleSystem : MonoBehaviour
             laneSlowDown[i] = Mathf.Min(laneSlowDown[i], laneSlowDown[i - 1]);
         }
     }
+    #endregion
 
     // Start & Update------------------------------------------------------------------------
 
@@ -84,8 +107,36 @@ public class BattleSystem : MonoBehaviour
 
     private void Update()
     {
-        TimerWave();
-        InstanceEnemies();
+        if (!gBattleOver)
+        {
+            if (!cStage)
+            {
+                TimerWave();
+                InstanceEnemies();
+            }
+
+            allEnemiesNull = true;
+
+            foreach (var enemy in cEnemy)
+            {
+                if (enemy != null)
+                {
+                    allEnemiesNull = false;
+                }
+            }
+
+            if (cStage && allEnemiesNull)
+            {
+                winLose = true;
+                BattleEnd();
+            }
+
+            if (cPlayer.GetComponent<BattleUnit>().HBCharacter.HP <= 0)
+            {
+                winLose = false;
+                BattleEnd();
+            }
+        }
     }
     #endregion
 
@@ -114,6 +165,9 @@ public class BattleSystem : MonoBehaviour
     // Do what on the start
     void SetupBattle()
     {
+        // BattleOverHud OFF
+        BattleEndSetUp();
+
         // Lane to stop
         _laneSlowDown = laneSlowDown;
 
@@ -122,6 +176,11 @@ public class BattleSystem : MonoBehaviour
 
         // Get the current Stage Information
         currentLevel = FindObjectOfType<LevelStage>();
+
+        // Background
+        backgroundImage.GetComponent<SpriteRenderer>().sprite = currentLevel.backgroundImage;
+        backgroundImage.GetComponent<SpriteRenderer>().color = currentLevel.backgroundImageColor;
+        backgroundImage.GetComponent<SpriteStretch>().callOnceStretch = true;
 
         // Set the current Wave 
         currentWave = cWave + 1;
@@ -181,9 +240,9 @@ public class BattleSystem : MonoBehaviour
 
             if (cTimer <= 0)
             {
-                // What to do when you complete the stage
-                Debug.Log("Complete Stage");
                 cTimer = 0;
+                cStage = true;
+                Debug.Log("Current Stage = " + cStage);
             }
         }
     }
@@ -227,6 +286,7 @@ public class BattleSystem : MonoBehaviour
     {
         GameObject asset = Instantiate(battleUnit, transform);
         //asset.transform.position = frontUnitPos.position;
+        cPlayer = asset;
         asset.GetComponent<BattleUnit>()._base = bUnitSlot.battleUnit.characterBase;
         asset.GetComponent<BattleUnit>().level = bUnitSlot.battleUnit.level;
         asset.GetComponent<BattleUnit>().isPlayer = true;
@@ -250,6 +310,7 @@ public class BattleSystem : MonoBehaviour
     void InstanceSubPlayers()
     {
         GameObject asset = Instantiate(battleUnit, transform);
+        cSubPlayer = asset;
         asset.transform.position = subUnitPos.position;
         asset.GetComponent<BattleUnit>()._base = bUnitSlot.subBattleUnit.characterBase;
         asset.GetComponent<BattleUnit>().level = bUnitSlot.subBattleUnit.level;
@@ -282,6 +343,84 @@ public class BattleSystem : MonoBehaviour
         var to = toAbs + toMin;
 
         return to;
+    }
+    #endregion
+
+    // EXP Function------------------------------------------------------------------------
+
+    #region EXP Function
+    public void GainXP(ref int currentLevel, ref int currentXP, int xpIncreasePerLevel, int amount)
+    {
+        currentXP += amount;
+
+        int xpRequiredForNextLevel = currentLevel * xpIncreasePerLevel;
+
+        if (currentXP >= xpRequiredForNextLevel)
+        {
+            int leftoverXP = currentXP - xpRequiredForNextLevel;
+            currentLevel++;
+            currentXP = leftoverXP;
+
+            Debug.Log("Level Up! Current level: " + currentLevel);
+        }
+    }
+    #endregion
+
+    // GameOver Function------------------------------------------------------------------------
+
+    #region GameOver Function
+
+    void BattleEndSetUp()
+    {
+        battleOverHud.SetActive(false);
+        winHud.SetActive(false);
+        loseHud.SetActive(false);
+    }
+
+    public void BattleEnd()
+    {
+        BattleGameEnd();
+        gBattleOver = true;
+        Debug.Log("Game Battle End = " + gBattleOver);
+    }
+
+    public void BattleGameEnd()
+    {
+        skillButtonPos.gameObject.SetActive(false);
+        hyperSkillButtonPos.gameObject.SetActive(false);
+        elementButtonPos.gameObject.SetActive(false);
+
+        Destroy(subUnitPos.gameObject);
+        Destroy(mainUnitPos.gameObject);
+
+        battleOverHud.SetActive(true);
+        if (winLose) { BattleGameWin(); } else { BattleGameLose(); };
+    }
+
+    public void BattleGameWin()
+    {
+        Debug.Log("Win");
+        winHud.SetActive(true);
+
+        // Main Character 100%
+        //bUnitSlot.battleUnit.currentXP += currentLevel.rewards.rEXP;
+        GainXP(ref bUnitSlot.battleUnit.level, ref bUnitSlot.battleUnit.currentXP, 1000, currentLevel.rewards.rEXP);
+        character1GainEXP.text = $"+{currentLevel.rewards.rEXP} EXP";
+
+        // Sub character 50%
+        //bUnitSlot.subBattleUnit.currentXP += currentLevel.rewards.rEXP / 2;
+        GainXP(ref bUnitSlot.subBattleUnit.level, ref bUnitSlot.subBattleUnit.currentXP, 1000, currentLevel.rewards.rEXP / 2);
+        character2GainEXP.text = $"+{currentLevel.rewards.rEXP / 2} EXP";
+    }
+
+    public void BattleGameLose()
+    {
+        Debug.Log("Lose");
+        loseHud.SetActive(true);
+
+        character1GainEXP.text = $"+0 EXP";
+        character2GainEXP.text = $"+0 EXP";
+        rewardMoney.text = $"+$0";
     }
     #endregion
 

@@ -118,19 +118,19 @@ public class GameController : MonoBehaviour
         listCharSlot = GameData.listCharSlot;
     }
 
-    public void AddBattleCharSlot(HBCharacterBase _characterUnit, int _level)
+    public void AddBattleCharSlot(HBCharacterBase _characterUnit, int _level, int _currentXP)
     {
-        GameData.bUnitSlot.battleUnit = new UserCharactersSlot(_characterUnit, _level);
+        GameData.bUnitSlot.battleUnit = new UserCharactersSlot(_characterUnit, _level, _currentXP);
     }
 
-    public void AddBattleSubCharSlot(HBCharacterBase _characterUnit, int _level)
+    public void AddBattleSubCharSlot(HBCharacterBase _characterUnit, int _level, int _currentXP)
     {
-        GameData.bUnitSlot.subBattleUnit = new UserCharactersSlot(_characterUnit, _level);
+        GameData.bUnitSlot.subBattleUnit = new UserCharactersSlot(_characterUnit, _level, _currentXP);
     }
 
-    public void AddCharacterUnit(HBCharacterBase _characterUnit, int _level)
+    public void AddCharacterUnit(HBCharacterBase _characterUnit, int _level, int _currentXP)
     {
-        GameData.listCharSlot.Add(new UserCharactersSlot(_characterUnit, _level));
+        GameData.listCharSlot.Add(new UserCharactersSlot(_characterUnit, _level, _currentXP));
     }
 
 

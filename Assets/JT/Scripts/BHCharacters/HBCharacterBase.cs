@@ -101,12 +101,12 @@ public class ElementChart
     static float[][] chart =
     {
         // TODO: Temporary Implementation
-        // Attack/Defense  // FIR WAT NAT MAG MAC
-        /*FIR*/ new float[] { 1f, 1f, 1f, 1f, 1f },
-        /*WAT*/ new float[] { 1f, 1f, 1f, 1f, 1f },
-        /*NAT*/ new float[] { 1f, 1f, 1f, 1f, 1f },
-        /*MAG*/ new float[] { 1f, 1f, 1f, 1f, 1f },
-        /*MAC*/ new float[] { 1f, 1f, 1f, 1f, 1f }
+        // Attack/Defense  // FIR    WAT   NAT   MAG   MAC
+        /*FIR*/ new float[] { 1.0f, 0.5f, 1.5f, 1.0f, 1.0f },
+        /*WAT*/ new float[] { 1.5f, 1.0f, 0.5f, 1.0f, 1.0f },
+        /*NAT*/ new float[] { 0.5f, 1.5f, 1.0f, 1.0f, 1.0f },
+        /*MAG*/ new float[] { 1.0f, 1.0f, 1.0f, 1.0f, 1.5f },
+        /*MAC*/ new float[] { 1.0f, 1.0f, 1.0f, 1.5f, 1.0f }
     };
     public static float GetEffectiveness(Elements attackType, Elements defenseType)
     {

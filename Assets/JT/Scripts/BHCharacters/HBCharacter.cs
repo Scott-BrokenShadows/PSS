@@ -59,6 +59,7 @@ public class HBCharacter
         // Attack Damage
         int damageBasic = 0;
         float basic = (float)attacker.transferDamage.atk * 50 / (float)this.Defense;
+        //float basic = (float)attacker.transferDamage.atk - (float)this.Defense;
         damageBasic = Mathf.FloorToInt(basic * modifiers);
 
         int damage = damageBasic;

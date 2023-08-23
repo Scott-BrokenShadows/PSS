@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class LevelWave
@@ -29,10 +30,21 @@ public class HBEnemyList
     [HideInInspector] public bool callOnce;
 }
 
+[System.Serializable]
+public class RewardLevelStage
+{
+    public int rCurrency;
+    public int rEXP;
+}
+
 public class LevelStage : MonoBehaviour
 {
     [LabelOverride("StageScene")]
     public string lStageScene;
+
+    public Sprite backgroundImage;
+    public Color backgroundImageColor;
+
     [Min(0)] public int gridRows = 5;
 
     public List<LevelWave> levelWave;
@@ -51,6 +63,8 @@ public class LevelStage : MonoBehaviour
         }
     }
     #endregion
+
+    public RewardLevelStage rewards;
 
     public List<LevelWave> LevelWave { get { return levelWave; } }
 }

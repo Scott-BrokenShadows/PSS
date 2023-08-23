@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 238135fec6be38544872501b07c2c2d4, type: 3}
   m_Name: Multi-Single
   m_EditorClassIdentifier: 
-  name: Single Shot
-  description: Shoot a single bullet
+  name: Multi lane shot non aim
+  description: 
   iconSprite: {fileID: 0}
   asset: {fileID: 1128758172799917848, guid: 63c929501800ba2408010f7bb6f65a60, type: 3}
-  bulletType: 0
-  bulletRange: 0
-  bulletCount: 0
-  bulletReload: 0.1
+  bulletType: 1
+  bulletRange: 2
+  bulletCount: 3
+  bulletReload: 1
   bulletSpeed: 5
+  aimAtPlayer: 0
