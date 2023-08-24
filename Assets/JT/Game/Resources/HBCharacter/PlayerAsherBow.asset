@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1fce225cd4d6b54695f92ed1ab8cbe8, type: 3}
-  m_Name: Character
+  m_Name: PlayerAsherBow
   m_EditorClassIdentifier: 
-  name: Valeria
-  id: 5
+  name: Asher
+  id: 6
   description: 
   iconSprite: {fileID: 0}
-  asset: {fileID: 1477845749801868732, guid: 767de30aa85f8714e9c65a6d44364aa5, type: 3}
+  asset: {fileID: 3363376841730040880, guid: c6b5e5b2eae1534479e79fe97e32b1ee, type: 3}
   unitType: 0
   elements: 0
   maxHP: 1000
-  attack: 500
-  spAttack: 500
+  attack: 150
+  spAttack: 150
   defence: 200
   spDefence: 200
-  speed: 500
-  totalStats: 1900
+  speed: 550
+  totalStats: 1250
   critical: 100
-  unitBullet: {fileID: 11400000, guid: 9b0edfb6ef885964c92c7a7162476f78, type: 2}
+  unitBullet: {fileID: 11400000, guid: 0daf897054d76654c9fa81d9292ea971, type: 2}
   unitSkill: {fileID: 11400000, guid: b54d71b5a1895b2498351871f248e163, type: 2}
