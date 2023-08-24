@@ -53,24 +53,72 @@ public class Armoury : MonoBehaviour // ManagerUI
         AssignSlotIndexes();
     }
     //------------------------------------------------------------- Equipping
-    public void ArmouryToMain()
-    { 
-    
+    public void ArmouryToMain(int slotIndex)
+    {
+        //Cache the Inventory slot ItemData from InventoryManager
+        UserCharactersSlot charToEquip = GameData.listCharSlot[slotIndex];
+
+        //Change the Inventory Slot to the Hand's
+        GameData.listCharSlot[slotIndex] = equippedMain;
+
+        //Change the Hand's Slot to the Inventory Slot's
+        equippedMain = charToEquip;
+
+        //Update the changes to the UI
+        Instance.RenderInventory();
     }
 
     public void MainToArmoury()
     {
+        //Iterate through each inventory slot and find an empty slot
+        for (int i = 0; i < GameData.listCharSlot.ToArray().Length; i++)
+        {
+            if (GameData.listCharSlot[i] == null)
+            {
+                //Send the equipped item over to its new slot
+                GameData.listCharSlot[i] = equippedMain;
+                //Remove the item from the hand
+                equippedMain = null;
+                break;
+            }
+        }
 
+        //Update the changes to the UI
+        Instance.RenderInventory();
     }
 
-    public void ArmouryToSub()
+    public void ArmouryToSub(int slotIndex)
     {
+        //Cache the Inventory slot ItemData from InventoryManager
+        UserCharactersSlot charToEquip = GameData.listCharSlot[slotIndex];
 
+        //Change the Inventory Slot to the Hand's
+        GameData.listCharSlot[slotIndex] = equippedSub;
+
+        //Change the Hand's Slot to the Inventory Slot's
+        equippedSub = charToEquip;
+
+        //Update the changes to the UI
+        Instance.RenderInventory();
     }
 
     public void SubToArmoury()
     {
+        //Iterate through each inventory slot and find an empty slot
+        for (int i = 0; i < GameData.listCharSlot.ToArray().Length; i++)
+        {
+            if (GameData.listCharSlot[i] == null)
+            {
+                //Send the equipped item over to its new slot
+                GameData.listCharSlot[i] = equippedSub;
+                //Remove the item from the hand
+                equippedSub = null;
+                break;
+            }
+        }
 
+        //Update the changes to the UI
+        Instance.RenderInventory();
     }
     //-------------------------------------------------------------
 
@@ -89,11 +137,29 @@ public class Armoury : MonoBehaviour // ManagerUI
         UserCharactersSlot[] armouryCharSlots = GameData.listCharSlot.ToArray();
         RenderArmouryPanel(armouryCharSlots, hbCharSlots);
 
-        //Get Tool Equip Main from GameData Armoury
-        UserCharactersSlot equippedMainChar = GameData.bUnitSlot.battleUnit;
+        //BattleUnitSlot equippedCharacter = new BattleUnitSlot 
+        //{
+        //    battleUnit = cController.bUnitSlot.battleUnit,
+        //    subBattleUnit = cController.bUnitSlot.subBattleUnit
+        //};
 
-        //Get Tool Equip Sub from GameData Armoury
-        UserCharactersSlot equippedSubChar = GameData.bUnitSlot.subBattleUnit;
+        ////Get Tool Equip Main from GameData Armoury
+        //UserCharactersSlot equippedMainChar = GameData.bUnitSlot.battleUnit;
+
+        ////Get Tool Equip Sub from GameData Armoury
+        //UserCharactersSlot equippedSubChar = GameData.bUnitSlot.subBattleUnit;
+
+        //equippedMain = GameData.bUnitSlot.battleUnit;
+        //equippedSub = GameData.bUnitSlot.subBattleUnit;
+
+        if (equippedMain != null)
+        {
+            equipMainCharSlot.GetComponent<ArmourySlot>().charSlot = equippedMain;
+        }
+        if (equippedSub != null)
+        {
+            equipSubCharSlot.GetComponent<ArmourySlot>().charSlot = equippedSub;
+        }
 
     }
     void RenderArmouryPanel(UserCharactersSlot[] slots, List<GameObject> uiSlots)

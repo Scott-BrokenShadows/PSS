@@ -9,6 +9,7 @@ public class ArmourySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public UserCharactersSlot charSlot;
     public Image charImage;
     public Text charName;
+    public Text charLV;
     public Text starRating;
     public Text mainSkillDesc;
     public Text subSkillDesc;
@@ -26,6 +27,10 @@ public class ArmourySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             if (charName != null)
             {
                 charName.text = charSlot.characterBase.Name;
+            }
+            if (charLV != null)
+            {
+                charLV.text = charSlot.level.ToString();
             }
             if (starRating != null)
             {
@@ -68,10 +73,10 @@ public class ArmourySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public virtual void OnPointerClick(PointerEventData eventData)
     {
         //Move item from Armoury to Main
-        Armoury.Instance.ArmouryToMain();
+        Armoury.Instance.ArmouryToMain(slotIndex);
 
         //Move item from Armoury to Sub
-        Armoury.Instance.ArmouryToSub();
+        Armoury.Instance.ArmouryToSub(slotIndex);
     }
 
     //Set the Slot index
@@ -121,3 +126,5 @@ public class ArmourySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 //        charDisplayImage.gameObject.SetActive(false);
 //    }
 //}
+
+
