@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55994f40e6cc48848bc49256ecdcaef5, type: 3}
   m_Name: R2_Ele_Gem_T_Gacha
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: ee1237034e37a2645a8377b4957a9104, type: 3}
+  itemImage: {fileID: 21300000, guid: db8fa714fd6c6664a937034e8955d93a, type: 3}
   itemName: Tech Gem
   dropChance: 9.5
   isCharacter: 0
+  rewardType:
+    charBase: {fileID: 0}
+    elemData: {fileID: 0}

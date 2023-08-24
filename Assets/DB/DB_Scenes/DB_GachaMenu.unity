@@ -4320,9 +4320,9 @@ MonoBehaviour:
   confirmText: {fileID: 1224901346}
   currencyGacha: 10000
   currencyText: {fileID: 1022731011}
-  singleRollCost: 180
+  singleRollCost: 300
   singleRollText: {fileID: 1283980487}
-  tenRollCost: 1800
+  tenRollCost: 2800
   tenRollText: {fileID: 449777076}
   pityText: {fileID: 634627247}
   grid: {fileID: 1471437694}
@@ -4350,10 +4350,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c45c5c324f3575498eab8407966e47d, type: 2}
   - {fileID: 11400000, guid: d9c14e90321d9ea4786eca845258a381, type: 2}
   - {fileID: 11400000, guid: 860542b0ecb0457479ac6b9ed9ed31d8, type: 2}
-  - {fileID: 11400000, guid: fdc8da42e90088f4b9e8405508237c14, type: 2}
   rarity3ItemList:
   - {fileID: 11400000, guid: 4ed4421bd1e185648b94611b990644a1, type: 2}
-  - {fileID: 11400000, guid: 271c40f376e513f42be07a325aebe79c, type: 2}
   gameController: {fileID: 0}
   itemsObtained: []
 --- !u!4 &1986135675

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55994f40e6cc48848bc49256ecdcaef5, type: 3}
-  m_Name: R2_Char2_Gacha
+  m_Name: R2_Char1_GachaValeria
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: b27494803dce5cf418c0a972a46be715, type: 3}
-  itemName: Character 2
+  itemImage: {fileID: 21300000, guid: 3210066b94fc3f34c9b982f0b9b0d3e8, type: 3}
+  itemName: Valeria
   dropChance: 9
   isCharacter: 1
   rewardType:

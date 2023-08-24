@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55994f40e6cc48848bc49256ecdcaef5, type: 3}
   m_Name: R2_Ele_Gem_N_Gacha
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: 06a7480d519f72f43b713db64e672c27, type: 3}
+  itemImage: {fileID: 21300000, guid: 8430bc82661c50a44ad326f28c438da7, type: 3}
   itemName: Nature Gem
   dropChance: 18
   isCharacter: 0
+  rewardType:
+    charBase: {fileID: 0}
+    elemData: {fileID: 0}

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55994f40e6cc48848bc49256ecdcaef5, type: 3}
-  m_Name: R2_Char1_Gacha
+  m_Name: R2_Char2_GachaAsher
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: bca2d174353415d46b3703370285eec0, type: 3}
-  itemName: Character 1
+  itemImage: {fileID: 21300000, guid: db62b9fec7dc4044ebe323ffad5cef56, type: 3}
+  itemName: Asher
   dropChance: 9
   isCharacter: 1
   rewardType:

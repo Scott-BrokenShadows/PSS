@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55994f40e6cc48848bc49256ecdcaef5, type: 3}
   m_Name: R1_Ele_Sha_M_Gacha
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: 9a4dd2076e3750949a4e2edaac4ca7f1, type: 3}
+  itemImage: {fileID: 21300000, guid: 105fd17268beb4d4798230ee33cfa907, type: 3}
   itemName: Magic Shard
   dropChance: 12.5
   isCharacter: 0
-  list: []
+  rewardType:
+    charBase: {fileID: 0}
+    elemData: {fileID: 0}

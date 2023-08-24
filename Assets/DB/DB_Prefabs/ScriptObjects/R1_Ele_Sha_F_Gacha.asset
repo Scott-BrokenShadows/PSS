@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55994f40e6cc48848bc49256ecdcaef5, type: 3}
   m_Name: R1_Ele_Sha_F_Gacha
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: 3164c89884a8432409766a9383cc5296, type: 3}
+  itemImage: {fileID: 21300000, guid: 3542cfe8c6575604ab5c787116018046, type: 3}
   itemName: Fire Shard
   dropChance: 25
   isCharacter: 0
-  charBase: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
-  itemBase: {fileID: 0}
+  rewardType:
+    charBase: {fileID: 0}
+    elemData: {fileID: 0}
