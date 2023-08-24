@@ -1077,33 +1077,81 @@ MonoBehaviour:
   gridRows: 5
   levelWave:
   - name: Wave 1
-    countDownTimer: 20
+    countDownTimer: 30
     EnemyList:
     - name: Enemy Slot 1
-      _base: {fileID: 11400000, guid: 81bc7bfb5cf2ae344b72f9223d5d45b4, type: 2}
-      lv: 25
-      timer: 0
-      row: 1
+      _base: {fileID: 11400000, guid: 782d5d096894e2f4ab7b7fedc6fd63e2, type: 2}
+      lv: 50
+      timer: 2
+      row: 3
       position: 10
       stopLane: 1
       cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
-      _base: {fileID: 11400000, guid: f0f3c488203fa2842996c3280949d94b, type: 2}
+      _base: {fileID: 11400000, guid: c67e29ba63466e74bb389ee96521f848, type: 2}
       lv: 50
       timer: 2
-      row: 2
-      position: 12
+      row: 1
+      position: 10
       stopLane: 1
       cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
-      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      _base: {fileID: 11400000, guid: c67e29ba63466e74bb389ee96521f848, type: 2}
       lv: 50
-      timer: 20
+      timer: 2
+      row: 5
+      position: 10
+      stopLane: 1
+      cTimer: 0
+      callOnce: 0
+  - name: Wave 2
+    countDownTimer: 5
+    EnemyList:
+    - name: Enemy Slot 1
+      _base: {fileID: 11400000, guid: 4ba1a6eadfad6fe4d84d3330127cbd13, type: 2}
+      lv: 50
+      timer: 2
+      row: 2
+      position: 10
+      stopLane: 1
+      cTimer: 0
+      callOnce: 0
+    - name: Enemy Slot 2
+      _base: {fileID: 11400000, guid: 4ba1a6eadfad6fe4d84d3330127cbd13, type: 2}
+      lv: 50
+      timer: 2
       row: 3
-      position: 8
-      stopLane: 0
+      position: 10
+      stopLane: 1
+      cTimer: 0
+      callOnce: 0
+    - name: Enemy Slot 3
+      _base: {fileID: 11400000, guid: 4ba1a6eadfad6fe4d84d3330127cbd13, type: 2}
+      lv: 50
+      timer: 2
+      row: 4
+      position: 10
+      stopLane: 1
+      cTimer: 0
+      callOnce: 0
+    - name: Enemy Slot 3
+      _base: {fileID: 11400000, guid: a676afca8148d0e4bada0631434ddc6b, type: 2}
+      lv: 50
+      timer: 3
+      row: 1
+      position: 10
+      stopLane: 2
+      cTimer: 0
+      callOnce: 0
+    - name: Enemy Slot 3
+      _base: {fileID: 11400000, guid: a676afca8148d0e4bada0631434ddc6b, type: 2}
+      lv: 50
+      timer: 3
+      row: 5
+      position: 10
+      stopLane: 2
       cTimer: 0
       callOnce: 0
   rewards:
@@ -4698,9 +4746,9 @@ MonoBehaviour:
   GridRows: []
   cRows: 0
   laneSlowDown:
-  - 0.724
-  - 0.608
-  - 0.451
+  - 0.897
+  - 0.702
+  - 0.508
   cStage: 0
   battleOverHud: {fileID: 722041368}
   winHud: {fileID: 1525185351}

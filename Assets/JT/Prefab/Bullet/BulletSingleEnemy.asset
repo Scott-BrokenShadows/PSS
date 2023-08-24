@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 238135fec6be38544872501b07c2c2d4, type: 3}
-  m_Name: BulletMulti3
+  m_Name: BulletSingleEnemy
   m_EditorClassIdentifier: 
-  name: Multi lane shot non aim
+  name: 
   description: 
   iconSprite: {fileID: 0}
-  asset: {fileID: 4528073418227455201, guid: bb2531a2aa79db343827705aecf742f1, type: 3}
-  bulletType: 1
-  bulletRange: 1
-  bulletCount: 3
-  bulletReload: 2
+  asset: {fileID: 8963716086591673672, guid: 21a700350d98ef7418f617d1657d6f67, type: 3}
+  bulletType: 0
+  bulletRange: 0
+  bulletCount: 1
+  bulletReload: 1.5
   bulletSpeed: 5
   aimAtPlayer: 0
