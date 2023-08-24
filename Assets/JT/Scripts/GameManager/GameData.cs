@@ -18,6 +18,28 @@ public class UserCharactersSlot
         characterBase = _characterUnit;
         level = _level;
         currentXP = _currentXP;
+        ValidateEmpty();
+    }
+
+    public void Remove()
+    {
+        ValidateEmpty();
+    }
+
+    private void ValidateEmpty()
+    {
+        if (characterBase == null)
+        {
+            Empty();
+        }
+    }
+
+    //Empty out the Armoury Slot
+    public void Empty()
+    {
+        characterBase = null;
+        level = 0;
+        currentXP = 0;
     }
 }
 

@@ -12,6 +12,10 @@ public class Armoury : MonoBehaviour
     public GameObject subCharacter;
     [ReadOnly] public List<GameObject> charListUI;
 
+    public UserCharactersSlot[] hbCharSlots;
+    public UserCharactersSlot equipMainCharSlot = null;
+    public UserCharactersSlot equipSubCharSlot = null;
+
     public bool callOnce;
 
     // Start is called before the first frame update
@@ -23,7 +27,7 @@ public class Armoury : MonoBehaviour
         {
             GameObject assetUI = Instantiate(characterBoxUI);
             charListUI.Add(assetUI);
-            assetUI.GetComponent<ArmouryCharacterBoxUI>().charName.text = var.characterBase.Name;
+            //assetUI.GetComponent<ArmouryCharacterBoxUI>().charName.text = var.characterBase.Name;
             assetUI.transform.SetParent(parentArmouryList.transform);
         }
     }
@@ -37,7 +41,7 @@ public class Armoury : MonoBehaviour
             {
                 GameObject assetUI = Instantiate(characterBoxUI);
                 charListUI.Add(assetUI);
-                assetUI.GetComponent<ArmouryCharacterBoxUI>().charName.text = var.characterBase.Name;
+                //assetUI.GetComponent<ArmouryCharacterBoxUI>().charName.text = var.characterBase.Name;
                 assetUI.transform.SetParent(parentArmouryList.transform);
             }
 
