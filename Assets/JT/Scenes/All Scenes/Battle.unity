@@ -4758,7 +4758,7 @@ MonoBehaviour:
   rewardMoney: {fileID: 1764380743}
   bUnitSlot:
     battleUnit:
-      characterBase: {fileID: 11400000, guid: a3c084add256da047acaec4933413c89, type: 2}
+      characterBase: {fileID: 11400000, guid: d87c7043e91ace14bad4f575cb1b98c5, type: 2}
       level: 100
       currentXP: 0
     subBattleUnit:

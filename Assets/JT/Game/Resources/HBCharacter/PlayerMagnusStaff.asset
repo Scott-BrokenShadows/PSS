@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fce225cd4d6b54695f92ed1ab8cbe8, type: 3}
   m_Name: PlayerMagnusStaff
   m_EditorClassIdentifier: 
-  name: 
+  name: Magnus
   id: 0
   description: 
   iconSprite: {fileID: 0}
-  asset: {fileID: 0}
+  asset: {fileID: 2566604976370194021, guid: 32cbea2f90b98f047a3de0c62188109d, type: 3}
   unitType: 0
   elements: 0
   maxHP: 1000
-  attack: 1
-  spAttack: 1
+  attack: 7
+  spAttack: 7
   defence: 200
   spDefence: 200
   speed: 400
-  totalStats: 802
+  totalStats: 814
   critical: 0
-  unitBullet: {fileID: 11400000, guid: f25c1327572a1c34d8fd21894777d79e, type: 2}
+  unitBullet: {fileID: 11400000, guid: 9c9bc1f7fb786c64cb3caadad07f5f17, type: 2}
   unitSkill: {fileID: 11400000, guid: b54d71b5a1895b2498351871f248e163, type: 2}
