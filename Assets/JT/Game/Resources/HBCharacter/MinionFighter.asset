@@ -20,12 +20,12 @@ MonoBehaviour:
   unitType: 0
   elements: 0
   maxHP: 3000
-  attack: 525
-  spAttack: 525
+  attack: 400
+  spAttack: 400
   defence: 50
   spDefence: 50
   speed: 550
-  totalStats: 1700
+  totalStats: 1450
   critical: 0
   unitBullet: {fileID: 11400000, guid: b9134d3645bbd204d823c031011940ca, type: 2}
   unitSkill: {fileID: 0}
