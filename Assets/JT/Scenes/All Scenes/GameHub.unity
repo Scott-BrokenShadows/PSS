@@ -168,6 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lStageScene: Battle
+  backgroundImage: {fileID: 0}
+  backgroundImageColor: {r: 0, g: 0, b: 0, a: 0}
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -278,6 +280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lStageScene: Battle
+  backgroundImage: {fileID: 21300000, guid: 3412f46808ea9d648a6334f72f1e475f, type: 3}
+  backgroundImageColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -358,6 +362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lStageScene: Battle
+  backgroundImage: {fileID: 21300000, guid: dc69dc4006372ad4cab9bb3d10347b5c, type: 3}
+  backgroundImageColor: {r: 0.77254903, g: 0.77254903, b: 0.77254903, a: 0}
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -578,6 +584,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lStageScene: Battle
+  backgroundImage: {fileID: 0}
+  backgroundImageColor: {r: 0, g: 0, b: 0, a: 0}
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -786,6 +794,7 @@ MonoBehaviour:
     quantity: 0
   - id: 0
     quantity: 0
+  updateCI: 0
 --- !u!4 &836971366
 Transform:
   m_ObjectHideFlags: 0
@@ -975,6 +984,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lStageScene: Battle
+  backgroundImage: {fileID: 21300000, guid: 2b4aac43581034d4095b60ee0f4f37f0, type: 3}
+  backgroundImageColor: {r: 0.77254903, g: 0.77254903, b: 0.77254903, a: 0}
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -1055,6 +1066,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lStageScene: Battle
+  backgroundImage: {fileID: 0}
+  backgroundImageColor: {r: 0, g: 0, b: 0, a: 0}
   gridRows: 5
   levelWave:
   - name: Wave 1
@@ -1165,6 +1178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lStageScene: Battle
+  backgroundImage: {fileID: 21300000, guid: 108ff11a642ce41479f81f6b4d6c3f9e, type: 3}
+  backgroundImageColor: {r: 0.77254903, g: 0.77254903, b: 0.77254903, a: 0}
   gridRows: 5
   levelWave:
   - name: Wave 1
