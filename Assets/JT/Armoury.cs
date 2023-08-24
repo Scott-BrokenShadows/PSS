@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Armoury : MonoBehaviour // ManagerUI
+public class Armoury : MonoBehaviour // UIManager
 {
     public static Armoury Instance { get; private set; }
 
@@ -22,22 +22,19 @@ public class Armoury : MonoBehaviour // ManagerUI
         }
     }
 
-    [ReadOnly] public GameController cController;
+    [HideInInspector] public GameController cController;
     public Transform parentArmouryList;
     public GameObject characterBoxUI;
 
     public GameObject equipMainCharSlot;
     public GameObject equipSubCharSlot;
-    [ReadOnly] public List<GameObject> hbCharSlots;
+    public List<GameObject> hbCharSlots;
 
     //-------------------------------------------------------------
-    public UserCharactersSlot[] hbChars;
+    //public UserCharactersSlot[] hbChars;
     public UserCharactersSlot equippedMain;
     public UserCharactersSlot equippedSub;
     //-------------------------------------------------------------
-
-    //The char equip slot UI on the Armoury panel
-    public ArmouryHoldSlot charHoldSlot;
 
     [Separator]
     [ReadOnly] public string charNameText;
@@ -55,17 +52,19 @@ public class Armoury : MonoBehaviour // ManagerUI
     //------------------------------------------------------------- Equipping
     public void ArmouryToMain(int slotIndex)
     {
+        Debug.Log("LOL");
+
         //Cache the Inventory slot ItemData from InventoryManager
-        UserCharactersSlot charToEquip = GameData.listCharSlot[slotIndex];
+        UserCharactersSlot charToEquip = cController.listCharSlot[slotIndex];
 
         //Change the Inventory Slot to the Hand's
-        GameData.listCharSlot[slotIndex] = equippedMain;
+        cController.listCharSlot[slotIndex] = equippedMain;
 
         //Change the Hand's Slot to the Inventory Slot's
         equippedMain = charToEquip;
 
         //Update the changes to the UI
-        Instance.RenderInventory();
+        //Instance.RenderInventory();
     }
 
     public void MainToArmoury()
@@ -87,45 +86,45 @@ public class Armoury : MonoBehaviour // ManagerUI
         Instance.RenderInventory();
     }
 
-    public void ArmouryToSub(int slotIndex)
-    {
-        //Cache the Inventory slot ItemData from InventoryManager
-        UserCharactersSlot charToEquip = GameData.listCharSlot[slotIndex];
+    //public void ArmouryToSub(int slotIndex)
+    //{
+    //    //Cache the Inventory slot ItemData from InventoryManager
+    //    UserCharactersSlot charToEquip = GameData.listCharSlot[slotIndex];
 
-        //Change the Inventory Slot to the Hand's
-        GameData.listCharSlot[slotIndex] = equippedSub;
+    //    //Change the Inventory Slot to the Hand's
+    //    GameData.listCharSlot[slotIndex] = equippedSub;
 
-        //Change the Hand's Slot to the Inventory Slot's
-        equippedSub = charToEquip;
+    //    //Change the Hand's Slot to the Inventory Slot's
+    //    equippedSub = charToEquip;
 
-        //Update the changes to the UI
-        Instance.RenderInventory();
-    }
+    //    //Update the changes to the UI
+    //    Instance.RenderInventory();
+    //}
 
-    public void SubToArmoury()
-    {
-        //Iterate through each inventory slot and find an empty slot
-        for (int i = 0; i < GameData.listCharSlot.ToArray().Length; i++)
-        {
-            if (GameData.listCharSlot[i] == null)
-            {
-                //Send the equipped item over to its new slot
-                GameData.listCharSlot[i] = equippedSub;
-                //Remove the item from the hand
-                equippedSub = null;
-                break;
-            }
-        }
+    //public void SubToArmoury()
+    //{
+    //    //Iterate through each inventory slot and find an empty slot
+    //    for (int i = 0; i < GameData.listCharSlot.ToArray().Length; i++)
+    //    {
+    //        if (GameData.listCharSlot[i] == null)
+    //        {
+    //            //Send the equipped item over to its new slot
+    //            GameData.listCharSlot[i] = equippedSub;
+    //            //Remove the item from the hand
+    //            equippedSub = null;
+    //            break;
+    //        }
+    //    }
 
-        //Update the changes to the UI
-        Instance.RenderInventory();
-    }
+    //    //Update the changes to the UI
+    //    Instance.RenderInventory();
+    //}
     //-------------------------------------------------------------
 
     //Iterate through the slot UI elements and assign it its reference slot index
     public void AssignSlotIndexes()
     {
-        for (int i = 0; i < hbChars.Length; i++)
+        for (int i = 0; i < hbCharSlots.ToArray().Length; i++)
         {
             hbCharSlots[i].GetComponent<ArmourySlot>().AssignIndex(i);
         }
@@ -133,6 +132,11 @@ public class Armoury : MonoBehaviour // ManagerUI
 
     public void RenderInventory()
     {
+        //foreach (Transform child in parentArmouryList)
+        //{
+        //    GameObject.Destroy(child.gameObject);
+        //}
+
         //Get the character armoury from GameData
         UserCharactersSlot[] armouryCharSlots = GameData.listCharSlot.ToArray();
         RenderArmouryPanel(armouryCharSlots, hbCharSlots);

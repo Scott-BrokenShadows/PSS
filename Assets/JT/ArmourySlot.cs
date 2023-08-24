@@ -14,7 +14,7 @@ public class ArmourySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Text mainSkillDesc;
     public Text subSkillDesc;
     
-    int slotIndex;
+    public int slotIndex;
 
     public void Update()
     {
@@ -74,9 +74,21 @@ public class ArmourySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         //Move item from Armoury to Main
         Armoury.Instance.ArmouryToMain(slotIndex);
+        ////Move item from Armoury to Sub
+        //Armoury.Instance.ArmouryToSub(slotIndex);
 
-        //Move item from Armoury to Sub
-        Armoury.Instance.ArmouryToSub(slotIndex);
+        // You can use eventData to get information about the click
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            Debug.Log("Left mouse button clicked.");
+        }
+        else if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            Debug.Log("Right mouse button clicked.");
+        }
+
+        // You can also check eventData.clickCount for double-clicks, etc.
+        Debug.Log("Click count: " + eventData.clickCount);
     }
 
     //Set the Slot index

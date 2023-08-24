@@ -10,7 +10,8 @@ public class ArmouryHoldSlot : ArmourySlot
         //Move item from Main to Armoury
         Armoury.Instance.MainToArmoury();
 
-        //Move item from Sub to Armoury
-        Armoury.Instance.SubToArmoury();
+        ////Move item from Sub to Armoury
+        //Armoury.Instance.SubToArmoury();
+
     }
 }
