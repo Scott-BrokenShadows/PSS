@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Armoury : MonoBehaviour
+public class Armoury : MonoBehaviour // ManagerUI
 {
     public static Armoury Instance { get; private set; }
 
@@ -31,6 +31,16 @@ public class Armoury : MonoBehaviour
     public GameObject equipSubCharSlot;
     [ReadOnly] public List<GameObject> hbCharSlots;
 
+    //-------------------------------------------------------------
+    public UserCharactersSlot[] hbChars;
+    public UserCharactersSlot equippedMain;
+    public UserCharactersSlot equippedSub;
+    //-------------------------------------------------------------
+
+    //The char equip slot UI on the Armoury panel
+    public ArmouryHoldSlot charHoldSlot;
+
+    [Separator]
     [ReadOnly] public string charNameText;
     [ReadOnly] public string charLvText;
     [ReadOnly] public string charXPText;
@@ -41,6 +51,37 @@ public class Armoury : MonoBehaviour
         cController = FindObjectOfType<GameController>();
 
         RenderInventory();
+        AssignSlotIndexes();
+    }
+    //------------------------------------------------------------- Equipping
+    public void ArmouryToMain()
+    { 
+    
+    }
+
+    public void MainToArmoury()
+    {
+
+    }
+
+    public void ArmouryToSub()
+    {
+
+    }
+
+    public void SubToArmoury()
+    {
+
+    }
+    //-------------------------------------------------------------
+
+    //Iterate through the slot UI elements and assign it its reference slot index
+    public void AssignSlotIndexes()
+    {
+        for (int i = 0; i < hbChars.Length; i++)
+        {
+            hbCharSlots[i].GetComponent<ArmourySlot>().AssignIndex(i);
+        }
     }
 
     public void RenderInventory()
@@ -48,6 +89,12 @@ public class Armoury : MonoBehaviour
         //Get the character armoury from GameData
         UserCharactersSlot[] armouryCharSlots = GameData.listCharSlot.ToArray();
         RenderArmouryPanel(armouryCharSlots, hbCharSlots);
+
+        //Get Tool Equip Main from GameData Armoury
+        UserCharactersSlot equippedMainChar = GameData.bUnitSlot.battleUnit;
+
+        //Get Tool Equip Sub from GameData Armoury
+        UserCharactersSlot equippedSubChar = GameData.bUnitSlot.subBattleUnit;
 
     }
     void RenderArmouryPanel(UserCharactersSlot[] slots, List<GameObject> uiSlots)
@@ -63,17 +110,6 @@ public class Armoury : MonoBehaviour
             uiSlots.Add(assetUI);
             assetUI.transform.SetParent(parentArmouryList.transform);
         }
-
-        //foreach (var var in cController.listCharSlot)
-        //{
-        //    GameObject assetUI = Instantiate(characterBoxUI);
-        //    assetUI.GetComponent<ArmourySlot>().charSlot.characterBase = var.characterBase;
-        //    assetUI.GetComponent<ArmourySlot>().charSlot.level = var.level;
-        //    assetUI.GetComponent<ArmourySlot>().charSlot.currentXP = var.currentXP;
-        //    charListUI.Add(assetUI);
-
-        //    assetUI.transform.SetParent(parentArmouryList.transform);
-        //}
     }
 
     //Display Item info on the Item infobox
@@ -82,19 +118,5 @@ public class Armoury : MonoBehaviour
         charNameText = data?.characterBase?.Name ?? "None";
         charLvText = data?.level.ToString() ?? "0";
         charXPText = data?.currentXP.ToString() ?? "0";
-
-        ////If data is null, reset
-        //if (data == null)
-        //{
-        //    charNameText = "None";
-        //    charLvText = "0";
-        //    charXPText = "0";
-
-        //    return;
-        //}
-
-        //charNameText = data.characterBase.Name;
-        //charLvText = data.level.ToString();
-        //charXPText = data.currentXP.ToString();
     }
 }

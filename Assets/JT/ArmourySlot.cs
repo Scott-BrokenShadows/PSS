@@ -12,6 +12,8 @@ public class ArmourySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Text starRating;
     public Text mainSkillDesc;
     public Text subSkillDesc;
+    
+    int slotIndex;
 
     public void Update()
     {
@@ -61,6 +63,21 @@ public class ArmourySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
             }
         }
+    }
+
+    public virtual void OnPointerClick(PointerEventData eventData)
+    {
+        //Move item from Armoury to Main
+        Armoury.Instance.ArmouryToMain();
+
+        //Move item from Armoury to Sub
+        Armoury.Instance.ArmouryToSub();
+    }
+
+    //Set the Slot index
+    public void AssignIndex(int slotIndex)
+    {
+        this.slotIndex = slotIndex;
     }
 
     //Display the item info on the item info box when the player mouses over
