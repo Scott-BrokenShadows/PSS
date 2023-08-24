@@ -379,45 +379,81 @@ MonoBehaviour:
   gridRows: 5
   levelWave:
   - name: Wave 1
-    countDownTimer: 13
+    countDownTimer: 30
     EnemyList:
     - name: Enemy Slot 1
-      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      _base: {fileID: 11400000, guid: 782d5d096894e2f4ab7b7fedc6fd63e2, type: 2}
       lv: 50
-      timer: 3
-      row: 1
+      timer: 2
+      row: 3
       position: 10
       stopLane: 1
       cTimer: 0
       callOnce: 0
     - name: Enemy Slot 2
-      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      _base: {fileID: 11400000, guid: c67e29ba63466e74bb389ee96521f848, type: 2}
       lv: 50
-      timer: 8
-      row: 2
-      position: 12
+      timer: 2
+      row: 1
+      position: 10
       stopLane: 1
       cTimer: 0
       callOnce: 0
     - name: Enemy Slot 3
-      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      _base: {fileID: 11400000, guid: c67e29ba63466e74bb389ee96521f848, type: 2}
       lv: 50
-      timer: 12
-      row: 3
-      position: 8
+      timer: 2
+      row: 5
+      position: 10
       stopLane: 1
       cTimer: 0
       callOnce: 0
   - name: Wave 2
-    countDownTimer: 6
+    countDownTimer: 5
     EnemyList:
     - name: Enemy Slot 1
-      _base: {fileID: 11400000, guid: c075153f68a4c184183006c4b314d002, type: 2}
+      _base: {fileID: 11400000, guid: 4ba1a6eadfad6fe4d84d3330127cbd13, type: 2}
       lv: 50
-      timer: 5
-      row: 1
+      timer: 2
+      row: 2
       position: 10
       stopLane: 1
+      cTimer: 0
+      callOnce: 0
+    - name: Enemy Slot 2
+      _base: {fileID: 11400000, guid: 4ba1a6eadfad6fe4d84d3330127cbd13, type: 2}
+      lv: 50
+      timer: 2
+      row: 3
+      position: 10
+      stopLane: 1
+      cTimer: 0
+      callOnce: 0
+    - name: Enemy Slot 3
+      _base: {fileID: 11400000, guid: 4ba1a6eadfad6fe4d84d3330127cbd13, type: 2}
+      lv: 50
+      timer: 2
+      row: 4
+      position: 10
+      stopLane: 1
+      cTimer: 0
+      callOnce: 0
+    - name: Enemy Slot 3
+      _base: {fileID: 11400000, guid: a676afca8148d0e4bada0631434ddc6b, type: 2}
+      lv: 50
+      timer: 3
+      row: 1
+      position: 10
+      stopLane: 2
+      cTimer: 0
+      callOnce: 0
+    - name: Enemy Slot 3
+      _base: {fileID: 11400000, guid: a676afca8148d0e4bada0631434ddc6b, type: 2}
+      lv: 50
+      timer: 3
+      row: 5
+      position: 10
+      stopLane: 2
       cTimer: 0
       callOnce: 0
   rewards:

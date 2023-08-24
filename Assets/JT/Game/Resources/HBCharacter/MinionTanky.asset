@@ -19,13 +19,13 @@ MonoBehaviour:
   asset: {fileID: 8424154798648897263, guid: 07a175448fcf1b645bde18257c5989a5, type: 3}
   unitType: 0
   elements: 0
-  maxHP: 4905
-  attack: 130
-  spAttack: 130
+  maxHP: 5000
+  attack: 300
+  spAttack: 300
   defence: 250
   spDefence: 250
   speed: 250
-  totalStats: 1010
+  totalStats: 1350
   critical: 0
   unitBullet: {fileID: 11400000, guid: e59e0f002b650b6499d10bfce5515495, type: 2}
   unitSkill: {fileID: 0}
