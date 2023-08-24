@@ -8,7 +8,6 @@ public class Armoury : MonoBehaviour // ManagerUI
 {
     public static Armoury Instance { get; private set; }
 
-
     private void Awake()
     {
         //If there is more than one instance, destroy the extra
@@ -105,7 +104,6 @@ public class Armoury : MonoBehaviour // ManagerUI
             assetUI.GetComponent<ArmourySlot>().charSlot.characterBase = slots[i].characterBase;
             assetUI.GetComponent<ArmourySlot>().charSlot.level = slots[i].level;
             assetUI.GetComponent<ArmourySlot>().charSlot.currentXP = slots[i].currentXP;
-
 
             uiSlots.Add(assetUI);
             assetUI.transform.SetParent(parentArmouryList.transform);

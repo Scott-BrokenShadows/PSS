@@ -406,7 +406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5306105925325222547}
   - component: {fileID: 1689198490036059153}
-  - component: {fileID: 393639126430501695}
+  - component: {fileID: 7152170183677216836}
   m_Layer: 5
   m_Name: CharacterBoxUI
   m_TagString: Untagged
@@ -451,7 +451,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5550562898521867297}
   m_CullTransparentMesh: 1
---- !u!114 &393639126430501695
+--- !u!114 &7152170183677216836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -460,14 +460,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5550562898521867297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9620da9cc797ff447ae851c6175888e2, type: 3}
+  m_Script: {fileID: 11500000, guid: e4e9de5ebd1e46d48a29cf9afc47b5e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charSlot:
+    characterBase: {fileID: 0}
+    level: 0
+    currentXP: 0
   charImage: {fileID: 5122585017846871851}
   charName: {fileID: 65275890257923255}
-  starRating: {fileID: 8391022703275701171}
-  mainSkillDesc: {fileID: 4744631642397706809}
-  subSkillDesc: {fileID: 5528490848181768145}
+  starRating: {fileID: 0}
+  mainSkillDesc: {fileID: 0}
+  subSkillDesc: {fileID: 0}
 --- !u!1 &8537175153508627262
 GameObject:
   m_ObjectHideFlags: 0

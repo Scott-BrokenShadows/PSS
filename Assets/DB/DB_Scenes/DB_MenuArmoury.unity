@@ -792,7 +792,6 @@ GameObject:
   - component: {fileID: 669297607}
   - component: {fileID: 669297610}
   - component: {fileID: 669297609}
-  - component: {fileID: 669297608}
   - component: {fileID: 669297611}
   m_Layer: 5
   m_Name: BackImageSupportCharacter
@@ -823,27 +822,6 @@ RectTransform:
   m_AnchoredPosition: {x: -796, y: -300}
   m_SizeDelta: {x: 465, y: 465}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &669297608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669297606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9620da9cc797ff447ae851c6175888e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  charSlot:
-    characterBase: {fileID: 0}
-    level: 0
-    currentXP: 0
-  charImage: {fileID: 392038441}
-  charName: {fileID: 0}
-  starRating: {fileID: 0}
-  mainSkillDesc: {fileID: 0}
-  subSkillDesc: {fileID: 0}
 --- !u!114 &669297609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,7 +876,7 @@ MonoBehaviour:
     characterBase: {fileID: 0}
     level: 0
     currentXP: 0
-  charImage: {fileID: 0}
+  charImage: {fileID: 392038441}
   charName: {fileID: 0}
   starRating: {fileID: 0}
   mainSkillDesc: {fileID: 0}
@@ -1071,8 +1049,8 @@ MonoBehaviour:
   cController: {fileID: 0}
   parentArmouryList: {fileID: 1222477316}
   characterBoxUI: {fileID: 5550562898521867297, guid: d1b5fb1f8a0e20c44add3511544963a4, type: 3}
-  equipMainCharSlot: {fileID: 0}
-  equipSubCharSlot: {fileID: 0}
+  equipMainCharSlot: {fileID: 1435257151}
+  equipSubCharSlot: {fileID: 669297606}
   hbCharSlots: []
   hbChars: []
   equippedMain:
@@ -1882,7 +1860,6 @@ GameObject:
   - component: {fileID: 1435257152}
   - component: {fileID: 1435257155}
   - component: {fileID: 1435257154}
-  - component: {fileID: 1435257153}
   - component: {fileID: 1435257156}
   m_Layer: 5
   m_Name: BackImageMainCharacter
@@ -1913,27 +1890,6 @@ RectTransform:
   m_AnchoredPosition: {x: -796, y: 300}
   m_SizeDelta: {x: 465, y: 465}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1435257153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435257151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9620da9cc797ff447ae851c6175888e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  charSlot:
-    characterBase: {fileID: 0}
-    level: 0
-    currentXP: 0
-  charImage: {fileID: 846491752}
-  charName: {fileID: 0}
-  starRating: {fileID: 0}
-  mainSkillDesc: {fileID: 0}
-  subSkillDesc: {fileID: 0}
 --- !u!114 &1435257154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1988,7 +1944,7 @@ MonoBehaviour:
     characterBase: {fileID: 0}
     level: 0
     currentXP: 0
-  charImage: {fileID: 0}
+  charImage: {fileID: 846491752}
   charName: {fileID: 0}
   starRating: {fileID: 0}
   mainSkillDesc: {fileID: 0}
