@@ -1,26 +1,106 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ArmourySlot : MonoBehaviour
+public class ArmourySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    UserCharactersSlot charToDisplay;
-    public Image charDisplayImage;
+    public UserCharactersSlot charSlot;
+    public Image charImage;
+    public Text charName;
+    public Text starRating;
+    public Text mainSkillDesc;
+    public Text subSkillDesc;
 
-    public void Display(UserCharactersSlot charToDisplay)
+    public void Update()
     {
-        // Check if there is an item to Display
-        if (charToDisplay != null)
+        if (charSlot != null)
         {
-            charDisplayImage.sprite = charToDisplay.characterBase.IconSprite;
-            this.charToDisplay = charToDisplay;
+            if (charImage != null)
+            {
+                //charImage.sprite = charSlot.characterBase.IconSprite;
+            }
+            if (charName != null)
+            {
+                charName.text = charSlot.characterBase.Name;
+            }
+            if (starRating != null)
+            {
 
-            charDisplayImage.gameObject.SetActive(true);
+            }
+            if (mainSkillDesc != null)
+            {
 
-            return;
+            }
+            if (subSkillDesc != null)
+            {
+
+            }
         }
+        else
+        {
+            if (charImage != null)
+            {
+                charImage.sprite = null;
+            }
+            if (charName != null)
+            {
+                charName.text = "";
+            }
+            if (starRating != null)
+            {
+                starRating.text = "";
+            }
+            if (mainSkillDesc != null)
+            {
 
-        charDisplayImage.gameObject.SetActive(false);
+            }
+            if (subSkillDesc != null)
+            {
+
+            }
+        }
+    }
+
+    //Display the item info on the item info box when the player mouses over
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Armoury.Instance.DisplayItemInfo(charSlot);
+    }
+
+    //Reset the item info box when the player leaves
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Armoury.Instance.DisplayItemInfo(null);
     }
 }
+
+
+
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+//using UnityEngine.UI;
+
+//public class ArmourySlot : MonoBehaviour
+//{
+//    UserCharactersSlot charToDisplay;
+//    public Image charDisplayImage;
+
+//    public void Display(UserCharactersSlot charToDisplay)
+//    {
+//        // Check if there is an item to Display
+//        if (charToDisplay != null)
+//        {
+//            charDisplayImage.sprite = charToDisplay.characterBase.IconSprite;
+//            this.charToDisplay = charToDisplay;
+
+//            charDisplayImage.gameObject.SetActive(true);
+
+//            return;
+//        }
+
+//        charDisplayImage.gameObject.SetActive(false);
+//    }
+//}
