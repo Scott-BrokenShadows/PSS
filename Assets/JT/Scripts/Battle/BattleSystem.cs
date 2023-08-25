@@ -44,8 +44,8 @@ public class BattleSystem : MonoBehaviour
     [ReadOnly] public List<GameObject> cEnemy;
 
     // The current Players on the game
-    [ReadOnly] private GameObject cPlayer;
-    [ReadOnly] private GameObject cSubPlayer;
+    [ReadOnly] public GameObject cPlayer;
+    [ReadOnly] public GameObject cSubPlayer;
 
     // How many Grid Rows based on the LevelStage.cs
     #region Grid Rows
@@ -108,7 +108,7 @@ public class BattleSystem : MonoBehaviour
         SetupBattle();
     }
 
-    private void Update()
+    void Update()
     {
         if (!gBattleOver)
         {
@@ -141,10 +141,18 @@ public class BattleSystem : MonoBehaviour
             BattleEnd();
         }
 
-        if (cPlayer.GetComponent<BattleUnit>().HBCharacter.HP <= 0)
+        if (cPlayer.GetComponent<BattleUnit>() != null)
         {
-            winLose = false;
-            BattleEnd();
+            BattleUnit cPlay = cPlayer.GetComponent<BattleUnit>();
+            if (cPlay?.HBCharacter?.HP <= 0)
+            {
+                winLose = false;
+                BattleEnd();
+            }
+        }
+        else 
+        {
+            return;
         }
 
         return;
@@ -184,9 +192,6 @@ public class BattleSystem : MonoBehaviour
         // Add the extra screenspace
         _screenSpace = screenSpace;
 
-        // Get the current Stage Information
-        currentLevel = FindObjectOfType<LevelStage>();
-
         // Get the GameManager
         cController = FindObjectOfType<GameController>();
 
@@ -195,6 +200,13 @@ public class BattleSystem : MonoBehaviour
         {
             bUnitSlot.battleUnit = cController.pUnitSlot;
         }
+
+        // Instantiate the Player Characters
+        InstancePlayers();
+        InstanceSubPlayers();
+
+        // Get the current Stage Information
+        currentLevel = cController._cStage.GetComponent<LevelStage>();
 
         // Background
         backgroundImage.GetComponent<SpriteRenderer>().sprite = currentLevel.backgroundImage;
@@ -226,10 +238,6 @@ public class BattleSystem : MonoBehaviour
         if (currentWave > 0)
         // The current timer for each wave
         cTimer = currentWaveOnScene[cWave].countDownTimer;
-
-        // Instantiate the Player Characters
-        InstancePlayers();
-        InstanceSubPlayers();
 
         mainUnitPos.GetComponent<BattlePlayerControl>().speed =
         ((bUnitSlot.battleUnit.characterBase.Speed / 999f) * 15f);
@@ -305,11 +313,11 @@ public class BattleSystem : MonoBehaviour
     {
         GameObject asset = Instantiate(battleUnit, transform);
         //asset.transform.position = frontUnitPos.position;
-        cPlayer = asset;
         asset.GetComponent<BattleUnit>()._base = bUnitSlot.battleUnit.characterBase;
         asset.GetComponent<BattleUnit>().level = bUnitSlot.battleUnit.level;
         asset.GetComponent<BattleUnit>().isPlayer = true;
         asset.GetComponent<BattleUnit>().subUnit = false;
+        cPlayer = asset;
         asset.transform.SetParent(null);
 
         // Element

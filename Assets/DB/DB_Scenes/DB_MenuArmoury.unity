@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 18626299}
   - component: {fileID: 18626301}
   - component: {fileID: 18626300}
+  - component: {fileID: 18626303}
+  - component: {fileID: 18626302}
   m_Layer: 5
   m_Name: LVText
   m_TagString: Untagged
@@ -158,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.2217, y: 163}
-  m_SizeDelta: {x: 379.5433, y: 109.2}
+  m_AnchoredPosition: {x: -10.597307, y: 151.00793}
+  m_SizeDelta: {x: 360.792, y: 85.2159}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &18626300
 MonoBehaviour:
@@ -174,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -203,6 +205,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18626298}
   m_CullTransparentMesh: 1
+--- !u!114 &18626302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18626298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253aefc7c1dc2e547b546ca6cb074757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
+  shadowDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+  iterations: 5
+  shadowSpread: {x: 1, y: 1}
+--- !u!114 &18626303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18626298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1.2, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &243393820
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,7 +990,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!20 &1045865315
 Camera:
   m_ObjectHideFlags: 0

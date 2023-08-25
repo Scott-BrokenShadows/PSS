@@ -21,6 +21,9 @@ public class GameController : MonoBehaviour
     //[Separator]
     [SerializeField] bool updateCI;
     //[SerializeField] bool updateCI2;
+
+    [ReadOnly] public GameObject _cStage;
+
     #endregion
 
     // Start & Update------------------------------------------------------------------------
