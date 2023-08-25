@@ -3281,18 +3281,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1747006828}
-        m_TargetAssemblyTypeName: Fungus.Flowchart, Fungus
-        m_MethodName: BroadcastFungusMessage
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: LoadMainMenu
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1986135674}
         m_TargetAssemblyTypeName: DB_SystemGacha, Assembly-CSharp
         m_MethodName: MenuReset
@@ -5012,7 +5000,7 @@ MonoBehaviour:
   dRoll: 0
   rareBonus: 0
   confirmText: {fileID: 1224901346}
-  currencyGacha: 10000
+  currencyGacha: 20000
   currencyText: {fileID: 1022731011}
   singleRollCost: 300
   singleRollText: {fileID: 1283980487}

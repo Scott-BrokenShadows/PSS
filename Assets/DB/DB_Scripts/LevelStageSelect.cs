@@ -15,12 +15,26 @@ public class LevelStageSelect : MonoBehaviour
     {
         //this.transform.SetParent(null);
         //DontDestroyOnLoad(this);
-        cController._cStage = this.gameObject;
+        GameObject asset = Instantiate(this.gameObject, transform);
+        cController._cStage = asset;
         GoToStage();
+    }
+
+    public void LevelSelectSingle()
+    {
+        //this.transform.SetParent(null);
+        //DontDestroyOnLoad(this);
+        cController._cStage = this.gameObject;
+        GoToStageSingle();
     }
 
     void GoToStage()
     {
         SceneManager.LoadScene($"{this.GetComponent<LevelStage>().lStageScene}", LoadSceneMode.Additive);
+    }
+
+    void GoToStageSingle()
+    {
+        SceneManager.LoadScene($"{this.GetComponent<LevelStage>().lStageScene}", LoadSceneMode.Single);
     }
 }

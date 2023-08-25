@@ -407,6 +407,7 @@ public class BattleSystem : MonoBehaviour
     public void BattleEnd()
     {
         BattleGameEnd();
+        cController._cStage = null;
         gBattleOver = true;
         Debug.Log("Game Battle End = " + gBattleOver);
     }

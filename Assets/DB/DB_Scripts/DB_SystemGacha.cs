@@ -133,7 +133,7 @@ public class DB_SystemGacha : MonoBehaviour
         xRollButtonGroup.SetActive(false);
         rollBackButton.SetActive(true);
         shopConfirmButton.SetActive(true);
-        confirmText.text = $"Insufficient funds. Go to shop?";
+        confirmText.text = $"Insufficient Gems. Add funds?";
     }
 
     public void RollStandby()
@@ -289,7 +289,7 @@ public class DB_SystemGacha : MonoBehaviour
 
     public void AddFunds()
     {
-        currencyGacha += 3000;
+        currencyGacha += 10000;
         MenuReset();
     }
 
