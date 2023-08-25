@@ -29,7 +29,7 @@ public class ArmourySlot : MonoBehaviour
         {
             if (charImage != null)
             {
-                //charImage.sprite = charSlot.characterBase.IconSprite;
+                charImage.sprite = charSlot.characterBase.IconSprite;
             }
             if (charName != null)
             {
@@ -85,9 +85,21 @@ public class ArmourySlot : MonoBehaviour
     {
         if (targetCharSlot != null)
         {
-            targetCharSlot.GetComponent<ArmourySlot>().charSlot = charSlot;
+            ArmourySlot targetArmourySlot = targetCharSlot.GetComponent<ArmourySlot>();
 
-            cController.bUnitSlot.battleUnit = targetCharSlot.GetComponent<ArmourySlot>().charSlot;
+            if (targetArmourySlot != null && targetArmourySlot.charSlot != null)
+            {
+                targetArmourySlot.charSlot = charSlot;
+                cController.bUnitSlot.battleUnit = targetArmourySlot.charSlot;
+            }
+            else
+            {
+                Debug.LogError("Target ArmourySlot or charSlot is null.");
+            }
+        }
+        else
+        {
+            Debug.LogError("targetCharSlot is null.");
         }
     }
 }

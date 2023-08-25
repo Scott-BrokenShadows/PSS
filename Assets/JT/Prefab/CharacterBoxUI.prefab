@@ -418,6 +418,8 @@ GameObject:
   - component: {fileID: 966056251835798160}
   - component: {fileID: 4899115331533864195}
   - component: {fileID: 3774928471983479359}
+  - component: {fileID: 2154962813584529939}
+  - component: {fileID: 6552268599599176615}
   m_Layer: 5
   m_Name: lvText
   m_TagString: Untagged
@@ -466,7 +468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -487,6 +489,38 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: LV99
+--- !u!114 &2154962813584529939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4391733128719563688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1.2, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &6552268599599176615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4391733128719563688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253aefc7c1dc2e547b546ca6cb074757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
+  shadowDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+  iterations: 5
+  shadowSpread: {x: 1.51, y: 1}
 --- !u!1 &4990449780352732544
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,13 +741,13 @@ MonoBehaviour:
     characterBase: {fileID: 0}
     level: 0
     currentXP: 0
-  charImage: {fileID: 9204427960673369080}
+  targetCharSlot: {fileID: 0}
+  charImage: {fileID: 5122585017846871851}
   charName: {fileID: 65275890257923255}
   charLV: {fileID: 3774928471983479359}
   starRating: {fileID: 8391022703275701171}
   mainSkillDesc: {fileID: 4744631642397706809}
   subSkillDesc: {fileID: 5528490848181768145}
-  slotIndex: 0
 --- !u!1 &8537175153508627262
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Asher
   id: 6
   description: 
-  iconSprite: {fileID: 0}
+  iconSprite: {fileID: 21300000, guid: ac09e65afeef16b41b36a69672dc95f6, type: 3}
   asset: {fileID: 3363376841730040880, guid: c6b5e5b2eae1534479e79fe97e32b1ee, type: 3}
   unitType: 0
   elements: 0

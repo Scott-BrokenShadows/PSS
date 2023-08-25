@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 
     #region Inspector
     public UserCharactersSlot _cUnit;
+    public int _cCurrency;
     [Separator]
     [HideInInspector] [SerializeField] string currentDateTime;
     [HideInInspector] [SerializeField] string currentGameplayTime;
@@ -47,7 +48,7 @@ public class GameController : MonoBehaviour
     {
         if (updateCI)
         {
-            AddCharacterUnit(_cUnit.characterBase, _cUnit.level, _cUnit.currentXP);
+            AddBattleCharSlot(_cUnit.characterBase, _cUnit.level, _cUnit.currentXP);
             SetCharacters();
 
             SetItems();
@@ -121,12 +122,12 @@ public class GameController : MonoBehaviour
 
     public void AddBattleCharSlot(HBCharacterBase _characterUnit, int _level, int _currentXP)
     {
-        GameData.bUnitSlot.battleUnit = new UserCharactersSlot(_characterUnit, _level, _currentXP);
+        bUnitSlot.battleUnit = new UserCharactersSlot(_characterUnit, _level, _currentXP);
     }
 
     public void AddBattleSubCharSlot(HBCharacterBase _characterUnit, int _level, int _currentXP)
     {
-        GameData.bUnitSlot.subBattleUnit = new UserCharactersSlot(_characterUnit, _level, _currentXP);
+        bUnitSlot.subBattleUnit = new UserCharactersSlot(_characterUnit, _level, _currentXP);
     }
 
     public void AddCharacterUnit(HBCharacterBase _characterUnit, int _level, int _currentXP)

@@ -535,9 +535,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cUnit:
-    characterBase: {fileID: 11400000, guid: e3383bb3331441847ab1be71fc31efda, type: 2}
-    level: 77
+    characterBase: {fileID: 11400000, guid: bc09c7a933cb1c14bb2849407006064a, type: 2}
+    level: 99
     currentXP: 0
+  _cCurrency: 10000
   currentDateTime: 
   currentGameplayTime: 
   currency: 

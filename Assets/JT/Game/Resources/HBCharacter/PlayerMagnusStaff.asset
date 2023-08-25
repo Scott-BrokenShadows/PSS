@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Magnus
   id: 0
   description: 
-  iconSprite: {fileID: 0}
+  iconSprite: {fileID: 21300000, guid: 5183ac041df22ab44bc04e48d45e0199, type: 3}
   asset: {fileID: 2566604976370194021, guid: 32cbea2f90b98f047a3de0c62188109d, type: 3}
   unitType: 0
   elements: 0
