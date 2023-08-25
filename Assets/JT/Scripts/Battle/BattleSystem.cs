@@ -177,6 +177,10 @@ public class BattleSystem : MonoBehaviour
         // Get the current Stage Information
         currentLevel = FindObjectOfType<LevelStage>();
 
+        // Set current Player
+        bUnitSlot.battleUnit = GameData.bUnitSlot.battleUnit;
+
+
         // Background
         backgroundImage.GetComponent<SpriteRenderer>().sprite = currentLevel.backgroundImage;
         backgroundImage.GetComponent<SpriteRenderer>().color = currentLevel.backgroundImageColor;
@@ -411,6 +415,8 @@ public class BattleSystem : MonoBehaviour
         //bUnitSlot.subBattleUnit.currentXP += currentLevel.rewards.rEXP / 2;
         GainXP(ref bUnitSlot.subBattleUnit.level, ref bUnitSlot.subBattleUnit.currentXP, 1000, currentLevel.rewards.rEXP / 2);
         character2GainEXP.text = $"+{currentLevel.rewards.rEXP / 2} EXP";
+
+        rewardMoney.text = currentLevel.rewards.rCurrency.ToString();
     }
 
     public void BattleGameLose()

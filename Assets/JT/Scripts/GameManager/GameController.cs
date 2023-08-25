@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
     // Inspector------------------------------------------------------------------------
 
     #region Inspector
-    public HBCharacterBase _cUnit;
+    public UserCharactersSlot _cUnit;
     [Separator]
     [HideInInspector] [SerializeField] string currentDateTime;
     [HideInInspector] [SerializeField] string currentGameplayTime;
@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour
     #region Start & Update
     void Start()
     {
+        updateCI = true;
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -46,7 +47,7 @@ public class GameController : MonoBehaviour
     {
         if (updateCI)
         {
-            AddCharacterUnit(_cUnit, 77, 0);
+            AddCharacterUnit(_cUnit.characterBase, _cUnit.level, _cUnit.currentXP);
             SetCharacters();
 
             SetItems();

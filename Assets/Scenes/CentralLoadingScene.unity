@@ -534,14 +534,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d75174bfa712214ea746895cb30fa33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cUnit: {fileID: 11400000, guid: b6d52afb36cf5584f9efcdfc681e5fe3, type: 2}
+  _cUnit:
+    characterBase: {fileID: 11400000, guid: f011df6edeaf3e742a468a10bf4f2f27, type: 2}
+    level: 77
+    currentXP: 0
   currentDateTime: 
   currentGameplayTime: 
   currency: 
-  listCharSlot:
-  - characterBase: {fileID: 0}
-    level: 0
-    currentXP: 0
+  listCharSlot: []
   bUnitSlot:
     battleUnit:
       characterBase: {fileID: 0}
