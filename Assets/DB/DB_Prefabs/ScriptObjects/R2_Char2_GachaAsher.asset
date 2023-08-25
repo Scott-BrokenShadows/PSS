@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55994f40e6cc48848bc49256ecdcaef5, type: 3}
   m_Name: R2_Char2_GachaAsher
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: db62b9fec7dc4044ebe323ffad5cef56, type: 3}
+  itemImage: {fileID: 21300000, guid: 5183ac041df22ab44bc04e48d45e0199, type: 3}
   itemName: Asher
   dropChance: 9
   isCharacter: 1

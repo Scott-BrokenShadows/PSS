@@ -27,5 +27,5 @@ MonoBehaviour:
   speed: 400
   totalStats: 910
   critical: 0
-  unitBullet: {fileID: 11400000, guid: 9b0edfb6ef885964c92c7a7162476f78, type: 2}
+  unitBullet: {fileID: 11400000, guid: 700504455b115e240827ba3aeba6d9f3, type: 2}
   unitSkill: {fileID: 0}

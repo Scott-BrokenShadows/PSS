@@ -17,8 +17,8 @@ MonoBehaviour:
   iconSprite: {fileID: 0}
   asset: {fileID: 4528073418227455201, guid: bb2531a2aa79db343827705aecf742f1, type: 3}
   bulletType: 1
-  bulletRange: 2
+  bulletRange: 1
   bulletCount: 3
-  bulletReload: 1
+  bulletReload: 2
   bulletSpeed: 5
   aimAtPlayer: 0
