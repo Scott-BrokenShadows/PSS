@@ -1849,6 +1849,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1616328310}
   - component: {fileID: 1616328309}
+  - component: {fileID: 1616328313}
+  - component: {fileID: 1616328312}
+  - component: {fileID: 1616328311}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
