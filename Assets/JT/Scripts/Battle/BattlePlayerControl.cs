@@ -20,6 +20,8 @@ public class BattlePlayerControl : MonoBehaviour
     public static Transform _currentTransform;
     public Vector2 ScreenSpace;
 
+    public VJHandler _input;
+
     // Player Movement Control
     Rigidbody2D _rb;
     Vector2 _movementInput;
@@ -43,8 +45,10 @@ public class BattlePlayerControl : MonoBehaviour
 
     void Move()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        //float moveX = Input.GetAxisRaw("Horizontal");
+        //float moveY = Input.GetAxisRaw("Vertical");
+        float moveX = _input.InputDirection.x;
+        float moveY = _input.InputDirection.y;
 
         _movementInput = new Vector2(moveX, moveY).normalized;
         _smoothMovementInput = Vector2.SmoothDamp(_smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);

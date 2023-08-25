@@ -178,7 +178,7 @@ public class BattleSystem : MonoBehaviour
         currentLevel = FindObjectOfType<LevelStage>();
 
         // Set current Player
-        bUnitSlot.battleUnit = GameData.bUnitSlot.battleUnit;
+        //bUnitSlot.battleUnit = GameData.bUnitSlot.battleUnit;
 
 
         // Background
