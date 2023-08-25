@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     [Separator]
     [ReadOnly] public List<UserCharactersSlot> listCharSlot = new List<UserCharactersSlot>();
     [ReadOnly] public BattleUnitSlot bUnitSlot;
+    [ReadOnly] public UserCharactersSlot pUnitSlot;
     [ReadOnly] public List<ItemSlot> listItems;
     //[Separator]
     [SerializeField] bool updateCI;
@@ -48,7 +49,11 @@ public class GameController : MonoBehaviour
     {
         if (updateCI)
         {
-            AddBattleCharSlot(_cUnit.characterBase, _cUnit.level, _cUnit.currentXP);
+            //AddBattleCharSlot(_cUnit.characterBase, _cUnit.level, _cUnit.currentXP);
+
+            pUnitSlot = _cUnit;
+
+
             SetCharacters();
 
             SetItems();

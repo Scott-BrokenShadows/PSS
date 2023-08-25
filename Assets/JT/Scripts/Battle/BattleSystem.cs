@@ -31,6 +31,9 @@ public class BattleSystem : MonoBehaviour
     // LevelStage
     [ReadOnly] private LevelStage currentLevel;
 
+    // GameManager
+    [ReadOnly] private GameController cController;
+
     // Whats going on with the current Wave
     [ReadOnly] private int currentWave;
     int cWave;
@@ -109,36 +112,43 @@ public class BattleSystem : MonoBehaviour
     {
         if (!gBattleOver)
         {
-            if (!cStage)
-            {
-                TimerWave();
-                InstanceEnemies();
-            }
-
-            allEnemiesNull = true;
-
-            foreach (var enemy in cEnemy)
-            {
-                if (enemy != null)
-                {
-                    allEnemiesNull = false;
-                }
-            }
-
-            if (cStage && allEnemiesNull)
-            {
-                winLose = true;
-                BattleEnd();
-            }
-
-            if (cPlayer.GetComponent<BattleUnit>().HBCharacter.HP <= 0)
-            {
-                winLose = false;
-                BattleEnd();
-            }
+            CheckGover();
         }
     }
     #endregion
+
+    void CheckGover()
+    {
+        if (!cStage)
+        {
+            TimerWave();
+            InstanceEnemies();
+        }
+
+        allEnemiesNull = true;
+
+        foreach (var enemy in cEnemy)
+        {
+            if (enemy != null)
+            {
+                allEnemiesNull = false;
+            }
+        }
+
+        if (cStage && allEnemiesNull)
+        {
+            winLose = true;
+            BattleEnd();
+        }
+
+        if (cPlayer.GetComponent<BattleUnit>().HBCharacter.HP <= 0)
+        {
+            winLose = false;
+            BattleEnd();
+        }
+
+        return;
+    }
 
     // Get Grid Rows ------------------------------------------------------------------------
 
@@ -177,9 +187,14 @@ public class BattleSystem : MonoBehaviour
         // Get the current Stage Information
         currentLevel = FindObjectOfType<LevelStage>();
 
-        // Set current Player
-        //bUnitSlot.battleUnit = GameData.bUnitSlot.battleUnit;
+        // Get the GameManager
+        cController = FindObjectOfType<GameController>();
 
+        // Set current Player
+        if (cController != null && cController.pUnitSlot != null)
+        {
+            bUnitSlot.battleUnit = cController.pUnitSlot;
+        }
 
         // Background
         backgroundImage.GetComponent<SpriteRenderer>().sprite = currentLevel.backgroundImage;

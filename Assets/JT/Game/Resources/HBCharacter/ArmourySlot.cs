@@ -90,7 +90,7 @@ public class ArmourySlot : MonoBehaviour
             if (targetArmourySlot != null && targetArmourySlot.charSlot != null)
             {
                 targetArmourySlot.charSlot = charSlot;
-                cController.bUnitSlot.battleUnit = targetArmourySlot.charSlot;
+                cController.pUnitSlot = targetArmourySlot.charSlot;
             }
             else
             {
