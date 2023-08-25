@@ -1502,7 +1502,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2778232437810425459, guid: d1b5fb1f8a0e20c44add3511544963a4, type: 3}
       propertyPath: charSlot.level
-      value: 5
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 2778232437810425459, guid: d1b5fb1f8a0e20c44add3511544963a4, type: 3}
       propertyPath: targetCharSlot
@@ -1511,7 +1511,7 @@ PrefabInstance:
     - target: {fileID: 2778232437810425459, guid: d1b5fb1f8a0e20c44add3511544963a4, type: 3}
       propertyPath: charSlot.characterBase
       value: 
-      objectReference: {fileID: 11400000, guid: e3383bb3331441847ab1be71fc31efda, type: 2}
+      objectReference: {fileID: 11400000, guid: d87c7043e91ace14bad4f575cb1b98c5, type: 2}
     - target: {fileID: 3936710073471298307, guid: d1b5fb1f8a0e20c44add3511544963a4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1914,7 +1914,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2778232437810425459, guid: d1b5fb1f8a0e20c44add3511544963a4, type: 3}
       propertyPath: charSlot.level
-      value: 7
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 2778232437810425459, guid: d1b5fb1f8a0e20c44add3511544963a4, type: 3}
       propertyPath: targetCharSlot
@@ -1923,7 +1923,7 @@ PrefabInstance:
     - target: {fileID: 2778232437810425459, guid: d1b5fb1f8a0e20c44add3511544963a4, type: 3}
       propertyPath: charSlot.characterBase
       value: 
-      objectReference: {fileID: 11400000, guid: f011df6edeaf3e742a468a10bf4f2f27, type: 2}
+      objectReference: {fileID: 11400000, guid: a3c084add256da047acaec4933413c89, type: 2}
     - target: {fileID: 3936710073471298307, guid: d1b5fb1f8a0e20c44add3511544963a4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -2615,7 +2615,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2778232437810425459, guid: d1b5fb1f8a0e20c44add3511544963a4, type: 3}
       propertyPath: charSlot.level
-      value: 77
+      value: 92
       objectReference: {fileID: 0}
     - target: {fileID: 2778232437810425459, guid: d1b5fb1f8a0e20c44add3511544963a4, type: 3}
       propertyPath: targetCharSlot
