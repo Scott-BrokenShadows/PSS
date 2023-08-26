@@ -45,10 +45,10 @@ public class BattlePlayerControl : MonoBehaviour
 
     void Move()
     {
-        //float moveX = Input.GetAxisRaw("Horizontal");
-        //float moveY = Input.GetAxisRaw("Vertical");
-        float moveX = _input.InputDirection.x;
-        float moveY = _input.InputDirection.y;
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+        //float moveX = _input.InputDirection.x;
+        //float moveY = _input.InputDirection.y;
 
         _movementInput = new Vector2(moveX, moveY).normalized;
         _smoothMovementInput = Vector2.SmoothDamp(_smoothMovementInput, _movementInput, ref _movementInputSmoothVelocity, 0.1f);

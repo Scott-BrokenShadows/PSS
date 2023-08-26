@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/CentralLoadingScene.unity
+    guid: 56dc5ac60b957ad489381efa9b790114
+  - enabled: 1
     path: Assets/JT/Scenes/All Scenes/Battle.unity
     guid: 4da503c96836f7c4982dff5863f9690f
   - enabled: 1
@@ -35,9 +38,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/DB/DB_Scenes/DB_MenuArmoury.unity
     guid: cd1c4549ac855bc43bd84aeadc906db2
-  - enabled: 1
-    path: Assets/Scenes/CentralLoadingScene.unity
-    guid: 56dc5ac60b957ad489381efa9b790114
   - enabled: 1
     path: Assets/Scott/Fungus Build.unity
     guid: a00a8655d8e54ff41a38130d36564f69

@@ -13,11 +13,12 @@ public class LevelStageSelect : MonoBehaviour
     }
     public void LevelSelect()
     {
-        //this.transform.SetParent(null);
-        //DontDestroyOnLoad(this);
         GameObject asset = Instantiate(this.gameObject, transform);
         cController._cStage = asset;
-        GoToStage();
+        this.transform.SetParent(null);
+        DontDestroyOnLoad(this);
+        //GoToStage();
+        GoToStageSingle();
     }
 
     public void LevelSelectSingle()

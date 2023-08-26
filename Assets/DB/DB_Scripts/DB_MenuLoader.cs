@@ -23,6 +23,11 @@ public class DB_MenuLoader : MonoBehaviour
         }
     }
 
+    public void MenuLoadSingle()
+    {
+        SceneManager.LoadScene($"{sceneName}", LoadSceneMode.Single);
+    }
+
     void AddScene()
     {
         SceneManager.LoadScene($"{sceneName}", LoadSceneMode.Additive);
