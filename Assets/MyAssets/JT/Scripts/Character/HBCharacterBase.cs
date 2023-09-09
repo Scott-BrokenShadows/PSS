@@ -41,14 +41,14 @@ public class HBCharacterBase : GatchaBase
     [TextArea]
     [SerializeField] string description;
 
-    [Separator()]
+    //[Separator()]
     // Image
     [SerializeField] public Sprite iconSprite;
 
     // 3D Model
     [SerializeField] GameObject asset;
 
-    [Separator()]
+    //[Separator()]
     // Base Stats
     [Header("Base stats")]
     [Min (0)]
@@ -62,7 +62,9 @@ public class HBCharacterBase : GatchaBase
     [Min(0)]
     [SerializeField] int speed;
 
-    [SerializeField] [ReadOnly] int totalStats;
+    [SerializeField] 
+    //[ReadOnly]
+    int totalStats;
 
     public string Name { get { return name; } }
     public int DexNumber { get { return dexNumber; } }

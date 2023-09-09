@@ -11,7 +11,7 @@ public class HBCharacterBattleUnits : MonoBehaviour
     public bool isPlayer;
 
     // Bullet Control
-    [Separator]
+    //[Separator]
     [Header ("Bullet Function")]
     public GameObject bulletAsset;
     public bulletPattern currentBulletState;

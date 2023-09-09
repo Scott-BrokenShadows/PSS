@@ -28,7 +28,7 @@ public class SpawnHBEnemy
 
 public class LevelStage : MonoBehaviour
 {
-    [LabelOverride("StageScene")]
+    //[LabelOverride("StageScene")]
     public string lStageScene;
     [Min(0)] public int gridRows = 5;
     public LevelWave levelWave;

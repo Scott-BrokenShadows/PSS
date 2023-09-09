@@ -6,26 +6,29 @@ public class BattleSystem : MonoBehaviour
 {
     // Inspector------------------------------------------------------------------------
 
-    [LabelOverride("Battle Unit")]
+    //[LabelOverride("Battle Unit")]
     public GameObject battleUnit;
-    [LabelOverride("Battle Collection")]
+    //[LabelOverride("Battle Collection")]
     public GameObject battleCollection;
-    [LabelOverride("Battle Character Collection")]
+    //[LabelOverride("Battle Character Collection")]
     public GameObject charCollection;
-    [LabelOverride("Battle Bullet Collection")]
+    //[LabelOverride("Battle Bullet Collection")]
     public GameObject bulletCollection;
-    [LabelOverride("Background Image")]
+    //[LabelOverride("Background Image")]
     public GameObject backgroundImage;
 
-    [LabelOverride("Sub Unit Position")]
+    //[LabelOverride("Sub Unit Position")]
     public Transform subUnitPos;
-    [LabelOverride("Main Unit Position")]
+    //[LabelOverride("Main Unit Position")]
     public Transform mainUnitPos;
 
-    [ReadOnly] public LevelStage currentLevel;
-    [ReadOnly] public int currentWave;
+    //[ReadOnly] 
+    public LevelStage currentLevel;
+    //[ReadOnly]
+    public int currentWave;
     int cWave;
-    [ReadOnly] public float cTimer;
+    //[ReadOnly] 
+    public float cTimer;
     public List<GameObject> currentEnemyOnScene;
     public List<float> currentEnemyTimer;
     public List<bool> currentEnemyCallOnce;

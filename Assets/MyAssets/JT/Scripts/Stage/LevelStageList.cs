@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class LevelStageList : MonoBehaviour
 {
     [HideInInspector] public List<GameObject> stageList;
-    [ReadOnly] [SerializeField] GameObject currentSelectedStage;
+    //[ReadOnly] 
+    [SerializeField] GameObject currentSelectedStage;
     int currentInt;
 
     void Awake()
